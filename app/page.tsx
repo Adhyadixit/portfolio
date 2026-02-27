@@ -156,10 +156,12 @@ export default function HomePage() {
               </div>
               <div className="hero-home__content-side">
                 <FadeIn delay={2}>
-                  <p className="hero-home__description">
-                    Nabrel is a private capital platform operating across real assets, strategic industries, and structured
-                    finance — building long-term value for institutional partners around the world.
-                  </p>
+                  <div className="hero-home__description-shell">
+                    <p className="hero-home__description">
+                      Nabrel is a private capital platform operating across real assets, strategic industries, and structured
+                      finance, building long-term value for institutional partners around the world.
+                    </p>
+                  </div>
                 </FadeIn>
               </div>
             </div>
@@ -295,9 +297,9 @@ export default function HomePage() {
             </div>
 
             <div className="bx-offerings-main__stat">
-              <p className="bx-offerings-main__stat-value">$1.3T</p>
+              <p className="bx-offerings-main__stat-value">$100 M </p>
               <div className="bx-offerings-main__stat-subtext">
-                <p>Assets Under Management</p>
+                <p>Co-Ordinated Assets Management</p>
               </div>
               <div className="bx-offerings-main__stat-disclaimer">
                 <p>All figures are illustrative.</p>
