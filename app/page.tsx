@@ -147,11 +147,13 @@ export default function HomePage() {
             <div className="hero-home__grid">
               <div className="hero-home__title-side">
                 <FadeIn>
-                  <h1 className="hero-home__headline">
-                    Enduring Capital.
-                    <br />
-                    Structured for Generations.
-                  </h1>
+                  <div className="hero-home__headline-shell">
+                    <h1 className="hero-home__headline">
+                      Enduring Capital.
+                      <br />
+                      Structured for Generations.
+                    </h1>
+                  </div>
                 </FadeIn>
               </div>
               <div className="hero-home__content-side">

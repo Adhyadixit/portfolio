@@ -35,7 +35,7 @@ export default function Footer() {
                         <div className="footer__links">
                             <Link href="/contact" className="footer__link">Engage With Us</Link>
                             <span className="footer__link" style={{ cursor: 'default' }}>
-                                info@nabrel.com
+                                
                             </span>
                         </div>
                     </div>
