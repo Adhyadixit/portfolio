@@ -147,18 +147,12 @@ export default function HomePage() {
             <div className="hero-home__grid">
               <div className="hero-home__title-side">
                 <FadeIn>
-                  <div className="hero-home__headline-shell">
+                  <div className="hero-home__copy-shell">
                     <h1 className="hero-home__headline">
                       Enduring Capital.
                       <br />
                       Structured for Generations.
                     </h1>
-                  </div>
-                </FadeIn>
-              </div>
-              <div className="hero-home__content-side">
-                <FadeIn delay={2}>
-                  <div className="hero-home__description-shell">
                     <p className="hero-home__description">
                       Nabrel is a private capital platform operating across real assets, strategic industries, and structured
                       finance, building long-term value for institutional partners around the world.

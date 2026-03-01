@@ -1,68 +1,144 @@
 import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
+import ParallaxImage from '@/components/ParallaxImage';
 
 export const metadata: Metadata = {
     title: 'Who We Are',
-    description: 'Our mandate is to preserve and compound capital through disciplined investment in essential industries and real assets.',
+    description:
+        'Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and Africa.',
 };
 
 export default function WhoWeArePage() {
+    const operatingHighlights = [
+        'Operates on a deal-by-deal SPV basis',
+        'Ensures transparent governance and aligned investor interests',
+        'Combines principal investment participation, capital structuring, and cross-border advisory',
+    ];
+
+    const philosophyPrinciples = [
+        'Capital preservation before return optimization',
+        'Structured downside protection',
+        'Selective, high-conviction mandates',
+        'Long-duration asset relevance',
+        'Institutional governance standards',
+    ];
+
+    const representativeExperience = [
+        'Structured and coordinated ~$91M in investor commitments during pre-development of a major infrastructure initiative',
+        'Facilitated sovereign and institutional capital relationships across MENA',
+        'Advanced hospitality and urban development initiatives across Europe and MENA',
+        'Structured natural resource development partnerships',
+        'Advised SPV governance and PPP framework execution',
+    ];
+
+    const outlookPriorities = [
+        'Selectively originated mandates',
+        'Disciplined capital deployment',
+        'Institutional-grade structuring',
+        'Long-term public-private alignment',
+    ];
+
+    const operatingModel = [
+        {
+            title: 'Originate',
+            copy: 'Sourcing selectively originated mandates in strategically advantaged markets, with a preference for asset-backed value creation.',
+        },
+        {
+            title: 'Structure',
+            copy: 'Institutional-grade SPV structuring, governance terms, and downside protection built into each transaction.',
+        },
+        {
+            title: 'Steward',
+            copy: 'Active oversight and reporting discipline designed to align interests and preserve capital across the mandate lifecycle.',
+        },
+    ];
+
     return (
         <>
-            {/* ── HERO ── */}
-            <section className="page-hero page-hero--white">
+            <section
+                className="editorial-hero"
+                style={{ backgroundImage: 'url(/images/hero-architecture.png)' }}
+            >
+                <div className="editorial-hero__overlay" aria-hidden="true" />
+                <div className="container editorial-hero__inner">
+                    <div className="editorial-hero__grid">
+                        <div className="editorial-hero__copy">
+                            <FadeIn>
+                                <span className="page-hero__overline">About Nabrel</span>
+                            </FadeIn>
+                            <FadeIn delay={1}>
+                                <h1 className="editorial-hero__title">Private Capital. Structured. Enduring.</h1>
+                            </FadeIn>
+                            <FadeIn delay={2}>
+                                <p className="editorial-hero__text">
+                                    Nabrel is an independent private capital and development platform focused on selectively originated
+                                    real asset mandates across Europe, MENA, and select African growth corridors.
+                                </p>
+                            </FadeIn>
+                        </div>
+                        <div>
+                            <ParallaxImage
+                                src="/images/hero-skyline.png"
+                                alt="Institutional overview"
+                                className="editorial-frame editorial-tilt"
+                                intensity={18}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="section section-offwhite">
                 <div className="container">
                     <FadeIn>
-                        <span className="page-hero__overline">About Nabrel</span>
-                    </FadeIn>
-                    <FadeIn delay={1}>
-                        <h1 className="page-hero__title">Our Mandate</h1>
-                    </FadeIn>
-                    <FadeIn delay={2}>
-                        <p className="page-hero__text">
-                            To preserve and compound capital through disciplined investment in
-                            essential industries and real assets.
-                        </p>
+                        <div className="deck-grid deck-grid--about">
+                            <div className="deck-card">
+                                <h2 className="deck-title">About Nabrel</h2>
+                                <p className="deck-text">
+                                    The platform operates on a deal-by-deal SPV basis, aligning sponsor participation with
+                                    institutional governance standards and transparent reporting discipline.
+                                </p>
+                            </div>
+                            <div className="deck-card deck-card--navy">
+                                <ul className="deck-list deck-list--light">
+                                    {operatingHighlights.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </FadeIn>
                 </div>
             </section>
 
-            {/* ── IMAGE BREAK ── */}
-            <section style={{ position: 'relative', height: '45vh', overflow: 'hidden' }}>
-                <Image
-                    src="/images/hero-architecture.png"
-                    alt="Architectural interior representing institutional heritage"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                />
-            </section>
-
-            {/* ── PHILOSOPHY ── */}
-            <section className="section section-offwhite">
+            <section className="section section-white">
                 <div className="container">
                     <FadeIn>
-                        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-                            <span className="page-hero__overline">Our Philosophy</span>
-                            <h2 style={{ color: 'var(--navy-primary)', marginTop: '12px' }}>
-                                Guiding Principles
-                            </h2>
+                        <div className="editorial-split">
+                            <blockquote className="deck-quote">
+                                To originate and structure high-conviction real asset investments in strategically advantaged markets,
+                                aligning private capital with long-term economic development.
+                            </blockquote>
+                            <ParallaxImage
+                                src="/images/hero-infrastructure.png"
+                                alt="Mission and discipline"
+                                className="editorial-frame editorial-frame--light"
+                                intensity={14}
+                            />
                         </div>
                     </FadeIn>
+                </div>
+            </section>
+
+            <section className="section section-white">
+                <div className="container">
                     <FadeIn>
-                        <div className="philosophy-grid">
-                            {[
-                                'Capital Preservation',
-                                'Long-Term Orientation',
-                                'Measured Risk',
-                                'Institutional Governance',
-                                'Aligned Interests',
-                            ].map((title) => (
-                                <div key={title} className="philosophy-item">
-                                    <div style={{ color: 'var(--gold-accent)', fontSize: '1.2rem', marginBottom: '16px' }}>
-                                        ◆
-                                    </div>
-                                    <div className="philosophy-item__title">{title}</div>
+                        <div className="deck-grid">
+                            {operatingModel.map((item) => (
+                                <div key={item.title} className="deck-card">
+                                    <h2 className="deck-title">{item.title}</h2>
+                                    <p className="deck-text">{item.copy}</p>
                                 </div>
                             ))}
                         </div>
@@ -70,44 +146,91 @@ export default function WhoWeArePage() {
                 </div>
             </section>
 
-            {/* ── SECTOR FOCUS ── */}
+            <section className="section section-offwhite">
+                <div className="container">
+                    <FadeIn>
+                        <div className="deck-two-panel">
+                            <div className="deck-panel">
+                                <h2 className="deck-title">Investment Philosophy</h2>
+                                <p className="deck-subtitle">Core Principle</p>
+                                <p className="deck-text">Focused on disciplined execution and enduring value creation, not volume.</p>
+                            </div>
+                            <div className="deck-panel deck-panel--light">
+                                <ul className="deck-list">
+                                    {philosophyPrinciples.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <section className="section section-white">
                 <div className="container">
                     <FadeIn>
-                        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-                            <span className="page-hero__overline">Sectors</span>
-                            <h2 style={{ color: 'var(--navy-primary)', marginTop: '12px' }}>
-                                Sector Focus
-                            </h2>
+                        <div className="deck-grid deck-grid--experience">
+                            <div>
+                                <span className="page-hero__overline">Representative Experience</span>
+                                <ul className="deck-list deck-list--spacious">
+                                    {representativeExperience.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="deck-image-stack">
+                                <ParallaxImage
+                                    src="/images/hero-mining.png"
+                                    alt="Representative infrastructure and natural resource experience"
+                                    className="editorial-frame editorial-frame--light"
+                                    intensity={12}
+                                />
+                                <div className="editorial-collage" style={{ marginTop: '18px' }}>
+                                    <Image
+                                        src="/images/hero-energy.png"
+                                        alt="Industrial platform"
+                                        width={520}
+                                        height={360}
+                                    />
+                                    <Image
+                                        src="/images/hero-industrial.png"
+                                        alt="Urban regeneration"
+                                        width={520}
+                                        height={360}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </FadeIn>
+                </div>
+            </section>
+
+            <section className="section section-navy">
+                <div className="container">
                     <FadeIn>
-                        <div className="sectors-grid">
-                            <div className="sector-group">
-                                <h3 className="sector-group__title">Real Assets</h3>
-                                <div className="sector-group__list">
-                                    <div className="sector-group__item">Real Estate &amp; Development</div>
-                                    <div className="sector-group__item">Infrastructure</div>
-                                    <div className="sector-group__item">Energy</div>
-                                </div>
+                        <div className="deck-outlook">
+                            <div>
+                                <h2 className="deck-title deck-title--light">Strategic Outlook Engagement</h2>
+                                <p className="deck-quote-inline">Private Capital. Structured. Enduring.</p>
                             </div>
-                            <div className="sector-group">
-                                <h3 className="sector-group__title">Natural Resources</h3>
-                                <div className="sector-group__list">
-                                    <div className="sector-group__item">Strategic minerals and industrial metals.</div>
-                                </div>
+                            <div className="deck-outlook__panel">
+                                <h3>Engages with</h3>
+                                <ul>
+                                    <li>Sovereign wealth funds</li>
+                                    <li>Institutional investors</li>
+                                    <li>Family offices</li>
+                                    <li>Municipal authorities</li>
+                                    <li>Strategic co-investment partners</li>
+                                </ul>
                             </div>
-                            <div className="sector-group">
-                                <h3 className="sector-group__title">Essential Services</h3>
-                                <div className="sector-group__list">
-                                    <div className="sector-group__item">Healthcare platforms and industrial manufacturing.</div>
-                                </div>
-                            </div>
-                            <div className="sector-group">
-                                <h3 className="sector-group__title">Structured Capital</h3>
-                                <div className="sector-group__list">
-                                    <div className="sector-group__item">Asset-backed financing and senior secured lending.</div>
-                                </div>
+                            <div className="deck-outlook__panel">
+                                <h3>Strategic priorities</h3>
+                                <ul>
+                                    {outlookPriorities.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </FadeIn>

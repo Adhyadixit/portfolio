@@ -1,178 +1,258 @@
 import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
+import ParallaxImage from '@/components/ParallaxImage';
 
 export const metadata: Metadata = {
     title: 'What We Do',
-    description: 'Capital deployment and platform development across direct investments, structured finance, and strategic advisory.',
+    description: 'Disciplined capital deployment across high-impact mandates, with SPV structuring, governance oversight, and institutional partnerships.',
 };
 
 export default function WhatWeDoPage() {
+    const mandateColumns = [
+        {
+            label: 'Target Capitalization',
+            value: '$50–75M+ equity commitments per transaction',
+        },
+        {
+            label: 'Return Profile',
+            value: '15–19% IRR target (risk-adjusted)',
+        },
+        {
+            label: 'Strategic Focus',
+            value: 'Flexible capital solutions across equity and structured finance',
+        },
+        {
+            label: 'Structure',
+            value: 'Urban regeneration, resource infrastructure, and civic mixed-use platforms',
+        },
+    ];
+
+    const governancePoints = [
+        'Dedicated SPV per mandate',
+        'Defined shareholder agreements',
+        'Independent legal oversight (UK, UAE, BVI)',
+        'Transparent reporting standards',
+        'Regulatory compliance adherence',
+    ];
+
+    const priorities = [
+        'Selectively originated mandates',
+        'Disciplined capital deployment',
+        'Institutional-grade structuring',
+        'Long-term public-private alignment',
+    ];
+
+    const mandateLifecycle = [
+        {
+            title: 'Origination',
+            copy: 'Identify opportunities where asset fundamentals, structure, and governance can create durable downside protection.',
+        },
+        {
+            title: 'SPV Structuring',
+            copy: 'Dedicated SPV per mandate, aligned sponsor participation, and defined shareholder agreements.',
+        },
+        {
+            title: 'Execution',
+            copy: 'Disciplined deployment with institutional reporting and independent legal oversight.',
+        },
+        {
+            title: 'Stewardship',
+            copy: 'Ongoing oversight designed to preserve capital and compound returns over the hold period.',
+        },
+    ];
+
     return (
         <>
-            {/* ── HERO ── */}
-            <section
-                className="page-hero page-hero--navy"
-                style={{
-                    backgroundImage: 'url(/images/hero-energy.png)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    position: 'relative',
-                }}
-            >
-                <div
-                    style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(to bottom, rgba(11,31,59,0.9), rgba(11,31,59,0.8))',
-                    }}
-                />
-                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                    <FadeIn>
-                        <span className="page-hero__overline">Our Activities</span>
-                    </FadeIn>
-                    <FadeIn delay={1}>
-                        <h1 className="page-hero__title" style={{ color: 'var(--white)' }}>
-                            Capital Deployment &amp;<br />Platform Development
-                        </h1>
-                    </FadeIn>
-                </div>
-            </section>
-
-            {/* ── DIRECT INVESTMENTS ── */}
-            <section className="section section-white">
-                <div className="container">
-                    <FadeIn>
-                        <div className="content-section">
-                            <div>
-                                <span className="content-section__label">Section I</span>
-                                <h2 className="content-section__title">Direct Investments</h2>
-                                <div className="content-section__list">
-                                    <div className="content-section__list-item">
-                                        Majority and significant minority stakes.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Long-term ownership.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Active governance oversight.
-                                    </div>
-                                </div>
-                            </div>
-                            <Image
-                                src="/images/hero-skyline.png"
-                                alt="Urban infrastructure representing direct investments"
-                                width={560}
-                                height={400}
-                                className="content-section__image"
+            <section className="editorial-hero" style={{ backgroundImage: 'url(/images/hero-industrial.png)' }}>
+                <div className="editorial-hero__overlay" aria-hidden="true" />
+                <div className="container editorial-hero__inner">
+                    <div className="editorial-hero__grid">
+                        <div className="editorial-hero__copy">
+                            <FadeIn>
+                                <span className="page-hero__overline">What We Do</span>
+                            </FadeIn>
+                            <FadeIn delay={1}>
+                                <h1 className="editorial-hero__title">Investment Mandate</h1>
+                            </FadeIn>
+                            <FadeIn delay={2}>
+                                <p className="editorial-hero__text">
+                                    Disciplined capital deployment across high-impact real asset opportunities, executed through dedicated
+                                    SPVs, transparent governance, and aligned co-investment frameworks.
+                                </p>
+                            </FadeIn>
+                        </div>
+                        <div>
+                            <ParallaxImage
+                                src="/images/hero-energy.png"
+                                alt="Investment mandate overview"
+                                className="editorial-frame editorial-tilt"
+                                intensity={18}
                             />
                         </div>
-                    </FadeIn>
+                    </div>
                 </div>
             </section>
 
-            {/* ── DEVELOPMENT & PLATFORM BUILDING ── */}
             <section className="section section-offwhite">
                 <div className="container">
                     <FadeIn>
-                        <div className="content-section content-section--reverse">
-                            <Image
+                        <div className="mandate-grid">
+                            {mandateColumns.map((column) => (
+                                <article key={column.label} className="mandate-card">
+                                    <h3>{column.label}</h3>
+                                    <p>{column.value}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </FadeIn>
+                    <FadeIn delay={1}>
+                        <div style={{ marginTop: '28px' }}>
+                            <ParallaxImage
                                 src="/images/hero-infrastructure.png"
-                                alt="Infrastructure development"
-                                width={560}
-                                height={400}
-                                className="content-section__image"
+                                alt="Governance and structure overview"
+                                className="editorial-frame editorial-frame--light"
+                                intensity={14}
                             />
-                            <div>
-                                <span className="content-section__label">Section II</span>
-                                <h2 className="content-section__title">
-                                    Development &amp; Platform Building
-                                </h2>
-                                <div className="content-section__list">
-                                    <div className="content-section__list-item">
-                                        Ground-up real estate development.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Infrastructure build-outs.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Industrial operating platforms.
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </FadeIn>
                 </div>
             </section>
 
-            {/* ── STRUCTURED FINANCE ── */}
             <section className="section section-white">
                 <div className="container">
                     <FadeIn>
-                        <div className="content-section">
-                            <div>
-                                <span className="content-section__label">Section III</span>
-                                <h2 className="content-section__title">Structured Finance</h2>
-                                <div className="content-section__list">
-                                    <div className="content-section__list-item">
-                                        Senior secured debt.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Mezzanine structures.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Hybrid capital solutions.
-                                    </div>
-                                    <div className="content-section__list-item">
-                                        Real estate and infrastructure credit.
-                                    </div>
+                        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                            <span className="page-hero__overline">How We Execute</span>
+                            <h2 className="deck-title" style={{ marginBottom: 0 }}>Mandate lifecycle</h2>
+                        </div>
+                    </FadeIn>
+                    <FadeIn>
+                        <div className="deck-grid">
+                            {mandateLifecycle.map((item) => (
+                                <div key={item.title} className="deck-card">
+                                    <h3 className="deck-subtitle">{item.title}</h3>
+                                    <p className="deck-text">{item.copy}</p>
                                 </div>
-                                <p className="content-section__text" style={{ marginTop: '24px' }}>
-                                    Nabrel operates within the institutional finance ecosystem,
-                                    structuring capital solutions backed by tangible assets and
-                                    contractual cash flows.
-                                </p>
-                            </div>
-                            <Image
-                                src="/images/hero-mining.png"
-                                alt="Industrial assets representing structured finance"
-                                width={560}
-                                height={400}
-                                className="content-section__image"
-                            />
+                            ))}
                         </div>
                     </FadeIn>
                 </div>
             </section>
 
-            {/* ── STRATEGIC ADVISORY ── */}
+            <section className="section section-white">
+                <div className="container">
+                    <FadeIn>
+                        <div className="deck-two-panel deck-two-panel--case">
+                            <div className="deck-panel deck-panel--navy">
+                                <h2 className="deck-title deck-title--light">Case Example</h2>
+                                <p className="deck-text deck-text--light">
+                                    Hospitality-led urban development (~$50M)
+                                    <br />
+                                    Region: Europe / MENA
+                                    <br />
+                                    Stage: Pre-development
+                                    <br />
+                                    Role: Sponsor &amp; Capital Structuring
+                                </p>
+                                <ul className="deck-list deck-list--light deck-list--compact">
+                                    <li>120–150 key hospitality asset</li>
+                                    <li>Integrated public realm enhancements</li>
+                                    <li>Mixed-use activation</li>
+                                    <li>Dedicated SPV + sponsor equity + institutional co-investment</li>
+                                    <li>PPP framework (where applicable)</li>
+                                </ul>
+                            </div>
+                            <div className="deck-image-stack">
+                                <ParallaxImage
+                                    src="/images/hero-skyline.png"
+                                    alt="Case example for hospitality-led urban development"
+                                    className="editorial-frame editorial-frame--light"
+                                    intensity={16}
+                                />
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            <section className="section section-offwhite">
+                <div className="container">
+                    <FadeIn>
+                        <div className="deck-two-panel">
+                            <div className="deck-panel deck-panel--light">
+                                <h2 className="deck-title">Governance &amp; Structure</h2>
+                                <ul className="deck-list">
+                                    {governancePoints.map((point) => (
+                                        <li key={point}>{point}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="deck-panel deck-panel--navy">
+                                <h3 className="deck-subtitle deck-subtitle--light">Capital Flow</h3>
+                                <p className="deck-text deck-text--light" style={{ marginBottom: '18px' }}>
+                                    Municipal / strategic coordination alongside SPV
+                                </p>
+                                <div className="capital-flow" aria-label="Capital flow diagram">
+                                    <div className="capital-flow__node">Investor Capital</div>
+                                    <div className="capital-flow__arrow" aria-hidden="true" />
+                                    <div className="capital-flow__node capital-flow__node--accent">SPV</div>
+                                    <div className="capital-flow__arrow" aria-hidden="true" />
+                                    <div className="capital-flow__node">Project Entity</div>
+                                    <div className="capital-flow__return">
+                                        <span>Returns &amp; Reporting</span>
+                                        <span className="capital-flow__return-arrow" aria-hidden="true" />
+                                        <span>Investors</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <section className="section section-navy">
                 <div className="container">
                     <FadeIn>
-                        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                            <span className="page-hero__overline">Section IV</span>
-                            <h2 style={{ color: 'var(--white)', marginTop: '12px' }}>
-                                Strategic Advisory
-                            </h2>
-                            <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '16px', fontSize: '1rem', maxWidth: '500px', margin: '16px auto 0' }}>
-                                Selective mandates in:
-                            </p>
+                        <div className="deck-outlook">
+                            <div>
+                                <h2 className="deck-title deck-title--light">Strategic Outlook Engagement</h2>
+                                <p className="deck-quote-inline">Private Capital. Structured. Enduring.</p>
+                            </div>
+                            <div className="deck-outlook__panel">
+                                <h3>Strategic priorities</h3>
+                                <ul>
+                                    {priorities.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div>
+                                <ParallaxImage
+                                    src="/images/hero-mining.png"
+                                    alt="Strategic outlook engagement"
+                                    className="editorial-frame"
+                                    intensity={16}
+                                />
+                            </div>
                         </div>
                     </FadeIn>
+                </div>
+            </section>
+
+            <section className="section section-white">
+                <div className="container">
                     <FadeIn>
-                        <div className="pillars">
-                            {[
-                                'Transaction Structuring',
-                                'Capital Formation',
-                                'Cross-Border Partnerships',
-                                'Asset Repositioning',
-                            ].map((item) => (
-                                <div key={item} className="pillar" style={{ borderColor: 'rgba(184,155,94,0.2)' }}>
-                                    <div className="pillar__title" style={{ color: 'var(--white)' }}>
-                                        {item}
-                                    </div>
+                        <div className="deck-contact-callout">
+                            <h2 className="deck-title">Invest in Nabrel</h2>
+                            <p className="deck-text">abm@nabrel.com</p>
+                            <p className="deck-text">27 Old Gloucester Road London, WC1N 3AX</p>
+                            <div style={{ marginTop: '28px' }}>
+                                <div className="editorial-collage">
+                                    <Image src="/images/hero-architecture.png" alt="Institutional" width={520} height={360} />
+                                    <Image src="/images/hero-industrial.png" alt="Real assets" width={520} height={360} />
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     </FadeIn>
                 </div>

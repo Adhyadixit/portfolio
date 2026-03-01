@@ -92,6 +92,7 @@ export default function HeroGlobe({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rotYRef = useRef(0.4);
   const rotXRef = useRef(0.3);
+  const performanceRef = useRef({ dotCount: 950, dotScale: 1.15, rotateSpeed: autoRotateSpeed });
   const dragRef = useRef({
     active: false,
     startX: 0,
@@ -104,8 +105,17 @@ export default function HeroGlobe({
   const dotsRef = useRef<[number, number, number][]>([]);
 
   useEffect(() => {
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1280;
+    const config = viewportWidth >= 1440
+      ? { dotCount: 1100, dotScale: 1.35, rotateSpeed: autoRotateSpeed * 0.7 }
+      : viewportWidth >= 1024
+      ? { dotCount: 950, dotScale: 1.2, rotateSpeed: autoRotateSpeed * 0.8 }
+      : { dotCount: 750, dotScale: 1.05, rotateSpeed: autoRotateSpeed };
+
+    performanceRef.current = config;
+
     const dots: [number, number, number][] = [];
-    const numDots = 1200;
+    const numDots = config.dotCount;
     const goldenRatio = (1 + Math.sqrt(5)) / 2;
     for (let i = 0; i < numDots; i++) {
       const theta = (2 * Math.PI * i) / goldenRatio;
@@ -136,8 +146,10 @@ export default function HeroGlobe({
     const radius = Math.min(w, h) * 0.38;
     const fov = 600;
 
+    const { dotScale, rotateSpeed } = performanceRef.current;
+
     if (!dragRef.current.active) {
-      rotYRef.current += autoRotateSpeed;
+      rotYRef.current += rotateSpeed ?? autoRotateSpeed;
     }
 
     timeRef.current += 0.015;
@@ -161,6 +173,9 @@ export default function HeroGlobe({
     const rx = rotXRef.current;
 
     const dots = dotsRef.current;
+    ctx.save();
+    ctx.shadowColor = 'rgba(255, 255, 255, 0.35)';
+    ctx.shadowBlur = 4 * dotScale;
     for (let i = 0; i < dots.length; i++) {
       let [x, y, z] = dots[i];
       x *= radius;
@@ -173,14 +188,15 @@ export default function HeroGlobe({
       if (z > 0) continue;
 
       const [sx, sy] = project(x, y, z, cx, cy, fov);
-      const depthAlpha = Math.max(0.1, 1 - (z + radius) / (2 * radius));
-      const dotSize = 1 + depthAlpha * 0.8;
+      const depthAlpha = Math.max(0.15, 1 - (z + radius) / (2 * radius));
+      const dotSize = 0.9 * dotScale + depthAlpha * (1.1 * dotScale);
 
       ctx.beginPath();
       ctx.arc(sx, sy, dotSize, 0, Math.PI * 2);
       ctx.fillStyle = dotColor.replace('ALPHA', depthAlpha.toFixed(2));
       ctx.fill();
     }
+    ctx.restore();
 
     for (const conn of connections) {
       const [lat1, lng1] = conn.from;
