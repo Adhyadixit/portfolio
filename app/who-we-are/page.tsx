@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
+import NeuralBackground from '@/components/NeuralBackground';
 
 export const metadata: Metadata = {
     title: 'Who We Are',
@@ -209,7 +210,17 @@ export default function WhoWeArePage() {
                 </div>
             </section>
 
-            <section className="section section-navy">
+            <section className="section section-navy section-navy--neural">
+                <div className="section-navy__neural" aria-hidden="true">
+                    <NeuralBackground
+                        className="section-navy__neural-canvas"
+                        color="#87b5ff"
+                        trailOpacity={0.08}
+                        particleCount={850}
+                        speed={0.9}
+                        trailFill="rgba(11,31,59,0.3)"
+                    />
+                </div>
                 <div className="container">
                     <FadeIn>
                         <div className="deck-outlook">
