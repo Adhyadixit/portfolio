@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
+import Link from 'next/link';
 import ParallaxImage from '@/components/ParallaxImage';
 
 export const metadata: Metadata = {
@@ -76,6 +77,9 @@ export default function WhatWeDoPage() {
                                 <h1 className="editorial-hero__title">Investment Mandate</h1>
                             </FadeIn>
                             <FadeIn delay={2}>
+                                <span className="editorial-hero__divider" aria-hidden="true" />
+                            </FadeIn>
+                            <FadeIn delay={3}>
                                 <p className="editorial-hero__text">
                                     Disciplined capital deployment across high-impact real asset opportunities, executed through dedicated
                                     SPVs, transparent governance, and aligned co-investment frameworks.
@@ -106,14 +110,29 @@ export default function WhatWeDoPage() {
                             ))}
                         </div>
                     </FadeIn>
-                    <FadeIn delay={1}>
-                        <div style={{ marginTop: '28px' }}>
-                            <ParallaxImage
-                                src="/images/hero-infrastructure.png"
-                                alt="Governance and structure overview"
-                                className="editorial-frame editorial-frame--light"
-                                intensity={14}
-                            />
+                </div>
+            </section>
+
+            <section className="insight-banner">
+                <div className="insight-banner__media" aria-hidden="true">
+                    <Image
+                        src="/images/hero-architecture.png"
+                        alt="Institutional architecture"
+                        fill
+                        priority={false}
+                        style={{ objectFit: 'cover' }}
+                    />
+                </div>
+                <div className="insight-banner__scrim" aria-hidden="true" />
+                <div className="insight-banner__content">
+                    <FadeIn>
+                        <div className="insight-banner__card">
+                            <p className="insight-banner__eyebrow">Execution Spotlight</p>
+                            <h2>Institutional Execution</h2>
+                            <p>
+                                Coordinated capital programs anchored by municipal partnerships, strategic investors, and disciplined
+                                governance frameworks designed for enduring impact.
+                            </p>
                         </div>
                     </FadeIn>
                 </div>
@@ -242,19 +261,19 @@ export default function WhatWeDoPage() {
 
             <section className="section section-white">
                 <div className="container">
-                    <FadeIn>
-                        <div className="deck-contact-callout">
-                            <h2 className="deck-title">Invest in Nabrel</h2>
-                            <p className="deck-text">abm@nabrel.com</p>
-                            <p className="deck-text">27 Old Gloucester Road London, WC1N 3AX</p>
-                            <div style={{ marginTop: '28px' }}>
-                                <div className="editorial-collage">
-                                    <Image src="/images/hero-architecture.png" alt="Institutional" width={520} height={360} />
-                                    <Image src="/images/hero-industrial.png" alt="Real assets" width={520} height={360} />
-                                </div>
+                    <div className="deck-contact-callout">
+                        <h2 className="deck-title">Invest in Nabrel</h2>
+                        <p className="deck-text">Connect with our investment approach to explore aligned mandates.</p>
+                        <Link href="/investment-approach" className="primary-button" style={{ marginTop: '16px' }}>
+                            Explore Investment Approach
+                        </Link>
+                        <div style={{ marginTop: '28px' }}>
+                            <div className="editorial-collage">
+                                <Image src="/images/hero-infrastructure.png" alt="Institutional infrastructure" width={520} height={360} />
+                                <Image src="/images/hero-industrial.png" alt="Real assets" width={520} height={360} />
                             </div>
                         </div>
-                    </FadeIn>
+                    </div>
                 </div>
             </section>
         </>

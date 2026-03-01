@@ -71,6 +71,9 @@ export default function WhoWeArePage() {
                                 <h1 className="editorial-hero__title">Private Capital. Structured. Enduring.</h1>
                             </FadeIn>
                             <FadeIn delay={2}>
+                                <span className="editorial-hero__divider" aria-hidden="true" />
+                            </FadeIn>
+                            <FadeIn delay={3}>
                                 <p className="editorial-hero__text">
                                     Nabrel is an independent private capital and development platform focused on selectively originated
                                     real asset mandates across Europe, MENA, and select African growth corridors.
@@ -134,7 +137,7 @@ export default function WhoWeArePage() {
             <section className="section section-white">
                 <div className="container">
                     <FadeIn>
-                        <div className="deck-grid">
+                        <div className="deck-grid deck-grid--operating">
                             {operatingModel.map((item) => (
                                 <div key={item.title} className="deck-card">
                                     <h2 className="deck-title">{item.title}</h2>

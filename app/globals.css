@@ -501,7 +501,7 @@ p {
 .hero-home__grid {
   display: flex;
   gap: 48px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
 }
 
@@ -520,6 +520,8 @@ p {
   background: rgba(6, 18, 38, 0.12);
   backdrop-filter: blur(10px);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  align-items: center;
 }
 
 .hero-home__headline {
@@ -541,6 +543,14 @@ p {
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.85);
   max-width: 540px;
+}
+
+.hero-home__separator {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.45);
+  margin: 18px 0 22px;
 }
 
 .hero-home__description {
@@ -1898,6 +1908,18 @@ p {
   align-items: stretch;
 }
 
+.deck-grid--operating {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.deck-grid--operating > :nth-child(3) {
+  grid-column: 1 / -1;
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+
 .deck-card,
 .deck-panel {
   border: 1px solid rgba(11, 31, 59, 0.12);
@@ -2172,6 +2194,89 @@ p {
   display: block;
 }
 
+.full-bleed-figure {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.full-bleed-figure .parallax-figure__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.insight-banner {
+  position: relative;
+  min-height: 420px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.insight-banner__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.insight-banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insight-banner__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(110deg, rgba(11, 31, 59, 0.9) 0%, rgba(11, 31, 59, 0.5) 55%, rgba(11, 31, 59, 0.9) 100%);
+}
+
+.insight-banner__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.insight-banner__card {
+  max-width: 620px;
+  background: rgba(4, 12, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 48px;
+  text-align: center;
+  color: var(--white);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.insight-banner__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.insight-banner__card h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.insight-banner__card p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .editorial-hero {
   position: relative;
   padding: 190px 0 120px;
@@ -2216,6 +2321,14 @@ p {
   line-height: 1.85;
   color: rgba(255, 255, 255, 0.82);
   max-width: 560px;
+}
+
+.editorial-hero__divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 18px 0 24px;
 }
 
 .editorial-frame {
@@ -2685,36 +2798,6 @@ p {
   color: var(--gold-accent);
 }
 
-/* ================================================
-   ANIMATIONS (Subtle fade-in only)
-   ================================================ */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in--delay-1 {
-  transition-delay: 0.1s;
-}
-
-.fade-in--delay-2 {
-  transition-delay: 0.2s;
-}
-
-.fade-in--delay-3 {
-  transition-delay: 0.3s;
-}
-
-.fade-in--delay-4 {
-  transition-delay: 0.4s;
-}
 
 /* ================================================
    RESPONSIVE

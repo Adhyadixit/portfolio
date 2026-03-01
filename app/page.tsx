@@ -153,6 +153,7 @@ export default function HomePage() {
                       <br />
                       Structured for Generations.
                     </h1>
+                    <span className="hero-home__separator" aria-hidden="true" />
                     <p className="hero-home__description">
                       Nabrel is a private capital platform operating across real assets, strategic industries, and structured
                       finance, building long-term value for institutional partners around the world.
