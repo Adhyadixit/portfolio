@@ -16,6 +16,17 @@ const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
 export async function ensureDefaultAdmin() {
   if (!defaultAdminEmail || !defaultAdminPassword) return;
 
+  // Ensure admin_users table exists before querying
+  await db`
+    CREATE TABLE IF NOT EXISTS admin_users (
+      id SERIAL PRIMARY KEY,
+      email TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      role TEXT DEFAULT 'admin' NOT NULL,
+      created_at TIMESTAMPTZ DEFAULT now() NOT NULL
+    )
+  `;
+
   const existsResult = (await db`
     SELECT EXISTS (
       SELECT 1 FROM admin_users WHERE email = ${defaultAdminEmail}
