@@ -65,35 +65,26 @@ export default function WhatWeDoPage() {
 
     return (
         <>
-            <section className="editorial-hero" style={{ backgroundImage: 'url(/images/hero-industrial.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-industrial.png)' }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
-                <div className="container editorial-hero__inner">
-                    <div className="editorial-hero__grid">
-                        <div className="editorial-hero__copy">
-                            <FadeIn>
-                                <span className="page-hero__overline">What We Do</span>
-                            </FadeIn>
-                            <FadeIn delay={1}>
-                                <h1 className="editorial-hero__title">Investment Mandate</h1>
-                            </FadeIn>
-                            <FadeIn delay={2}>
-                                <span className="editorial-hero__divider" aria-hidden="true" />
-                            </FadeIn>
-                            <FadeIn delay={3}>
-                                <p className="editorial-hero__text">
-                                    Disciplined capital deployment across high-impact real asset opportunities, executed through dedicated
-                                    SPVs, transparent governance, and aligned co-investment frameworks.
-                                </p>
-                            </FadeIn>
-                        </div>
-                        <div>
-                            <ParallaxImage
-                                src="/images/hero-energy.png"
-                                alt="Investment mandate overview"
-                                className="editorial-frame editorial-tilt"
-                                intensity={18}
-                            />
-                        </div>
+                <div className="container">
+                    <div className="editorial-hero__content editorial-hero__content--center">
+                        <FadeIn>
+                            <span className="page-hero__overline">What We Do</span>
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={1}>
+                            <h1 className="page-hero__title">Capital Deployment & Structuring</h1>
+                        </FadeIn>
+                        <FadeIn delay={2}>
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={3}>
+                            <p className="editorial-hero__text">
+                                Disciplined capital deployment across high-impact real asset opportunities, executed through dedicated
+                                SPVs, transparent governance, and aligned co-investment frameworks.
+                            </p>
+                        </FadeIn>
                     </div>
                 </div>
             </section>
@@ -268,9 +259,14 @@ export default function WhatWeDoPage() {
                             Explore Investment Approach
                         </Link>
                         <div style={{ marginTop: '28px' }}>
-                            <div className="editorial-collage">
-                                <Image src="/images/hero-infrastructure.png" alt="Institutional infrastructure" width={520} height={360} />
-                                <Image src="/images/hero-industrial.png" alt="Real assets" width={520} height={360} />
+                            <div style={{ width: '100%', maxWidth: '1040px', margin: '0 auto' }}>
+                                <Image 
+                                    src="/images/hero-infrastructure.png" 
+                                    alt="Institutional infrastructure" 
+                                    width={1040} 
+                                    height={580} 
+                                    style={{ width: '100%', height: 'auto' }}
+                                />
                             </div>
                         </div>
                     </div>

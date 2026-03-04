@@ -161,34 +161,25 @@ const interactiveSections = [
 export default function InvestmentApproachPage() {
     return (
         <>
-            <section className="editorial-hero" style={{ backgroundImage: 'url(/images/hero-infrastructure.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-energy.png)' }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
-                <div className="container editorial-hero__inner">
-                    <div className="editorial-hero__grid">
-                        <div className="editorial-hero__copy">
-                            <FadeIn>
-                                <span className="page-hero__overline">Investment Approach</span>
-                            </FadeIn>
-                            <FadeIn delay={1}>
-                                <h1 className="editorial-hero__title">Disciplined. Structured. Long-Term.</h1>
-                            </FadeIn>
-                            <FadeIn delay={2}>
-                                <span className="editorial-hero__divider" aria-hidden="true" />
-                            </FadeIn>
-                            <FadeIn delay={3}>
-                                <p className="editorial-hero__text">
-                                    We steward capital with the restraint of multi-generational houses and the rigor of institutional
-                                    allocators—focusing on essential sectors, contractual cash flows, and downside-first underwriting.
-                                </p>
-                            </FadeIn>
-                        </div>
+                <div className="container">
+                    <div className="editorial-hero__content editorial-hero__content--center">
+                        <FadeIn>
+                            <span className="page-hero__overline">Investment Approach</span>
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={1}>
+                            <h1 className="page-hero__title">Disciplined Capital Stewardship</h1>
+                        </FadeIn>
                         <FadeIn delay={2}>
-                            <ParallaxImage
-                                src="/images/hero-energy.png"
-                                alt="Investment governance"
-                                className="editorial-frame"
-                                intensity={18}
-                            />
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={3}>
+                            <p className="editorial-hero__text">
+                                We steward capital with the restraint of multi-generational houses and the rigor of institutional
+                                allocators—focusing on essential sectors, contractual cash flows, and downside-first underwriting.
+                            </p>
                         </FadeIn>
                     </div>
                 </div>

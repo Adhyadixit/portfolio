@@ -58,37 +58,27 @@ export default function WhoWeArePage() {
     return (
         <>
             <section
-                className="editorial-hero"
-                style={{ backgroundImage: 'url(/images/hero-architecture.png)' }}
+                className="editorial-hero editorial-hero--center"
+                style={{ backgroundImage: 'url(/images/hero-skyline.png)' }}
             >
                 <div className="editorial-hero__overlay" aria-hidden="true" />
-                <div className="container editorial-hero__inner">
-                    <div className="editorial-hero__grid">
-                        <div className="editorial-hero__copy">
-                            <FadeIn>
-                                <span className="page-hero__overline">About Nabrel</span>
-                            </FadeIn>
-                            <FadeIn delay={1}>
-                                <h1 className="editorial-hero__title">Private Capital. Structured. Enduring.</h1>
-                            </FadeIn>
-                            <FadeIn delay={2}>
-                                <span className="editorial-hero__divider" aria-hidden="true" />
-                            </FadeIn>
-                            <FadeIn delay={3}>
-                                <p className="editorial-hero__text">
-                                    Nabrel is an independent private capital and development platform focused on selectively originated
-                                    real asset mandates across Europe, MENA, and select African growth corridors.
-                                </p>
-                            </FadeIn>
-                        </div>
-                        <div>
-                            <ParallaxImage
-                                src="/images/hero-skyline.png"
-                                alt="Institutional overview"
-                                className="editorial-frame editorial-tilt"
-                                intensity={18}
-                            />
-                        </div>
+                <div className="container">
+                    <div className="editorial-hero__content editorial-hero__content--center">
+                        <FadeIn>
+                            <span className="page-hero__overline">Who We Are</span>
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={1}>
+                            <h1 className="page-hero__title">Independent Private Capital Platform</h1>
+                        </FadeIn>
+                        <FadeIn delay={2}>
+                            <span className="editorial-hero__divider" aria-hidden="true" />
+                        </FadeIn>
+                        <FadeIn delay={3}>
+                            <p className="editorial-hero__text">
+                                Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and select African growth corridors.
+                            </p>
+                        </FadeIn>
                     </div>
                 </div>
             </section>
@@ -190,20 +180,6 @@ export default function WhoWeArePage() {
                                     className="editorial-frame editorial-frame--light"
                                     intensity={12}
                                 />
-                                <div className="editorial-collage" style={{ marginTop: '18px' }}>
-                                    <Image
-                                        src="/images/hero-energy.png"
-                                        alt="Industrial platform"
-                                        width={520}
-                                        height={360}
-                                    />
-                                    <Image
-                                        src="/images/hero-industrial.png"
-                                        alt="Urban regeneration"
-                                        width={520}
-                                        height={360}
-                                    />
-                                </div>
                             </div>
                         </div>
                     </FadeIn>
