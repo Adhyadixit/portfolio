@@ -10,6 +10,7 @@ const navLinks = [
     { href: '/what-we-do', label: 'What We Do' },
     { href: '/investment-approach', label: 'Investment Approach' },
     { href: '/partnerships', label: 'Partnerships' },
+    { href: '/blog', label: 'Insights' },
     { href: '/contact', label: 'Contact' },
 ];
 

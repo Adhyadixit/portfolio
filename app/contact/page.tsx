@@ -12,21 +12,50 @@ const inquiryTypes = [
     'General Inquiry',
 ];
 
-export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        organization: '',
-        title: '',
-        email: '',
-        inquiryType: '',
-        message: '',
-    });
-    const [isSubmitted, setIsSubmitted] = useState(false);
+const initialForm = {
+    fullName: '',
+    organization: '',
+    title: '',
+    email: '',
+    inquiryType: '',
+    message: '',
+};
 
-    const handleSubmit = (e: FormEvent) => {
+export default function ContactPage() {
+    const [formData, setFormData] = useState(initialForm);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        // In production, this would send to an API endpoint
-        setIsSubmitted(true);
+        setError(null);
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    organization: formData.organization,
+                    title: formData.title,
+                    email: formData.email,
+                    inquiryType: formData.inquiryType,
+                    message: formData.message,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit inquiry');
+            }
+
+            setFormData(initialForm);
+            setIsSubmitted(true);
+        } catch (err) {
+            setError('Something went wrong. Please try again or email us directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -171,9 +200,12 @@ export default function ContactPage() {
 
                                 <div style={{ textAlign: 'center', marginTop: '16px' }}>
                                     <button type="submit" className="btn btn--navy">
-                                        Submit Inquiry
+                                        {isSubmitting ? 'Submitting…' : 'Submit Inquiry'}
                                     </button>
                                 </div>
+                                {error ? (
+                                    <p style={{ color: '#b94a48', marginTop: '12px' }}>{error}</p>
+                                ) : null}
                             </form>
                         )}
                     </FadeIn>

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -14,9 +15,11 @@ export interface ApproachScrollSpyItem {
 interface ApproachScrollSpyProps {
   className?: string;
   items: ApproachScrollSpyItem[];
+  mediaSrc?: string;
+  mediaAlt?: string;
 }
 
-export default function ApproachScrollSpy({ className, items }: ApproachScrollSpyProps) {
+export default function ApproachScrollSpy({ className, items, mediaSrc, mediaAlt }: ApproachScrollSpyProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? '');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
@@ -77,6 +80,12 @@ export default function ApproachScrollSpy({ className, items }: ApproachScrollSp
             </button>
           ))}
         </div>
+
+        {mediaSrc ? (
+          <div className="approach-scroll__media" aria-hidden="true">
+            <Image src={mediaSrc} alt={mediaAlt ?? ''} fill sizes="(max-width: 1024px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+          </div>
+        ) : null}
       </aside>
 
       <div className="approach-scroll__content">

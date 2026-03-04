@@ -317,9 +317,11 @@ export default function InvestmentApproachPage() {
                             </p>
                         </div>
                     </FadeIn>
-                    <FadeIn>
-                        <ApproachScrollSpy items={interactiveSections} />
-                    </FadeIn>
+                    <ApproachScrollSpy
+                        items={interactiveSections}
+                        mediaSrc="/images/hero-architecture.png"
+                        mediaAlt="Institutional architecture"
+                    />
                 </div>
             </section>
 
