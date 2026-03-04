@@ -276,23 +276,21 @@ export default function InvestmentApproachPage() {
 
             <section className="section section-offwhite">
                 <div className="container">
-                    <FadeIn>
-                        <div className="approach-grid">
-                            {underwritingPillars.map((pillar) => (
-                                <div key={pillar.title} className="approach-card">
-                                    {pillar.icon}
-                                    <h3 className="approach-card__title">{pillar.title}</h3>
-                                    <div className="approach-card__list">
-                                        {pillar.points.map((point) => (
-                                            <div key={point} className="approach-card__item">
-                                                {point}
-                                            </div>
-                                        ))}
-                                    </div>
+                    <div className="approach-grid">
+                        {underwritingPillars.map((pillar) => (
+                            <div key={pillar.title} className="approach-card">
+                                {pillar.icon}
+                                <h3 className="approach-card__title">{pillar.title}</h3>
+                                <div className="approach-card__list">
+                                    {pillar.points.map((point) => (
+                                        <div key={point} className="approach-card__item">
+                                            {point}
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    </FadeIn>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 

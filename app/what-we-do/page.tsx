@@ -206,13 +206,13 @@ export default function WhatWeDoPage() {
                                 <div className="capital-flow" aria-label="Capital flow diagram">
                                     <div className="capital-flow__node">Investor Capital</div>
                                     <div className="capital-flow__arrow" aria-hidden="true" />
-                                    <div className="capital-flow__node capital-flow__node--accent">SPV</div>
+                                    <div className="capital-flow__node">SPV</div>
                                     <div className="capital-flow__arrow" aria-hidden="true" />
                                     <div className="capital-flow__node">Project Entity</div>
                                     <div className="capital-flow__return">
-                                        <span>Returns &amp; Reporting</span>
+                                        <div className="capital-flow__return-node">Returns &amp; Reporting</div>
                                         <span className="capital-flow__return-arrow" aria-hidden="true" />
-                                        <span>Investors</span>
+                                        <div className="capital-flow__return-node">Investors</div>
                                     </div>
                                 </div>
                             </div>
