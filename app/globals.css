@@ -303,6 +303,7 @@ p {
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: var(--transition-fast);
   position: relative;
 }
@@ -1338,8 +1339,8 @@ p {
 
 @media (min-width: 1024px) {
   .full-width-video-embed__media {
-    min-height: 75vh;
-    height: calc(100vh - 96px);
+    min-height: 62vh;
+    height: min(72vh, 760px);
   }
 
   .full-width-video-embed__media video {
@@ -3508,6 +3509,35 @@ p {
 
   .hero-home__spacer {
     height: 24px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .header__nav {
+    gap: 22px;
+  }
+
+  .header__nav-link {
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 1120px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu-toggle {
+    display: flex;
+  }
+
+  .header__mobile-nav {
+    display: flex;
   }
 }
 

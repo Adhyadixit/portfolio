@@ -15,8 +15,6 @@ export default function FullWidthVideoEmbed({
 }: FullWidthVideoEmbedProps) {
   const [isOpen, setIsOpen] = useState(false);
   const modalVideoRef = useRef<HTMLVideoElement | null>(null);
-  const inlineVideoRef = useRef<HTMLVideoElement | null>(null);
-  const videoSectionRef = useRef<HTMLDivElement | null>(null);
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -63,34 +61,8 @@ export default function FullWidthVideoEmbed({
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    const target = videoSectionRef.current;
-    if (!target) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const inlineVideo = inlineVideoRef.current;
-        if (!inlineVideo) return;
-
-        if (entry.isIntersecting) {
-          const playPromise = inlineVideo.play();
-          if (playPromise) playPromise.catch(() => {});
-        } else {
-          inlineVideo.pause();
-        }
-      },
-      { threshold: 0.35 }
-    );
-
-    observer.observe(target);
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
-    <section className="full-width-video-embed" aria-label={`${eyebrow} ${title}`} ref={videoSectionRef}>
+    <section className="full-width-video-embed" aria-label={`${eyebrow} ${title}`}>
       <div className="full-width-video-embed__mobile-heading">
         <div className="full-width-video-embed__eyebrow">{eyebrow}</div>
         <h2 className="full-width-video-embed__title">{title}</h2>
@@ -98,7 +70,7 @@ export default function FullWidthVideoEmbed({
 
       <div className="full-width-video-embed__frame">
         <div className="full-width-video-embed__media" aria-hidden>
-          <video ref={inlineVideoRef} autoPlay loop muted playsInline preload="metadata">
+          <video autoPlay loop muted playsInline preload="metadata">
             <source src={videoSrc} type="video/mp4" />
           </video>
         </div>
