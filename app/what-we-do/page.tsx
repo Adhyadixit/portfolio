@@ -3,13 +3,17 @@ import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import Link from 'next/link';
 import ParallaxImage from '@/components/ParallaxImage';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
     title: 'What We Do',
     description: 'Disciplined capital deployment across high-impact mandates, with SPV structuring, governance oversight, and institutional partnerships.',
 };
 
-export default function WhatWeDoPage() {
+export default async function WhatWeDoPage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const mandateColumns = [
         {
             label: 'Target Capitalization',
@@ -65,7 +69,7 @@ export default function WhatWeDoPage() {
 
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-industrial.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('what_we_do_hero', '/images/hero-industrial.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
@@ -107,7 +111,7 @@ export default function WhatWeDoPage() {
             <section className="insight-banner">
                 <div className="insight-banner__media" aria-hidden="true">
                     <Image
-                        src="/images/hero-architecture.png"
+                        src={media('what_we_do_img_1', '/images/hero-architecture.png')}
                         alt="Institutional architecture"
                         fill
                         priority={false}
@@ -175,7 +179,7 @@ export default function WhatWeDoPage() {
                             </div>
                             <div className="deck-image-stack">
                                 <ParallaxImage
-                                    src="/images/hero-skyline.png"
+                                    src={media('what_we_do_parallax_1', '/images/hero-skyline.png')}
                                     alt="Case example for hospitality-led urban development"
                                     className="editorial-frame editorial-frame--light"
                                     intensity={16}
@@ -239,7 +243,7 @@ export default function WhatWeDoPage() {
                             </div>
                             <div>
                                 <ParallaxImage
-                                    src="/images/hero-mining.png"
+                                    src={media('what_we_do_parallax_2', '/images/hero-mining.png')}
                                     alt="Strategic outlook engagement"
                                     className="editorial-frame"
                                     intensity={16}
@@ -260,11 +264,11 @@ export default function WhatWeDoPage() {
                         </Link>
                         <div style={{ marginTop: '28px' }}>
                             <div style={{ width: '100%', maxWidth: '1040px', margin: '0 auto' }}>
-                                <Image 
-                                    src="/images/hero-infrastructure.png" 
-                                    alt="Institutional infrastructure" 
-                                    width={1040} 
-                                    height={580} 
+                                <Image
+                                    src={media('what_we_do_img_2', '/images/hero-infrastructure.png')}
+                                    alt="Institutional infrastructure"
+                                    width={1040}
+                                    height={580}
                                     style={{ width: '100%', height: 'auto' }}
                                 />
                             </div>

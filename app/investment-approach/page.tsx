@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
 import Link from 'next/link';
 import ApproachScrollSpy from '@/components/ApproachScrollSpy';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
     title: 'Investment Approach',
@@ -11,157 +12,160 @@ export const metadata: Metadata = {
         'Disciplined, structured, and long-term investment approach with rigorous underwriting, governance, and risk management.',
 };
 
-const underwritingPillars = [
-    {
-        title: 'Underwriting Discipline',
-        points: ['Asset-level analysis', 'Conservative leverage', 'Stress-tested modeling', 'Long-duration assumptions'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 12l2 2 4-4" />
-                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Governance Framework',
-        points: ['Investment committee review', 'Structured approvals', 'Risk oversight cadence', 'Institutional reporting'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18" />
-                <path d="M9 3v18" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Risk Management',
-        points: ['Counterparty evaluation', 'Regulatory compliance', 'Capital stack protection', 'Scenario planning'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Capital Deployment',
-        points: ['Equity, credit, hybrid instruments', 'Alignment with co-investors', 'Measured pacing of capital calls', 'Transparency on fees & carry'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 12h16" />
-                <path d="M12 4v16" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Portfolio Stewardship',
-        points: ['Active asset monitoring', 'Operational playbooks', 'Quarterly value creation reviews', 'Defined exit protocols'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 19h16" />
-                <path d="M6 19V7l6-4 6 4v12" />
-                <path d="M9 13h6" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Partner Alignment',
-        points: ['Co-investment alongside sponsors', 'Transparent economics', 'Custom reporting cadences', 'Dedicated relationship coverage'],
-        icon: (
-            <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
-                <path d="M3 21a7 7 0 0 1 14 0" />
-                <path d="M18 8a3 3 0 1 1 3 3" />
-                <path d="M21 21v-1a4 4 0 0 0-3-3.87" />
-            </svg>
-        ),
-    },
-];
+export default async function InvestmentApproachPage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
 
-const governanceSteps = [
-    {
-        label: 'Stage 01',
-        title: 'Origination & Screening',
-        detail: 'Sourcing via proprietary channels, thematic research, and sovereign / institutional dialogues.'
-    },
-    {
-        label: 'Stage 02',
-        title: 'Investment Committee',
-        detail: 'Dual review across underwriting and structuring teams with scenario simulations and risk alignment.'
-    },
-    {
-        label: 'Stage 03',
-        title: 'Execution & Structuring',
-        detail: 'SPV formation, shareholder alignment, documentation, and capital stack optimization.'
-    },
-    {
-        label: 'Stage 04',
-        title: 'Stewardship & Reporting',
-        detail: 'Active oversight, quarterly reporting, and capital recycling decisions grounded in downside protection.'
-    },
-];
+    const underwritingPillars = [
+        {
+            title: 'Underwriting Discipline',
+            points: ['Asset-level analysis', 'Conservative leverage', 'Stress-tested modeling', 'Long-duration assumptions'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+                </svg>
+            ),
+        },
+        {
+            title: 'Governance Framework',
+            points: ['Investment committee review', 'Structured approvals', 'Risk oversight cadence', 'Institutional reporting'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18" />
+                    <path d="M9 3v18" />
+                </svg>
+            ),
+        },
+        {
+            title: 'Risk Management',
+            points: ['Counterparty evaluation', 'Regulatory compliance', 'Capital stack protection', 'Scenario planning'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+            ),
+        },
+        {
+            title: 'Capital Deployment',
+            points: ['Equity, credit, hybrid instruments', 'Alignment with co-investors', 'Measured pacing of capital calls', 'Transparency on fees & carry'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 12h16" />
+                    <path d="M12 4v16" />
+                </svg>
+            ),
+        },
+        {
+            title: 'Portfolio Stewardship',
+            points: ['Active asset monitoring', 'Operational playbooks', 'Quarterly value creation reviews', 'Defined exit protocols'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 19h16" />
+                    <path d="M6 19V7l6-4 6 4v12" />
+                    <path d="M9 13h6" />
+                </svg>
+            ),
+        },
+        {
+            title: 'Partner Alignment',
+            points: ['Co-investment alongside sponsors', 'Transparent economics', 'Custom reporting cadences', 'Dedicated relationship coverage'],
+            icon: (
+                <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+                    <path d="M3 21a7 7 0 0 1 14 0" />
+                    <path d="M18 8a3 3 0 1 1 3 3" />
+                    <path d="M21 21v-1a4 4 0 0 0-3-3.87" />
+                </svg>
+            ),
+        },
+    ];
 
-const assuranceThemes = [
-    'Positioning benchmarked to institutional operators (Blackstone discipline, Rothschild restraint).',
-    'Independent legal and fiduciary partners across UK, UAE, and BVI jurisdictions.',
-    'Information rights and reporting cadence tailored to sovereign, institutional, and family office partners.',
-    'No marketing-driven growth targets—deployment remains opportunistic, data-led, and capital preservative.',
-];
+    const governanceSteps = [
+        {
+            label: 'Stage 01',
+            title: 'Origination & Screening',
+            detail: 'Sourcing via proprietary channels, thematic research, and sovereign / institutional dialogues.'
+        },
+        {
+            label: 'Stage 02',
+            title: 'Investment Committee',
+            detail: 'Dual review across underwriting and structuring teams with scenario simulations and risk alignment.'
+        },
+        {
+            label: 'Stage 03',
+            title: 'Execution & Structuring',
+            detail: 'SPV formation, shareholder alignment, documentation, and capital stack optimization.'
+        },
+        {
+            label: 'Stage 04',
+            title: 'Stewardship & Reporting',
+            detail: 'Active oversight, quarterly reporting, and capital recycling decisions grounded in downside protection.'
+        },
+    ];
 
-const interactiveSections = [
-    {
-        id: 'origination-network',
-        eyebrow: 'Origination',
-        title: 'Selective mandate origination',
-        summary:
-            'Opportunities are sourced through proprietary channels, operating relationships, and cross-border dialogues—filtered through a strict investability screen.',
-        bullets: ['Theme-led sourcing', 'Counterparty quality filters', 'Jurisdictional practicality', 'Early risk mapping'],
-    },
-    {
-        id: 'structuring-expertise',
-        eyebrow: 'Structuring',
-        title: 'Capital architecture',
-        summary:
-            'Each transaction is structured with an SPV framework, documentation discipline, and capital stack protections designed to preserve downside resilience.',
-        bullets: ['SPV governance terms', 'Covenants & reserves', 'Aligned sponsor participation', 'Cash flow priority design'],
-    },
-    {
-        id: 'governance-oversight',
-        eyebrow: 'Governance',
-        title: 'Committee-led approvals',
-        summary:
-            'Investment decisions follow a structured cadence, with underwriting, legal, and risk oversight aligned to institutional standards and information rights.',
-        bullets: ['Investment committee review', 'Independent legal diligence', 'Structured approvals', 'Escalation protocols'],
-    },
-    {
-        id: 'portfolio-stewardship',
-        eyebrow: 'Stewardship',
-        title: 'Active oversight',
-        summary:
-            'Mandates are monitored with operating dashboards, periodic reviews, and governance touchpoints to protect capital and maintain transparency through cycles.',
-        bullets: ['Monitoring & reporting rhythm', 'Operational playbooks', 'Quarterly review sessions', 'Defined exit protocols'],
-    },
-    {
-        id: 'efficient-implementation',
-        eyebrow: 'Execution',
-        title: 'Efficient implementation',
-        summary:
-            'We focus on execution discipline—documentation readiness, capital call pacing, and responsible coordination with co-investors and strategic partners.',
-        bullets: ['Measured pacing', 'Documentation readiness', 'Partner coordination', 'Implementation transparency'],
-    },
-    {
-        id: 'sustainability-lens',
-        eyebrow: 'Sustainability',
-        title: 'Long-duration relevance',
-        summary:
-            'Where applicable, we incorporate operational resilience and regulatory considerations that protect the long-term relevance of essential assets.',
-        bullets: ['Regulatory awareness', 'Operational resilience', 'Stakeholder alignment', 'Durability of demand'],
-    },
-];
+    const assuranceThemes = [
+        'Positioning benchmarked to institutional operators (Blackstone discipline, Rothschild restraint).',
+        'Independent legal and fiduciary partners across UK, UAE, and BVI jurisdictions.',
+        'Information rights and reporting cadence tailored to sovereign, institutional, and family office partners.',
+        'No marketing-driven growth targets—deployment remains opportunistic, data-led, and capital preservative.',
+    ];
 
-export default function InvestmentApproachPage() {
+    const interactiveSections = [
+        {
+            id: 'origination-network',
+            eyebrow: 'Origination',
+            title: 'Selective mandate origination',
+            summary:
+                'Opportunities are sourced through proprietary channels, operating relationships, and cross-border dialogues—filtered through a strict investability screen.',
+            bullets: ['Theme-led sourcing', 'Counterparty quality filters', 'Jurisdictional practicality', 'Early risk mapping'],
+        },
+        {
+            id: 'structuring-expertise',
+            eyebrow: 'Structuring',
+            title: 'Capital architecture',
+            summary:
+                'Each transaction is structured with an SPV framework, documentation discipline, and capital stack protections designed to preserve downside resilience.',
+            bullets: ['SPV governance terms', 'Covenants & reserves', 'Aligned sponsor participation', 'Cash flow priority design'],
+        },
+        {
+            id: 'governance-oversight',
+            eyebrow: 'Governance',
+            title: 'Committee-led approvals',
+            summary:
+                'Investment decisions follow a structured cadence, with underwriting, legal, and risk oversight aligned to institutional standards and information rights.',
+            bullets: ['Investment committee review', 'Independent legal diligence', 'Structured approvals', 'Escalation protocols'],
+        },
+        {
+            id: 'portfolio-stewardship',
+            eyebrow: 'Stewardship',
+            title: 'Active oversight',
+            summary:
+                'Mandates are monitored with operating dashboards, periodic reviews, and governance touchpoints to protect capital and maintain transparency through cycles.',
+            bullets: ['Monitoring & reporting rhythm', 'Operational playbooks', 'Quarterly review sessions', 'Defined exit protocols'],
+        },
+        {
+            id: 'efficient-implementation',
+            eyebrow: 'Execution',
+            title: 'Efficient implementation',
+            summary:
+                'We focus on execution discipline—documentation readiness, capital call pacing, and responsible coordination with co-investors and strategic partners.',
+            bullets: ['Measured pacing', 'Documentation readiness', 'Partner coordination', 'Implementation transparency'],
+        },
+        {
+            id: 'sustainability-lens',
+            eyebrow: 'Sustainability',
+            title: 'Long-duration relevance',
+            summary:
+                'Where applicable, we incorporate operational resilience and regulatory considerations that protect the long-term relevance of essential assets.',
+            bullets: ['Regulatory awareness', 'Operational resilience', 'Stakeholder alignment', 'Durability of demand'],
+        },
+    ];
+
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-energy.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('investment_approach_hero', '/images/hero-energy.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
@@ -308,7 +312,7 @@ export default function InvestmentApproachPage() {
                     </FadeIn>
                     <ApproachScrollSpy
                         items={interactiveSections}
-                        mediaSrc="/images/hero-architecture.png"
+                        mediaSrc={media('investment_approach_img_1', '/images/hero-architecture.png')}
                         mediaAlt="Institutional architecture"
                     />
                 </div>
@@ -369,7 +373,7 @@ export default function InvestmentApproachPage() {
             <section className="insight-banner insight-banner--clean">
                 <div className="insight-banner__media" aria-hidden="true">
                     <Image
-                        src="/images/hero-architecture.png"
+                        src={media('investment_approach_img_2', '/images/hero-architecture.png')}
                         alt="Institutional architecture"
                         fill
                         priority={false}

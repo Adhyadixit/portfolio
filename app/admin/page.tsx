@@ -3,6 +3,7 @@ import { ensureDefaultAdmin, verifyAdminToken, ADMIN_COOKIE_NAME } from '@/lib/a
 import db from '@/lib/db';
 import AdminLoginForm from '@/components/admin/AdminLoginForm';
 import AdminDashboard from '@/components/admin/AdminDashboard';
+import { getAllMediaMap } from '@/lib/media';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,5 +47,7 @@ export default async function AdminPage() {
     created_at: string;
   }[];
 
-  return <AdminDashboard adminEmail={session.email} leads={leads} posts={posts} />;
+  const mediaMap = await getAllMediaMap();
+
+  return <AdminDashboard adminEmail={session.email} leads={leads} posts={posts} mediaMap={mediaMap} />;
 }

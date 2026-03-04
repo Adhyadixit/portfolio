@@ -3,6 +3,7 @@ import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
 import NeuralBackground from '@/components/NeuralBackground';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
     title: 'Who We Are',
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
         'Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and Africa.',
 };
 
-export default function WhoWeArePage() {
+export default async function WhoWeArePage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const operatingHighlights = [
         'Operates on a deal-by-deal SPV basis',
         'Ensures transparent governance and aligned investor interests',
@@ -59,7 +63,7 @@ export default function WhoWeArePage() {
         <>
             <section
                 className="editorial-hero editorial-hero--center"
-                style={{ backgroundImage: 'url(/images/hero-skyline.png)' }}
+                style={{ backgroundImage: `url(${media('who_we_are_hero', '/images/hero-skyline.png')})` }}
             >
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
@@ -115,7 +119,7 @@ export default function WhoWeArePage() {
                                 aligning private capital with long-term economic development.
                             </blockquote>
                             <ParallaxImage
-                                src="/images/hero-infrastructure.png"
+                                src={media('who_we_are_hero_1', '/images/hero-infrastructure.png')}
                                 alt="Mission and discipline"
                                 className="editorial-frame editorial-frame--light"
                                 intensity={14}
@@ -175,7 +179,7 @@ export default function WhoWeArePage() {
                             </div>
                             <div className="deck-image-stack">
                                 <ParallaxImage
-                                    src="/images/hero-mining.png"
+                                    src={media('who_we_are_parallax', '/images/hero-mining.png')}
                                     alt="Representative infrastructure and natural resource experience"
                                     className="editorial-frame editorial-frame--light"
                                     intensity={12}

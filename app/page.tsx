@@ -3,19 +3,21 @@ import HeroGlobe from '@/components/HeroGlobe';
 import ShaderBackground from '@/components/ShaderBackground';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Suspense } from 'react';
 import { Quote } from 'lucide-react';
-import LazyFullWidthCarousel from '@/components/lazy/LazyFullWidthCarousel';
-import LazyWhoWeServeAccordion from '@/components/lazy/LazyWhoWeServeAccordion';
-import LazyFullWidthVideoEmbed from '@/components/lazy/LazyFullWidthVideoEmbed';
+import FullWidthCarousel from '@/components/FullWidthCarousel';
+import WhoWeServeAccordion from '@/components/WhoWeServeAccordion';
+import FullWidthVideoEmbed from '@/components/FullWidthVideoEmbed';
+import { getAllMediaMap } from '@/lib/media';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const mediaMap = await getAllMediaMap();
+  const media = (key: string, fallback: string) => mediaMap[key] || fallback;
   const audienceCards = [
     {
       title: 'Institutions',
       description:
         'We partner with global institutions and family offices to provide investment solutions aligned with their growth objectives.',
-      image: '/images/hero-architecture.png',
+      image: media('home_serve_institutions', '/images/hero-architecture.png'),
       alt: 'Skyscrapers representing institutional investors',
       href: '/partnerships',
     },
@@ -23,7 +25,7 @@ export default function HomePage() {
       title: 'Individuals',
       description:
         'We help individuals create wealth and secure their financial futures, guided by an investment approach focused on enduring value.',
-      image: '/E82424DD-5681-4D3D-9438-A86759CAF66D.png',
+      image: media('home_serve_individuals', '/E82424DD-5681-4D3D-9438-A86759CAF66D.png'),
       alt: 'Parent guiding child on bicycle symbolizing personal wealth',
       href: '/contact',
     },
@@ -70,7 +72,7 @@ export default function HomePage() {
       title: 'Build financial security',
       description:
         'We seek to deliver outstanding performance for institutional and individual investors by stewarding their capital with integrity and conviction.',
-      image: '/Untitled design (5).png',
+      image: media('home_offerings_1', '/Untitled design (5).png'),
       alt: 'City grid representing financial systems',
       href: '/partnerships',
       cta: 'Learn More About Our Clients',
@@ -79,7 +81,7 @@ export default function HomePage() {
       title: 'Build your career',
       description:
         'We offer an environment where exceptional talent can build lasting careers—at the forefront of emerging trends and setting standards for our industry.',
-      image: '/3D593A20-063D-46C3-876B-7BC4B1341D66.png',
+      image: media('home_offerings_2', '/3D593A20-063D-46C3-876B-7BC4B1341D66.png'),
       alt: 'Industrial port infrastructure representing opportunity',
       href: '/careers',
       cta: 'Learn More About Our Careers',
@@ -88,7 +90,7 @@ export default function HomePage() {
       title: 'Build strong businesses',
       description:
         'We equip businesses with an extensive range of tools and capabilities they need to grow.',
-      image: '/Untitled design (3).png',
+      image: media('home_offerings_3', '/Untitled design (3).png'),
       alt: 'Rail lines at sunset representing operational scale',
       href: '/what-we-do',
       cta: 'Learn About Our Operating Team',
@@ -97,7 +99,7 @@ export default function HomePage() {
 
   const poweringSlides = [
     {
-      image: '/images/hero-energy.png',
+      image: media('home_powering_1', '/images/hero-energy.png'),
       alt: 'Aerial view of hydropower facility',
       headline: 'Powering Industries That Drive Economies',
       subhead: 'Value & Impact',
@@ -107,7 +109,7 @@ export default function HomePage() {
       ctaLabel: 'Learn More',
     },
     {
-      image: '/images/hero-infrastructure.png',
+      image: media('home_powering_2', '/images/hero-infrastructure.png'),
       alt: 'Critical infrastructure representing institutional stewardship',
       headline: 'Structuring Capital for Generational Resilience',
       subhead: 'Institutional Standards',
@@ -117,7 +119,7 @@ export default function HomePage() {
       ctaLabel: 'Our Approach',
     },
     {
-      image: '/images/hero-industrial.png',
+      image: media('home_powering_3', '/images/hero-industrial.png'),
       alt: 'Industrial operations at scale',
       headline: 'Backing Platforms that Enable Real Economies',
       subhead: 'Strategic Industries',
@@ -169,7 +171,7 @@ export default function HomePage() {
           <FadeIn>
             <div className="hero-home__image-wrapper">
               <Image
-                src="/Untitled design (2).png"
+                src={media('home_hero_bg', '/Untitled design (2).png')}
                 alt="Industrial infrastructure representing institutional investment"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -201,20 +203,16 @@ export default function HomePage() {
       </section>
 
       {/* ── POWERING INDUSTRIES SLIDE (Third Section) ── */}
-      <Suspense fallback={<div className="section-loading" aria-hidden="true" />}>
-        <LazyFullWidthCarousel slides={poweringSlides} />
-      </Suspense>
+      <FullWidthCarousel slides={poweringSlides} />
 
       {/* ── WHO WE SERVE SECTION ── */}
-      <Suspense fallback={<div className="section-loading" aria-hidden="true" />}>
-        <LazyWhoWeServeAccordion title="Who We Serve" cards={audienceCards} />
-      </Suspense>
+      <WhoWeServeAccordion title="Who We Serve" cards={audienceCards} />
 
       {/* ── FULL WIDTH IMAGE WITH TEXT ── */}
       <section className="full-bleed-feature">
         <div className="full-bleed-feature__image">
           <Image
-            src="/Untitled design.png"
+            src={media('home_leveraging_bg', '/Untitled design.png')}
             alt="Leaning architectural form representing Nabrel ecosystem"
             fill
             priority={false}
@@ -332,13 +330,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Suspense fallback={<div className="section-loading" aria-hidden="true" />}>
-        <LazyFullWidthVideoEmbed
-          eyebrow="Watch Now"
-          title="Invested"
-          videoSrc="https://video.gumlet.io/694cef8ab122cbf176482b8c/69a1ae6f825d3351d5358089/download.mp4"
-        />
-      </Suspense>
+      <FullWidthVideoEmbed
+        eyebrow="Watch Now"
+        title="Invested"
+        videoSrc={media('home_video', 'https://video.gumlet.io/694cef8ab122cbf176482b8c/69a1ae6f825d3351d5358089/download.mp4')}
+      />
 
       <section className="reviews" aria-labelledby="reviews-heading">
         <div className="reviews__bg" aria-hidden="true">

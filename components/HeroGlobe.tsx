@@ -109,8 +109,8 @@ export default function HeroGlobe({
     const config = viewportWidth >= 1440
       ? { dotCount: 1100, dotScale: 1.35, rotateSpeed: autoRotateSpeed * 0.7 }
       : viewportWidth >= 1024
-      ? { dotCount: 950, dotScale: 1.2, rotateSpeed: autoRotateSpeed * 0.8 }
-      : { dotCount: 750, dotScale: 1.05, rotateSpeed: autoRotateSpeed };
+        ? { dotCount: 950, dotScale: 1.2, rotateSpeed: autoRotateSpeed * 0.8 }
+        : { dotCount: 750, dotScale: 1.05, rotateSpeed: autoRotateSpeed };
 
     performanceRef.current = config;
 
@@ -272,12 +272,53 @@ export default function HeroGlobe({
       }
     }
 
-    animRef.current = requestAnimationFrame(draw);
+    if (animRef.current !== -1) {
+      animRef.current = requestAnimationFrame(draw);
+    }
   }, [arcColor, autoRotateSpeed, connections, dotColor, markerColor, markers]);
 
   useEffect(() => {
-    animRef.current = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(animRef.current);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let isVisible = true;
+    let localAnimId = 0;
+
+    const wrappedDraw = () => {
+      if (!isVisible) return;
+      draw();
+      // NOTE: draw already calls animRef.current = requestAnimationFrame(draw);
+      // but we need it to use wrappedDraw to check isVisible. Wait, draw calls requestAnimationFrame(draw) internally.
+    };
+
+    // To prevent draw from running infinitely, we should change how draw is called or just use the observer to stop it.
+    // Instead of overriding draw, we can just intercept the requestAnimationFrame inside the effect.
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          if (animRef.current === -1 || !animRef.current) {
+            animRef.current = requestAnimationFrame(draw);
+          }
+        } else {
+          if (animRef.current && animRef.current !== -1) {
+            cancelAnimationFrame(animRef.current);
+          }
+          animRef.current = -1;
+        }
+      });
+    });
+
+    observer.observe(canvas);
+
+    return () => {
+      observer.disconnect();
+      if (animRef.current && animRef.current !== -1) {
+        cancelAnimationFrame(animRef.current);
+      }
+      animRef.current = 0;
+    };
   }, [draw]);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {

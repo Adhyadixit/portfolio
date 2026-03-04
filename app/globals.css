@@ -1494,6 +1494,11 @@ p {
   display: block;
 }
 
+.section-loading {
+  min-height: 62vh;
+  width: 100%;
+}
+
 .reviews {
   position: relative;
   background: var(--off-white);
@@ -1939,7 +1944,7 @@ p {
   align-items: stretch;
 }
 
-.deck-grid--operating > :nth-child(3) {
+.deck-grid--operating> :nth-child(3) {
   grid-column: 1 / -1;
   width: min(560px, 100%);
   margin: 0 auto;
@@ -2435,6 +2440,7 @@ p {
 }
 
 @media (max-width: 1024px) {
+
   .deck-grid,
   .deck-two-panel,
   .deck-outlook {
@@ -3009,7 +3015,7 @@ p {
 }
 
 .admin-shell {
-  padding: 60px 0 100px;
+  padding: 120px 0 100px;
 }
 
 .admin-login {
@@ -3183,10 +3189,12 @@ p {
   .blog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   .admin-dashboard {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .admin-sidebar {
     flex-direction: row;
     align-items: flex-start;
@@ -3194,6 +3202,7 @@ p {
     gap: 12px;
     padding: 24px 20px;
   }
+
   .admin-sidebar__nav {
     flex-direction: row;
     flex-wrap: wrap;
@@ -3202,7 +3211,7 @@ p {
 
 @media (max-width: 768px) {
   .admin-shell {
-    padding: 36px 0 60px;
+    padding: 100px 0 60px;
     grid-template-columns: 1fr;
   }
 }
@@ -3211,32 +3220,41 @@ p {
   .approach-intro {
     grid-template-columns: 1fr;
   }
+
   .approach-tenets {
     grid-template-columns: 1fr;
   }
+
   .approach-scroll {
     grid-template-columns: 1fr;
     gap: 24px;
   }
+
   .approach-scroll__nav {
     position: relative;
     top: auto;
   }
+
   .approach-scroll__media {
     height: 220px;
   }
+
   .approach-scroll__bullets {
     grid-template-columns: 1fr;
   }
+
   .approach-timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   .approach-governance {
     grid-template-columns: 1fr;
   }
+
   .approach-governance__grid {
     grid-template-columns: 1fr;
   }
+
   .approach-callout {
     flex-direction: column;
     text-align: center;

@@ -2,13 +2,17 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
     title: 'Partnerships',
     description: 'Strategic partnerships with family offices, sovereign capital, institutional investors, and consumer partners.',
 };
 
-export default function PartnershipsPage() {
+export default async function PartnershipsPage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const partnerTypes = [
         {
             title: 'Family Offices',
@@ -57,7 +61,7 @@ export default function PartnershipsPage() {
 
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-skyline.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('partnerships_hero', '/images/hero-skyline.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
@@ -115,7 +119,7 @@ export default function PartnershipsPage() {
                                 through aligned interests and shared commitment to capital preservation.
                             </blockquote>
                             <ParallaxImage
-                                src="/images/hero-architecture.png"
+                                src={media('partnerships_parallax', '/images/hero-architecture.png')}
                                 alt="Partnership architecture and governance"
                                 className="editorial-frame editorial-frame--light"
                                 intensity={14}
@@ -176,7 +180,7 @@ export default function PartnershipsPage() {
             <section className="insight-banner insight-banner--clean">
                 <div className="insight-banner__media" aria-hidden="true">
                     <Image
-                        src="/images/hero-energy.png"
+                        src={media('partnerships_img_1', '/images/hero-energy.png')}
                         alt="Strategic partnership execution"
                         fill
                         priority={false}
