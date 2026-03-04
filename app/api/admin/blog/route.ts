@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-import { db } from '@/lib/db';
+import db from '@/lib/db';
 import { ADMIN_COOKIE_NAME, verifyAdminToken } from '@/lib/auth';
 import { slugify } from '@/lib/slugify';
 

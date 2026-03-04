@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { db } from './db';
+import db from './db';
 
 export const ADMIN_COOKIE_NAME = 'nabrel_admin_token';
 

@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { ensureDefaultAdmin, verifyAdminToken, ADMIN_COOKIE_NAME } from '@/lib/auth';
-import { db } from '@/lib/db';
+import db from '@/lib/db';
 import AdminLoginForm from '@/components/admin/AdminLoginForm';
 import AdminDashboard from '@/components/admin/AdminDashboard';
 

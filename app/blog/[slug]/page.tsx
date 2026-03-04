@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import FadeIn from '@/components/FadeIn';
-import { db } from '@/lib/db';
+import db from '@/lib/db';
 
 interface BlogPost {
   id: number;
