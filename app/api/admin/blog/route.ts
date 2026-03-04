@@ -6,9 +6,14 @@ import { ADMIN_COOKIE_NAME, verifyAdminToken } from '@/lib/auth';
 import { slugify } from '@/lib/slugify';
 
 async function ensureAdmin() {
-  const cookieStore = (await Promise.resolve(cookies())) as Awaited<ReturnType<typeof cookies>>;
-  const token = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
-  return verifyAdminToken(token);
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
+    return verifyAdminToken(token);
+  } catch (error) {
+    console.error('Cookie access error:', error);
+    return false;
+  }
 }
 
 async function generateUniqueSlug(baseTitle: string) {
