@@ -14,19 +14,19 @@ export default async function HomePage() {
   const media = (key: string, fallback: string) => mediaMap[key] || fallback;
   const audienceCards = [
     {
-      title: 'Institutions',
+      title: 'Families & Private Capital',
       description:
-        'We partner with global institutions and family offices to provide investment solutions aligned with their growth objectives.',
+        'Multigenerational investors seeking disciplined capital structuring and long-term alignment.',
       image: media('home_serve_institutions', '/images/hero-architecture.png'),
-      alt: 'Skyscrapers representing institutional investors',
+      alt: 'Institutional architecture representing private capital',
       href: '/partnerships',
     },
     {
-      title: 'Individuals',
+      title: 'Institutional Partners',
       description:
-        'We help individuals create wealth and secure their financial futures, guided by an investment approach focused on enduring value.',
+        'Select institutions participating alongside sponsored transactions under shared governance frameworks.',
       image: media('home_serve_individuals', '/E82424DD-5681-4D3D-9438-A86759CAF66D.png'),
-      alt: 'Parent guiding child on bicycle symbolizing personal wealth',
+      alt: 'Structured capital representing institutional partnership',
       href: '/contact',
     },
   ];
@@ -56,7 +56,7 @@ export default async function HomePage() {
     },
     {
       quote:
-        'Nabrel’s operating bench and data transparency have transformed how our board evaluates mission-critical assets. They deliver, full stop.',
+        'Nabrel\'s operating bench and data transparency have transformed how our board evaluates mission-critical assets. They deliver, full stop.',
       name: 'Claudia Rios',
       title: 'Chair, Alton Family Office',
       avatar: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=900&q=80',
@@ -71,29 +71,29 @@ export default async function HomePage() {
     {
       title: 'Build financial security',
       description:
-        'We seek to deliver outstanding performance for institutional and individual investors by stewarding their capital with integrity and conviction.',
+        'We deploy principal capital with institutional rigor, seeking durable outcomes for aligned partners across direct and structured opportunities.',
       image: media('home_offerings_1', '/Untitled design (5).png'),
       alt: 'City grid representing financial systems',
       href: '/partnerships',
-      cta: 'Learn More About Our Clients',
+      cta: 'Learn More About Our Partners',
     },
     {
       title: 'Build your career',
       description:
-        'We offer an environment where exceptional talent can build lasting careers—at the forefront of emerging trends and setting standards for our industry.',
+        'We offer an environment where exceptional talent can contribute to disciplined capital deployment and long-term value creation.',
       image: media('home_offerings_2', '/3D593A20-063D-46C3-876B-7BC4B1341D66.png'),
       alt: 'Industrial port infrastructure representing opportunity',
       href: '/careers',
-      cta: 'Learn More About Our Careers',
+      cta: 'Learn More About Careers',
     },
     {
       title: 'Build strong businesses',
       description:
-        'We equip businesses with an extensive range of tools and capabilities they need to grow.',
+        'Operators and sponsors seeking structured capital solutions with governance clarity and long-horizon perspective.',
       image: media('home_offerings_3', '/Untitled design (3).png'),
       alt: 'Rail lines at sunset representing operational scale',
       href: '/what-we-do',
-      cta: 'Learn About Our Operating Team',
+      cta: 'Learn About Our Approach',
     },
   ];
 
@@ -101,32 +101,32 @@ export default async function HomePage() {
     {
       image: media('home_powering_1', '/images/hero-energy.png'),
       alt: 'Aerial view of hydropower facility',
-      headline: 'Powering Industries That Drive Economies',
-      subhead: 'Value & Impact',
+      headline: 'Capital Stewardship',
+      subhead: 'Long-Horizon Allocation',
       copy:
-        'Rewiring global systems—from supply chains to energy grids—requires bold investment. Our energy platform is foundational in driving that change and delivering value along the way.',
+        'Long-horizon allocation guided by downside discipline, liquidity awareness, and structural integrity across essential sectors.',
       ctaHref: '/what-we-do',
-      ctaLabel: 'Learn More',
+      ctaLabel: 'Investment Focus',
     },
     {
       image: media('home_powering_2', '/images/hero-infrastructure.png'),
       alt: 'Critical infrastructure representing institutional stewardship',
-      headline: 'Structuring Capital for Generational Resilience',
-      subhead: 'Institutional Standards',
+      headline: 'Transaction Origination',
+      subhead: 'Proprietary Sourcing',
       copy:
-        'We underwrite long-duration assets with disciplined governance—aligning stewardship, capital markets access, and operational expertise across cycles.',
+        'Direct sourcing and evaluation of opportunities through proprietary networks and institutional diligence standards.',
       ctaHref: '/investment-approach',
       ctaLabel: 'Our Approach',
     },
     {
       image: media('home_powering_3', '/images/hero-industrial.png'),
       alt: 'Industrial operations at scale',
-      headline: 'Backing Platforms that Enable Real Economies',
-      subhead: 'Strategic Industries',
+      headline: 'Capital Structuring',
+      subhead: 'Bespoke Solutions',
       copy:
-        'From logistics to critical services, Nabrel supports platforms that anchor productivity and long-term competitiveness for institutional partners.',
+        'Design of equity, hybrid, and structured instruments aligned with risk-adjusted return objectives and long-term governance.',
       ctaHref: '/partnerships',
-      ctaLabel: 'Partner With Us',
+      ctaLabel: 'Strategic Alignment',
     },
   ];
 
@@ -151,14 +151,14 @@ export default async function HomePage() {
                 <FadeIn>
                   <div className="hero-home__copy-shell">
                     <h1 className="hero-home__headline">
-                      Enduring Capital.
+                      Disciplined Capital.
                       <br />
-                      Structured for Generations.
+                      Structured Opportunity.
                     </h1>
                     <span className="hero-home__separator" aria-hidden="true" />
                     <p className="hero-home__description">
-                      Nabrel is a private capital platform operating across real assets, strategic industries, and structured
-                      finance, building long-term value for institutional partners around the world.
+                      A privately governed investment office focused on originating, underwriting, and
+                      structuring long-term investments with institutional rigor.
                     </p>
                   </div>
                 </FadeIn>
@@ -192,9 +192,10 @@ export default async function HomePage() {
             <div className="statement">
               <div className="gold-divider"></div>
               <p className="statement__text">
-                We steward capital across essential sectors that underpin economic
-                resilience. Our focus is disciplined underwriting, long-duration
-                ownership, and institutional governance.
+                We operate as a principal investment office deploying our own capital across select
+                direct and structured opportunities. In transactions we sponsor, we underwrite risk,
+                structure capital solutions, and collaborate with aligned partners where governance
+                and long-term objectives are shared.
               </p>
               <div className="gold-divider"></div>
             </div>
@@ -202,18 +203,18 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── POWERING INDUSTRIES SLIDE (Third Section) ── */}
+      {/* ── CORE CAPABILITIES CAROUSEL ── */}
       <FullWidthCarousel slides={poweringSlides} />
 
       {/* ── WHO WE SERVE SECTION ── */}
       <WhoWeServeAccordion title="Who We Serve" cards={audienceCards} />
 
-      {/* ── FULL WIDTH IMAGE WITH TEXT ── */}
+      {/* ── INSTITUTIONAL MID-PAGE BAND ── */}
       <section className="full-bleed-feature">
         <div className="full-bleed-feature__image">
           <Image
             src={media('home_leveraging_bg', '/Untitled design.png')}
-            alt="Leaning architectural form representing Nabrel ecosystem"
+            alt="Architectural form representing institutional governance"
             fill
             priority
             style={{ objectFit: 'cover' }}
@@ -221,19 +222,20 @@ export default async function HomePage() {
         </div>
         <div className="fluid-container-narrow full-bleed-feature__content">
           <div className="full-bleed-feature__card">
-            <h2>Leveraging the Nabrel Ecosystem</h2>
+            <h2>Institutional Framework</h2>
             <div className="full-bleed-feature__description">
               <p>
-                One of the keys to our success is the Nabrel Ecosystem—the collective intelligence and insights we gather from
-                operational expertise, global reach, and deep relationships with partners around the world.
+                We prioritize structure before scale and alignment before expansion.
+                Capital is deployed selectively, with discipline embedded at every stage of the
+                investment lifecycle.
               </p>
               <p>
-                Together, this helps us identify and act on opportunities few others can—and enables each of our platforms to
-                benefit from being a part of the whole.
+                Every transaction benefits from rigorous underwriting, governed processes, and
+                structural clarity designed to preserve capital across market cycles.
               </p>
             </div>
             <Link href="/who-we-are" className="primary-button primary-button--ghost full-bleed-feature__cta">
-              <span>Learn More</span>
+              <span>Our Mandate</span>
             </Link>
           </div>
         </div>
@@ -252,13 +254,14 @@ export default async function HomePage() {
           </div>
 
           <div className="bx-offerings__main bx-offerings-main wp-block-blackstone-v2-our-offerings-main">
-            <h3 className="bx-offerings-main__title">Unmatched scale</h3>
+            <h3 className="bx-offerings-main__title">Principal Capital Office</h3>
 
             <div className="bx-offerings-main__content">
               <div className="bx-offerings-main__copy">
                 <p>
-                  Nabrel is an alternative investment platform with deep sector expertise and a global operating network. We
-                  serve institutional and individual partners by building strong businesses that deliver lasting value.
+                  Nabrel is a privately governed investment office deploying principal capital across direct and
+                  structured opportunities. We originate transactions, underwrite risk, and structure bespoke
+                  capital solutions with institutional governance.
                 </p>
               </div>
 
@@ -294,10 +297,10 @@ export default async function HomePage() {
             <div className="bx-offerings-main__stat">
               <p className="bx-offerings-main__stat-value">$100 M </p>
               <div className="bx-offerings-main__stat-subtext">
-                <p>Co-Ordinated Assets Management</p>
+                <p>Assets Cordinated</p>
               </div>
               <div className="bx-offerings-main__stat-disclaimer">
-                <p>All figures are illustrative.</p>
+                <p></p>
               </div>
             </div>
           </div>
@@ -365,7 +368,7 @@ export default async function HomePage() {
                   <div className="review-card__quote-icon">
                     <Quote aria-hidden size={24} />
                   </div>
-                  <p className="review-card__quote">“{review.quote}”</p>
+                  <p className="review-card__quote">&ldquo;{review.quote}&rdquo;</p>
                   <div className="review-card__person">
                     <div className="review-card__avatar">
                       <Image src={review.avatar} alt={review.name} fill sizes="72px" priority />

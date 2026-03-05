@@ -23,7 +23,7 @@ async function getPublishedPosts() {
 
 export const metadata: Metadata = {
   title: 'Insights',
-  description: 'Editorial perspectives from Nabrel on capital deployment, stewardship, and real asset investing.',
+  description: 'Perspectives on governance, capital structuring, underwriting, and long-horizon investment strategy.',
 };
 
 export const revalidate = 60;
@@ -39,11 +39,12 @@ export default async function BlogPage() {
             <span className="page-hero__overline">Insights</span>
           </FadeIn>
           <FadeIn delay={1}>
-            <h1 className="page-hero__title">Nabrel Perspectives</h1>
+            <h1 className="page-hero__title">Insights</h1>
           </FadeIn>
           <FadeIn delay={2}>
             <p className="page-hero__text">
-              Briefings and viewpoints on capital structure, governance, and the stewardship principles that guide our platform.
+              Perspectives on governance, capital structuring, underwriting, and long-horizon
+              investment strategy.
             </p>
           </FadeIn>
         </div>

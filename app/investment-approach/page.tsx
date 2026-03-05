@@ -9,7 +9,7 @@ import { getAllMediaMap } from '@/lib/media';
 export const metadata: Metadata = {
     title: 'Investment Approach',
     description:
-        'Disciplined, structured, and long-term investment approach with rigorous underwriting, governance, and risk management.',
+        'A disciplined framework guiding the origination, underwriting, structuring, and deployment of principal and aligned capital.',
 };
 
 export default async function InvestmentApproachPage() {
@@ -48,8 +48,8 @@ export default async function InvestmentApproachPage() {
             ),
         },
         {
-            title: 'Capital Deployment',
-            points: ['Equity, credit, hybrid instruments', 'Alignment with co-investors', 'Measured pacing of capital calls', 'Transparency on fees & carry'],
+            title: 'Capital Structuring',
+            points: ['Equity, hybrid, bespoke instruments', 'Alignment with co-investors', 'Risk-adjusted deployment', 'Transparent governance terms'],
             icon: (
                 <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 12h16" />
@@ -58,8 +58,8 @@ export default async function InvestmentApproachPage() {
             ),
         },
         {
-            title: 'Portfolio Stewardship',
-            points: ['Active asset monitoring', 'Operational playbooks', 'Quarterly value creation reviews', 'Defined exit protocols'],
+            title: 'Post-Investment Stewardship',
+            points: ['Active asset monitoring', 'Operational oversight', 'Quarterly review sessions', 'Defined exit protocols'],
             icon: (
                 <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 19h16" />
@@ -69,8 +69,8 @@ export default async function InvestmentApproachPage() {
             ),
         },
         {
-            title: 'Partner Alignment',
-            points: ['Co-investment alongside sponsors', 'Transparent economics', 'Custom reporting cadences', 'Dedicated relationship coverage'],
+            title: 'Selective Partnership',
+            points: ['Aligned institutional partners', 'Governance compatibility', 'Durable incentive structures', 'Long-horizon collaboration'],
             icon: (
                 <svg className="approach-card__icon" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
@@ -86,39 +86,39 @@ export default async function InvestmentApproachPage() {
         {
             label: 'Stage 01',
             title: 'Origination & Screening',
-            detail: 'Sourcing via proprietary channels, thematic research, and sovereign / institutional dialogues.'
+            detail: 'Identifying opportunities where operational quality, structural integrity, and governance alignment create durable potential.'
         },
         {
             label: 'Stage 02',
-            title: 'Investment Committee',
-            detail: 'Dual review across underwriting and structuring teams with scenario simulations and risk alignment.'
+            title: 'Evaluation & Underwriting',
+            detail: 'Opportunities rigorously assessed across financial, operational, and structural dimensions. Scenarios and sensitivities inform feasibility and resilience.'
         },
         {
             label: 'Stage 03',
             title: 'Execution & Structuring',
-            detail: 'SPV formation, shareholder alignment, documentation, and capital stack optimization.'
+            detail: 'Capital deployment executed under defined oversight frameworks, balancing principal investment with participation from aligned institutional partners.'
         },
         {
             label: 'Stage 04',
-            title: 'Stewardship & Reporting',
-            detail: 'Active oversight, quarterly reporting, and capital recycling decisions grounded in downside protection.'
+            title: 'Oversight & Stewardship',
+            detail: 'Post-deployment monitoring ensures adherence to structural objectives, governance alignment, and sustained value creation.'
         },
     ];
 
     const assuranceThemes = [
-        'Positioning benchmarked to institutional operators (Blackstone discipline, Rothschild restraint).',
-        'Independent legal and fiduciary partners across UK, UAE, and BVI jurisdictions.',
+        'Independent legal and fiduciary partners across multiple jurisdictions.',
         'Information rights and reporting cadence tailored to sovereign, institutional, and family office partners.',
-        'No marketing-driven growth targets—deployment remains opportunistic, data-led, and capital preservative.',
+        'Capital preservation embedded at every stage of the investment lifecycle.',
+        'Deployment remains selective, data-led, and governed by formal review processes.',
     ];
 
     const interactiveSections = [
         {
             id: 'origination-network',
             eyebrow: 'Origination',
-            title: 'Selective mandate origination',
+            title: 'Selective origination',
             summary:
-                'Opportunities are sourced through proprietary channels, operating relationships, and cross-border dialogues—filtered through a strict investability screen.',
+                'We identify opportunities where operational quality, structural integrity, and governance alignment create durable potential. Networks and proprietary research guide selective sourcing.',
             bullets: ['Theme-led sourcing', 'Counterparty quality filters', 'Jurisdictional practicality', 'Early risk mapping'],
         },
         {
@@ -126,15 +126,15 @@ export default async function InvestmentApproachPage() {
             eyebrow: 'Structuring',
             title: 'Capital architecture',
             summary:
-                'Each transaction is structured with an SPV framework, documentation discipline, and capital stack protections designed to preserve downside resilience.',
-            bullets: ['SPV governance terms', 'Covenants & reserves', 'Aligned sponsor participation', 'Cash flow priority design'],
+                'Every engagement is structured to balance risk, align incentives, and preserve capital. We employ equity, hybrid, or bespoke solutions designed for durability.',
+            bullets: ['Governance terms', 'Covenants & reserves', 'Aligned participation', 'Cash flow priority design'],
         },
         {
             id: 'governance-oversight',
             eyebrow: 'Governance',
             title: 'Committee-led approvals',
             summary:
-                'Investment decisions follow a structured cadence, with underwriting, legal, and risk oversight aligned to institutional standards and information rights.',
+                'Investment decisions are guided by structured committees, documented protocols, and alignment checks across all participating parties.',
             bullets: ['Investment committee review', 'Independent legal diligence', 'Structured approvals', 'Escalation protocols'],
         },
         {
@@ -142,20 +142,20 @@ export default async function InvestmentApproachPage() {
             eyebrow: 'Stewardship',
             title: 'Active oversight',
             summary:
-                'Mandates are monitored with operating dashboards, periodic reviews, and governance touchpoints to protect capital and maintain transparency through cycles.',
-            bullets: ['Monitoring & reporting rhythm', 'Operational playbooks', 'Quarterly review sessions', 'Defined exit protocols'],
+                'Active oversight preserves the integrity of the original structure, ensures alignment with governance frameworks, and supports long-term capital durability.',
+            bullets: ['Monitoring & reporting rhythm', 'Operational oversight', 'Quarterly review sessions', 'Defined exit protocols'],
         },
         {
             id: 'efficient-implementation',
             eyebrow: 'Execution',
-            title: 'Efficient implementation',
+            title: 'Disciplined implementation',
             summary:
-                'We focus on execution discipline—documentation readiness, capital call pacing, and responsible coordination with co-investors and strategic partners.',
+                'Capital deployment follows formal oversight protocols, ensuring clarity, accountability, and alignment with the intended investment structure.',
             bullets: ['Measured pacing', 'Documentation readiness', 'Partner coordination', 'Implementation transparency'],
         },
         {
             id: 'sustainability-lens',
-            eyebrow: 'Sustainability',
+            eyebrow: 'Durability',
             title: 'Long-duration relevance',
             summary:
                 'Where applicable, we incorporate operational resilience and regulatory considerations that protect the long-term relevance of essential assets.',
@@ -174,15 +174,15 @@ export default async function InvestmentApproachPage() {
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Disciplined Capital Stewardship</h1>
+                            <h1 className="page-hero__title">Investment Approach</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={3}>
                             <p className="editorial-hero__text">
-                                We steward capital with the restraint of multi-generational houses and the rigor of institutional
-                                allocators—focusing on essential sectors, contractual cash flows, and downside-first underwriting.
+                                A disciplined framework guiding the origination, underwriting, structuring, and deployment of
+                                principal and aligned capital.
                             </p>
                         </FadeIn>
                     </div>
@@ -194,19 +194,19 @@ export default async function InvestmentApproachPage() {
                     <FadeIn>
                         <div className="approach-intro">
                             <div className="approach-intro__card">
-                                <p className="page-hero__overline">Positioning Reference</p>
-                                <h2 className="deck-title">Institutional Tone</h2>
+                                <p className="page-hero__overline">Philosophy</p>
+                                <h2 className="deck-title">Principle-Driven</h2>
                                 <p>
-                                    Structural discipline comparable to Blackstone Inc.—measured deployment, transparent governance, and
-                                    capital structures engineered for resilience.
+                                    Our investments are guided by a principle-driven framework that prioritizes
+                                    structural clarity, governance alignment, and long-term viability.
                                 </p>
                             </div>
                             <div className="approach-intro__card">
-                                <p className="page-hero__overline">Heritage Restraint</p>
-                                <h2 className="deck-title">Legacy Mindset</h2>
+                                <p className="page-hero__overline">Engagement</p>
+                                <h2 className="deck-title">Selective Deployment</h2>
                                 <p>
-                                    Communication cadence and discretion echo Rothschild & Co—quiet execution, thoughtful alignment, and
-                                    generational stewardship of partners’ capital.
+                                    Engagement is selective, ensuring each transaction aligns with both our capital
+                                    objectives and the long-horizon goals of our partners.
                                 </p>
                             </div>
                         </div>
@@ -225,11 +225,11 @@ export default async function InvestmentApproachPage() {
                 <div className="container">
                     <FadeIn>
                         <div className="approach-heading approach-heading--center">
-                            <span className="page-hero__overline">Methodology details</span>
+                            <span className="page-hero__overline">Methodology</span>
                             <h2 className="deck-title">What partners can expect</h2>
                             <p className="deck-text">
                                 A calm, repeatable process—paired with clear documentation and reporting—so partners understand the
-                                cadence, decision points, and information rights associated with each mandate.
+                                cadence, decision points, and information rights associated with each engagement.
                             </p>
                         </div>
                     </FadeIn>
@@ -239,18 +239,19 @@ export default async function InvestmentApproachPage() {
                                 <summary>Underwriting inputs</summary>
                                 <div className="approach-accordion__body">
                                     <p>
-                                        Underwriting is grounded in asset-level diligence, conservative assumptions, and stress-tested
-                                        scenario planning. Where relevant, contractual cash flows and operational levers are evaluated
-                                        alongside macro sensitivity.
+                                        Each transaction undergoes comprehensive underwriting, including financial,
+                                        operational, and governance assessment. This ensures clarity of exposure and
+                                        informs bespoke structuring.
                                     </p>
                                 </div>
                             </details>
                             <details className="approach-accordion__item">
-                                <summary>Governance artifacts</summary>
+                                <summary>Governance protocols</summary>
                                 <div className="approach-accordion__body">
                                     <p>
-                                        Mandates are executed with clear governance terms, committee approvals, documentation discipline,
-                                        and jurisdictional oversight. Information rights and reporting cadence are aligned up front.
+                                        Investment decisions are guided by structured committees, documented protocols,
+                                        and alignment checks across all participating parties. Independence of judgment
+                                        and clarity of mandate remain central.
                                     </p>
                                 </div>
                             </details>
@@ -259,13 +260,12 @@ export default async function InvestmentApproachPage() {
                                 <div className="approach-accordion__body">
                                     <p>
                                         Risk management spans counterparty evaluation, compliance considerations, capital stack protection,
-                                        and scenario-based monitoring. When uncertainty strikes, focus is placed on protecting the downside
-                                        first.
+                                        and scenario-based monitoring. Focus is placed on protecting the downside first.
                                     </p>
                                 </div>
                             </details>
                             <details className="approach-accordion__item">
-                                <summary>Implementation & reporting</summary>
+                                <summary>Implementation &amp; reporting</summary>
                                 <div className="approach-accordion__body">
                                     <p>
                                         Implementation emphasizes pacing, transparency, and readiness—coordinating documentation,
@@ -302,10 +302,10 @@ export default async function InvestmentApproachPage() {
                 <div className="container">
                     <FadeIn>
                         <div className="approach-heading">
-                            <span className="page-hero__overline">How the process works</span>
+                            <span className="page-hero__overline">Process Framework</span>
                             <h2 className="deck-title">A consistent framework, applied selectively</h2>
                             <p className="deck-text">
-                                Our process is designed to be globally consistent, while remaining selective in where we deploy
+                                Our process is designed to be globally consistent while remaining selective in where we deploy
                                 capital—combining underwriting discipline, governance, and implementation rigor.
                             </p>
                         </div>
@@ -340,11 +340,11 @@ export default async function InvestmentApproachPage() {
                         <div className="approach-governance">
                             <div>
                                 <p className="page-hero__overline">Risk & Reporting</p>
-                                <h2 className="deck-title deck-title--light">Cycle-Resilient Stewardship</h2>
+                                <h2 className="deck-title deck-title--light">Stewardship</h2>
                                 <p className="deck-text deck-text--light">
-                                    Nabrel structures every mandate with capital stack protection, counterparty diligence, and multi-layer
-                                    governance so that family offices, sovereign capital, and institutional partners participate with
-                                    confidence through cycles.
+                                    Active oversight preserves the integrity of the original structure, ensures
+                                    alignment with governance frameworks, and supports long-term capital durability
+                                    for family offices, sovereign capital, and institutional partners.
                                 </p>
                             </div>
                             <div className="approach-governance__grid">
@@ -359,9 +359,9 @@ export default async function InvestmentApproachPage() {
                                 <div>
                                     <h3>Protection Levers</h3>
                                     <ul>
-                                        <li>Structured covenants & reserves</li>
+                                        <li>Structured covenants &amp; reserves</li>
                                         <li>Jurisdictional diversification</li>
-                                        <li>Aligned sponsor co-investment</li>
+                                        <li>Aligned co-investment participation</li>
                                     </ul>
                                 </div>
                             </div>
@@ -383,11 +383,11 @@ export default async function InvestmentApproachPage() {
                 <div className="insight-banner__content">
                     <FadeIn>
                         <div className="insight-banner__card">
-                            <p className="insight-banner__eyebrow">Institutional Framework</p>
-                            <h2>Stewardship Through Cycles</h2>
+                            <p className="insight-banner__eyebrow">Engagement</p>
+                            <h2>Engagement</h2>
                             <p>
-                                Every mandate is structured to preserve capital first—supported by conservative underwriting,
-                                committee-led governance, and reporting practices designed for long-term partners.
+                                Opportunities are considered where underwriting rigor, structural clarity, and
+                                alignment of interests underpin long-term value.
                             </p>
                         </div>
                     </FadeIn>
@@ -399,15 +399,16 @@ export default async function InvestmentApproachPage() {
                     <FadeIn>
                         <div className="approach-callout">
                             <div>
-                                <p className="page-hero__overline">Engage with Nabrel</p>
-                                <h2 className="deck-title">Structured access to essential industries</h2>
+                                <p className="page-hero__overline">Strategic Alignment</p>
+                                <h2 className="deck-title">Engagement</h2>
                                 <p className="deck-text">
-                                    We welcome dialogues with sovereign partners, family offices, and institutional allocators seeking
-                                    disciplined capital programs anchored in real assets and critical infrastructure.
+                                    We engage with aligned institutional partners only where objectives, governance
+                                    standards, and structural frameworks converge. Collaboration is considered with
+                                    discretion, long-term alignment, and durable incentives.
                                 </p>
                             </div>
                             <Link href="/contact" className="primary-button primary-button--outline">
-                                Initiate a Conversation
+                                Engagement
                             </Link>
                         </div>
                     </FadeIn>

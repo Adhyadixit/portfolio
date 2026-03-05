@@ -8,7 +8,7 @@ import { getAllMediaMap } from '@/lib/media';
 export const metadata: Metadata = {
     title: 'Who We Are',
     description:
-        'Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and Africa.',
+        'A privately governed principal investment office focused on disciplined capital stewardship, rigorous underwriting, and selective transaction sponsorship.',
 };
 
 export default async function WhoWeArePage() {
@@ -16,17 +16,17 @@ export default async function WhoWeArePage() {
     const media = (key: string, fallback: string) => mediaMap[key] || fallback;
 
     const operatingHighlights = [
-        'Operates on a deal-by-deal SPV basis',
-        'Ensures transparent governance and aligned investor interests',
-        'Combines principal investment participation, capital structuring, and cross-border advisory',
+        'Independent decision-making and rigorous underwriting',
+        'Selective transaction sponsorship across direct and structured investments',
+        'Long-term perspective prioritizing structural integrity over scale-driven expansion',
     ];
 
     const philosophyPrinciples = [
-        'Capital preservation before return optimization',
-        'Structured downside protection',
-        'Selective, high-conviction mandates',
-        'Long-duration asset relevance',
-        'Institutional governance standards',
+        'Long-term orientation over short-cycle return objectives',
+        'Comprehensive underwriting prior to commitment',
+        'Alignment of interests and durability of partnership',
+        'Structural integrity with risk mitigation at inception',
+        'Independence of judgment and clarity of mandate',
     ];
 
     const representativeExperience = [
@@ -38,24 +38,24 @@ export default async function WhoWeArePage() {
     ];
 
     const outlookPriorities = [
-        'Selectively originated mandates',
-        'Disciplined capital deployment',
-        'Institutional-grade structuring',
-        'Long-term public-private alignment',
+        'Selective origination with governance clarity',
+        'Conservative underwriting and bespoke structuring',
+        'Institutional-grade oversight and reporting',
+        'Long-term alignment with institutional partners',
     ];
 
     const operatingModel = [
         {
             title: 'Originate',
-            copy: 'Sourcing selectively originated mandates in strategically advantaged markets, with a preference for asset-backed value creation.',
+            copy: 'Identifying transactions where fundamentals, structure, and governance support sustainable outcomes and long-term alignment.',
         },
         {
             title: 'Structure',
-            copy: 'Institutional-grade SPV structuring, governance terms, and downside protection built into each transaction.',
+            copy: 'Developing bespoke capital solutions using equity, hybrid, or structured instruments. Rigorous underwriting ensures risk-adjusted durability.',
         },
         {
             title: 'Steward',
-            copy: 'Active oversight and reporting discipline designed to align interests and preserve capital across the mandate lifecycle.',
+            copy: 'Active oversight preserves the integrity of each structure, ensures alignment with governance frameworks, and supports long-term capital durability.',
         },
     ];
 
@@ -73,14 +73,14 @@ export default async function WhoWeArePage() {
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Independent Private Capital Platform</h1>
+                            <h1 className="page-hero__title">Our Mandate</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={3}>
                             <p className="editorial-hero__text">
-                                Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and select African growth corridors.
+                                Independent. Governance-driven. Long-term in orientation.
                             </p>
                         </FadeIn>
                     </div>
@@ -92,10 +92,11 @@ export default async function WhoWeArePage() {
                     <FadeIn>
                         <div className="deck-grid deck-grid--about">
                             <div className="deck-card">
-                                <h2 className="deck-title">About Nabrel</h2>
+                                <h2 className="deck-title">Principal Investment Office</h2>
                                 <p className="deck-text">
-                                    The platform operates on a deal-by-deal SPV basis, aligning sponsor participation with
-                                    institutional governance standards and transparent reporting discipline.
+                                    We are a privately governed principal investment office focused on the disciplined
+                                    stewardship of capital. Our structure enables independent decision-making, rigorous
+                                    underwriting, and selective transaction sponsorship across direct and structured investments.
                                 </p>
                             </div>
                             <div className="deck-card deck-card--navy">
@@ -115,12 +116,13 @@ export default async function WhoWeArePage() {
                     <FadeIn>
                         <div className="editorial-split">
                             <blockquote className="deck-quote">
-                                To originate and structure high-conviction real asset investments in strategically advantaged markets,
-                                aligning private capital with long-term economic development.
+                                Our investment decisions are governed by formal review processes, capital allocation
+                                discipline, and structured risk assessment frameworks. Independence of judgment and
+                                clarity of mandate are foundational to our operating model.
                             </blockquote>
                             <ParallaxImage
                                 src={media('who_we_are_hero_1', '/images/hero-infrastructure.png')}
-                                alt="Mission and discipline"
+                                alt="Governance and independence"
                                 className="editorial-frame editorial-frame--light"
                                 intensity={14}
                             />
@@ -150,8 +152,11 @@ export default async function WhoWeArePage() {
                         <div className="deck-two-panel">
                             <div className="deck-panel">
                                 <h2 className="deck-title">Investment Philosophy</h2>
-                                <p className="deck-subtitle">Core Principle</p>
-                                <p className="deck-text">Focused on disciplined execution and enduring value creation, not volume.</p>
+                                <p className="deck-subtitle">Core Principles</p>
+                                <p className="deck-text">
+                                    We do not pursue volume-based deployment. Engagement is selective, transactions are
+                                    underwritten conservatively, and capital is structured with long-term accountability in mind.
+                                </p>
                             </div>
                             <div className="deck-panel deck-panel--light">
                                 <ul className="deck-list">
@@ -205,8 +210,8 @@ export default async function WhoWeArePage() {
                     <FadeIn>
                         <div className="deck-outlook">
                             <div>
-                                <h2 className="deck-title deck-title--light">Strategic Outlook Engagement</h2>
-                                <p className="deck-quote-inline">Private Capital. Structured. Enduring.</p>
+                                <h2 className="deck-title deck-title--light">Strategic Outlook</h2>
+                                <p className="deck-quote-inline">Disciplined. Independent. Enduring.</p>
                             </div>
                             <div className="deck-outlook__panel">
                                 <h3>Engages with</h3>
