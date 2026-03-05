@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { verifyAdminToken, ADMIN_COOKIE_NAME } from '@/lib/auth';
+import { revalidatePath } from 'next/cache';
 import { setMediaAsset } from '@/lib/media';
 
 export async function POST(req: Request) {
@@ -20,6 +21,7 @@ export async function POST(req: Request) {
         }
 
         await setMediaAsset(key, url);
+        revalidatePath('/', 'layout');
 
         return NextResponse.json({ success: true });
     } catch (error) {

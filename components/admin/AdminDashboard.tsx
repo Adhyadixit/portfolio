@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { FormEvent, useMemo, useState } from 'react';
 
 interface Lead {
@@ -38,6 +39,7 @@ const initialForm = {
 };
 
 export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: AdminDashboardProps) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'leads' | 'blogs' | 'media'>('leads');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
@@ -68,7 +70,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
 
       setForm(initialForm);
       setStatus('Post saved');
-      window.location.reload();
+      router.refresh();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : 'Unable to save post');
     } finally {
@@ -90,7 +92,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
         throw new Error(data?.error ?? 'Unable to update post');
       }
 
-      window.location.reload();
+      router.refresh();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : 'Unable to update post');
     } finally {
@@ -116,7 +118,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
         throw new Error(data?.error ?? 'Unable to delete post');
       }
 
-      window.location.reload();
+      router.refresh();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : 'Unable to delete post');
     } finally {
@@ -156,7 +158,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
       if (!saveRes.ok) throw new Error('Failed to save media URL in database');
 
       setStatus(`Successfully updated ${key}!`);
-      setTimeout(() => window.location.reload(), 800);
+      router.refresh();
     } catch (err) {
       console.error(err);
       setStatus(`Error updating ${key}.`);
@@ -356,7 +358,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                       )}
                       <input
                         type="file"
-                        accept="image/*,video/*"
+                        accept=".png,.jpg,.jpeg,.webp,.gif,.mp4,.webm,image/*,video/*"
                         disabled={isSaving}
                         onChange={(e) => {
                           const file = e.target.files?.[0];
