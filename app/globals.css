@@ -526,8 +526,11 @@ p {
 .hero-home__content {
   position: relative;
   z-index: 1;
-  padding-top: 200px;
-  padding-bottom: 40px;
+  padding-top: 180px;
+  padding-bottom: 60px;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
   background: linear-gradient(180deg, rgba(11, 31, 59, 0.92) 0%, rgba(11, 31, 59, 0.6) 40%, rgba(11, 31, 59, 0) 100%);
 }
 
@@ -2319,7 +2322,11 @@ p {
 
 .editorial-hero {
   position: relative;
-  padding: 190px 0 120px;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 0 100px;
   background-size: cover;
   background-position: center;
   overflow: hidden;
