@@ -45,6 +45,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
   const [status, setStatus] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState<number | null>(null);
+  const [isDeleting, setIsDeleting] = useState<number | null>(null);
 
   const leadsSorted = useMemo(() => leads, [leads]);
   const postsSorted = useMemo(() => posts, [posts]);
@@ -94,6 +95,32 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
       setStatus(err instanceof Error ? err.message : 'Unable to update post');
     } finally {
       setIsPublishing(null);
+    }
+  };
+
+  const handleDeletePost = async (postId: number) => {
+    if (!window.confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
+      return;
+    }
+
+    setIsDeleting(postId);
+    try {
+      const response = await fetch('/api/admin/blog', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: postId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data?.error ?? 'Unable to delete post');
+      }
+
+      window.location.reload();
+    } catch (err) {
+      setStatus(err instanceof Error ? err.message : 'Unable to delete post');
+    } finally {
+      setIsDeleting(null);
     }
   };
 
@@ -253,13 +280,23 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                       <span>
                         {post.title} {post.published ? '(Published)' : '(Draft)'}
                       </span>
-                      <button
-                        className="btn btn--outline"
-                        onClick={() => togglePublish(post.id, !post.published)}
-                        disabled={isPublishing === post.id}
-                      >
-                        {isPublishing === post.id ? 'Updating…' : post.published ? 'Unpublish' : 'Publish'}
-                      </button>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          className="btn btn--outline"
+                          onClick={() => togglePublish(post.id, !post.published)}
+                          disabled={isPublishing === post.id || isDeleting === post.id}
+                        >
+                          {isPublishing === post.id ? 'Updating…' : post.published ? 'Unpublish' : 'Publish'}
+                        </button>
+                        <button
+                          className="btn btn--outline"
+                          style={{ borderColor: '#b94a48', color: '#b94a48' }}
+                          onClick={() => handleDeletePost(post.id)}
+                          disabled={isPublishing === post.id || isDeleting === post.id}
+                        >
+                          {isDeleting === post.id ? 'Deleting…' : 'Delete'}
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -303,6 +340,10 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                     { key: 'investment_approach_hero', label: 'Investment Approach - Hero Image' },
                     { key: 'investment_approach_img_1', label: 'Investment Approach - Image 1' },
                     { key: 'investment_approach_img_2', label: 'Investment Approach - Image 2' },
+                    { key: 'cookies_policy_hero', label: 'Cookies Policy - Hero Image' },
+                    { key: 'privacy_policy_hero', label: 'Privacy Policy - Hero Image' },
+                    { key: 'terms_of_use_hero', label: 'Terms of Use - Hero Image' },
+                    { key: 'legal_disclaimer_hero', label: 'Legal Disclaimer - Hero Image' },
                   ].map((asset) => (
                     <div key={asset.key} style={{ padding: '16px', background: 'rgba(6,18,38,0.03)', border: '1px solid rgba(11,31,59,0.1)', borderRadius: '6px' }}>
                       <p style={{ fontWeight: 600, marginBottom: '8px', fontSize: '0.95rem' }}>{asset.label}</p>

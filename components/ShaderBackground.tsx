@@ -217,7 +217,7 @@ export default function ShaderBackground({ className }: ShaderBackgroundProps) {
           animationRef.current = 0;
         }
       });
-    });
+    }, { rootMargin: '800px' });
 
     observer.observe(canvas);
 

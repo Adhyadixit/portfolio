@@ -113,3 +113,35 @@ export async function PATCH(request: Request) {
 
   return NextResponse.json({ success: true });
 }
+
+export async function DELETE(request: Request) {
+  const session = await ensureAdmin();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const payload = await request.json().catch(() => null);
+  if (!payload) {
+    return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+  }
+
+  const { id } = payload as { id?: number };
+
+  if (!id) {
+    return NextResponse.json({ error: 'Invalid parameters' }, { status: 422 });
+  }
+
+  // First fetch the slug so we can revalidate the path
+  const rows = (await db`SELECT slug FROM blog_posts WHERE id = ${id}`) as { slug: string }[];
+  if (!rows.length) {
+    return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+  }
+  const slug = rows[0].slug;
+
+  await db`DELETE FROM blog_posts WHERE id = ${id}`;
+
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${slug}`);
+
+  return NextResponse.json({ success: true });
+}

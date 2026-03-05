@@ -70,7 +70,7 @@ export default function FullWidthVideoEmbed({
 
       <div className="full-width-video-embed__frame">
         <div className="full-width-video-embed__media" aria-hidden>
-          <video autoPlay loop muted playsInline preload="metadata">
+          <video autoPlay loop muted playsInline preload="auto">
             <source src={videoSrc} type="video/mp4" />
           </video>
         </div>

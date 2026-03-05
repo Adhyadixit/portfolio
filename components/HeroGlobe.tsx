@@ -308,7 +308,7 @@ export default function HeroGlobe({
           animRef.current = -1;
         }
       });
-    });
+    }, { rootMargin: '800px' });
 
     observer.observe(canvas);
 

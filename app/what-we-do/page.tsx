@@ -3,6 +3,7 @@ import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import Link from 'next/link';
 import ParallaxImage from '@/components/ParallaxImage';
+import NeuralBackground from '@/components/NeuralBackground';
 import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
@@ -225,7 +226,17 @@ export default async function WhatWeDoPage() {
                 </div>
             </section>
 
-            <section className="section section-navy">
+            <section className="section section-navy section-navy--neural">
+                <div className="section-navy__neural" aria-hidden="true">
+                    <NeuralBackground
+                        className="section-navy__neural-canvas"
+                        color="#87b5ff"
+                        trailOpacity={0.08}
+                        particleCount={850}
+                        speed={0.9}
+                        trailFill="rgba(11,31,59,0.3)"
+                    />
+                </div>
                 <div className="container">
                     <FadeIn>
                         <div className="deck-outlook">

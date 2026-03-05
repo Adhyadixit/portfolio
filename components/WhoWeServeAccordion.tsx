@@ -67,6 +67,8 @@ export default function WhoWeServeAccordion({
   }, [clearHoverTimer, safeDefaultIndex]);
 
   useEffect(() => {
+    // Keeping it expanded if we scroll past to avoid jumping
+    /*
     const el = sectionRef.current;
     if (!el) return;
 
@@ -81,6 +83,7 @@ export default function WhoWeServeAccordion({
 
     observer.observe(el);
     return () => observer.disconnect();
+    */
   }, [collapseAll]);
 
   return (
@@ -116,6 +119,7 @@ export default function WhoWeServeAccordion({
                         fill
                         style={{ objectFit: 'cover', objectPosition: 'left center' }}
                         sizes="(min-width: 1024px) 680px, 100vw"
+                        priority
                       />
                     </div>
 

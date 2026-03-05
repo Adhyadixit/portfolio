@@ -215,7 +215,7 @@ export default async function HomePage() {
             src={media('home_leveraging_bg', '/Untitled design.png')}
             alt="Leaning architectural form representing Nabrel ecosystem"
             fill
-            priority={false}
+            priority
             style={{ objectFit: 'cover' }}
           />
         </div>
@@ -308,7 +308,14 @@ export default async function HomePage() {
                 <div className="bx-offerings-card">
                   <div className="bx-offerings-card__media" style={{ ['--x' as any]: 0.5, ['--y' as any]: 0.5 }}>
                     <div className="bx-offerings-card__media-img">
-                      <Image src={item.image} alt={item.alt} fill style={{ objectFit: 'cover' }} sizes="(min-width: 1024px) 33vw, 100vw" />
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(min-width: 1024px) 33vw, 100vw"
+                        priority
+                      />
                     </div>
                     <div className="bx-offerings-card__media-curtain"></div>
                   </div>
@@ -361,7 +368,7 @@ export default async function HomePage() {
                   <p className="review-card__quote">“{review.quote}”</p>
                   <div className="review-card__person">
                     <div className="review-card__avatar">
-                      <Image src={review.avatar} alt={review.name} fill sizes="72px" />
+                      <Image src={review.avatar} alt={review.name} fill sizes="72px" priority />
                     </div>
                     <div>
                       <p className="review-card__name">{review.name}</p>
