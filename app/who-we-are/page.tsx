@@ -59,7 +59,7 @@ export default async function WhoWeArePage() {
 
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('who_we_are_hero_bg', '/images/hero-infrastructure.png')})` }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('who_we_are_hero', '/images/hero-infrastructure.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
