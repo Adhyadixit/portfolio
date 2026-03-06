@@ -17,7 +17,7 @@ export default async function HomePage() {
       title: 'Families & Private Capital',
       description:
         'Multigenerational investors seeking disciplined capital structuring and long-term alignment.',
-      image: media('home_serve_institutions', '/images/hero-architecture.png'),
+      image: media('home_serve_individuals', '/images/hero-architecture.png'),
       alt: 'Institutional architecture representing private capital',
       href: '/partnerships',
     },
@@ -25,7 +25,7 @@ export default async function HomePage() {
       title: 'Institutional Partners',
       description:
         'Select institutions participating alongside sponsored transactions under shared governance frameworks.',
-      image: media('home_serve_individuals', '/E82424DD-5681-4D3D-9438-A86759CAF66D.png'),
+      image: media('home_serve_institutions', '/E82424DD-5681-4D3D-9438-A86759CAF66D.png'),
       alt: 'Structured capital representing institutional partnership',
       href: '/contact',
     },

@@ -315,57 +315,96 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                   </p>
                 ) : null}
 
-                <div className="admin-media-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                   {[
-                    { key: 'home_hero_bg', label: 'Home - Hero Image' },
-                    { key: 'home_serve_institutions', label: 'Home - Institutions Card' },
-                    { key: 'home_serve_individuals', label: 'Home - Individuals Card' },
-                    { key: 'home_offerings_1', label: 'Home - Offerings 1' },
-                    { key: 'home_offerings_2', label: 'Home - Offerings 2' },
-                    { key: 'home_offerings_3', label: 'Home - Offerings 3' },
-                    { key: 'home_powering_1', label: 'Home - Powering 1' },
-                    { key: 'home_powering_2', label: 'Home - Powering 2' },
-                    { key: 'home_powering_3', label: 'Home - Powering 3' },
-                    { key: 'home_leveraging_bg', label: 'Home - Leveraging Image' },
-                    { key: 'home_video', label: 'Home - Invested Video' },
-                    { key: 'who_we_are_hero', label: 'Who We Are - Hero Image' },
-                    { key: 'who_we_are_hero_1', label: 'Who We Are - Info Image' },
-                    { key: 'who_we_are_parallax', label: 'Who We Are - Parallax' },
-                    { key: 'what_we_do_hero', label: 'What We Do - Hero Image' },
-                    { key: 'what_we_do_img_1', label: 'What We Do - Image 1' },
-                    { key: 'what_we_do_img_2', label: 'What We Do - Image 2' },
-                    { key: 'what_we_do_parallax_1', label: 'What We Do - Parallax 1' },
-                    { key: 'what_we_do_parallax_2', label: 'What We Do - Parallax 2' },
-                    { key: 'partnerships_hero', label: 'Partnerships - Hero Image' },
-                    { key: 'partnerships_img_1', label: 'Partnerships - Image 1' },
-                    { key: 'partnerships_parallax', label: 'Partnerships - Parallax' },
-                    { key: 'investment_approach_hero', label: 'Investment Approach - Hero Image' },
-                    { key: 'investment_approach_img_1', label: 'Investment Approach - Image 1' },
-                    { key: 'investment_approach_img_2', label: 'Investment Approach - Image 2' },
-                    { key: 'cookies_policy_hero', label: 'Cookies Policy - Hero Image' },
-                    { key: 'privacy_policy_hero', label: 'Privacy Policy - Hero Image' },
-                    { key: 'terms_of_use_hero', label: 'Terms of Use - Hero Image' },
-                    { key: 'legal_disclaimer_hero', label: 'Legal Disclaimer - Hero Image' },
-                  ].map((asset) => (
-                    <div key={asset.key} style={{ padding: '16px', background: 'rgba(6,18,38,0.03)', border: '1px solid rgba(11,31,59,0.1)', borderRadius: '6px' }}>
-                      <p style={{ fontWeight: 600, marginBottom: '8px', fontSize: '0.95rem' }}>{asset.label}</p>
-                      {mediaMap[asset.key] && (
-                        <div style={{ marginBottom: '12px', wordBreak: 'break-all', fontSize: '0.8rem', color: 'rgba(11,31,59,0.6)' }}>
-                          <a href={mediaMap[asset.key]} target="_blank" rel="noreferrer">
-                            Current Asset (Click to view)
-                          </a>
-                        </div>
-                      )}
-                      <input
-                        type="file"
-                        accept=".png,.jpg,.jpeg,.webp,.gif,.mp4,.webm,image/*,video/*"
-                        disabled={isSaving}
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) uploadMedia(asset.key, file);
-                        }}
-                        style={{ fontSize: '0.85rem' }}
-                      />
+                    {
+                      page: 'Home',
+                      assets: [
+                        { key: 'home_hero_bg', label: 'Hero Image' },
+                        { key: 'home_serve_institutions', label: 'Institutions Card' },
+                        { key: 'home_serve_individuals', label: 'Individuals Card' },
+                        { key: 'home_offerings_1', label: 'Offerings 1' },
+                        { key: 'home_offerings_2', label: 'Offerings 2' },
+                        { key: 'home_offerings_3', label: 'Offerings 3' },
+                        { key: 'home_powering_1', label: 'Powering 1' },
+                        { key: 'home_powering_2', label: 'Powering 2' },
+                        { key: 'home_powering_3', label: 'Powering 3' },
+                        { key: 'home_leveraging_bg', label: 'Leveraging Image' },
+                        { key: 'home_video', label: 'Invested Video' },
+                      ]
+                    },
+                    {
+                      page: 'Who We Are',
+                      assets: [
+                        { key: 'who_we_are_hero', label: 'Hero Image' },
+                        { key: 'who_we_are_hero_1', label: 'Info Image' },
+                        { key: 'who_we_are_parallax', label: 'Parallax' },
+                      ]
+                    },
+                    {
+                      page: 'What We Do',
+                      assets: [
+                        { key: 'what_we_do_hero', label: 'Hero Image' },
+                        { key: 'what_we_do_img_1', label: 'Image 1' },
+                        { key: 'what_we_do_img_2', label: 'Image 2' },
+                        { key: 'what_we_do_parallax_1', label: 'Parallax 1' },
+                        { key: 'what_we_do_parallax_2', label: 'Parallax 2' },
+                      ]
+                    },
+                    {
+                      page: 'Strategic Alignment',
+                      assets: [
+                        { key: 'partnerships_hero', label: 'Hero Image' },
+                        { key: 'partnerships_img_1', label: 'Image 1' },
+                        { key: 'partnerships_parallax', label: 'Parallax' },
+                      ]
+                    },
+                    {
+                      page: 'Investment Approach',
+                      assets: [
+                        { key: 'investment_approach_hero', label: 'Hero Image' },
+                        { key: 'investment_approach_img_1', label: 'Image 1' },
+                        { key: 'investment_approach_img_2', label: 'Image 2' },
+                      ]
+                    },
+                    {
+                      page: 'Legal & Policy',
+                      assets: [
+                        { key: 'cookies_policy_hero', label: 'Cookies Policy - Hero Image' },
+                        { key: 'privacy_policy_hero', label: 'Privacy Policy - Hero Image' },
+                        { key: 'terms_of_use_hero', label: 'Terms of Use - Hero Image' },
+                        { key: 'legal_disclaimer_hero', label: 'Legal Disclaimer - Hero Image' },
+                      ]
+                    }
+                  ].map((section) => (
+                    <div key={section.page}>
+                      <h4 style={{ marginBottom: '16px', fontSize: '1.2rem', color: 'rgba(11,31,59,0.9)', borderBottom: '1px solid rgba(11,31,59,0.1)', paddingBottom: '8px' }}>
+                        {section.page}
+                      </h4>
+                      <div className="admin-media-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+                        {section.assets.map((asset) => (
+                          <div key={asset.key} style={{ padding: '16px', background: 'rgba(6,18,38,0.03)', border: '1px solid rgba(11,31,59,0.1)', borderRadius: '6px' }}>
+                            <p style={{ fontWeight: 600, marginBottom: '8px', fontSize: '0.95rem' }}>{asset.label}</p>
+                            {mediaMap[asset.key] && (
+                              <div style={{ marginBottom: '12px', wordBreak: 'break-all', fontSize: '0.8rem', color: 'rgba(11,31,59,0.6)' }}>
+                                <a href={mediaMap[asset.key]} target="_blank" rel="noreferrer">
+                                  Current Asset (Click to view)
+                                </a>
+                              </div>
+                            )}
+                            <input
+                              type="file"
+                              accept=".png,.jpg,.jpeg,.webp,.gif,.mp4,.webm,image/*,video/*"
+                              disabled={isSaving}
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) uploadMedia(asset.key, file);
+                              }}
+                              style={{ fontSize: '0.85rem' }}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
