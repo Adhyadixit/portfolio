@@ -72,10 +72,12 @@ export default function FullWidthCarousel({ slides }: FullWidthCarouselProps) {
             style={{
               objectFit: 'cover',
               opacity: idx === activeIndex ? 1 : 0,
-              transition: 'opacity 0.8s ease-in-out',
-              zIndex: idx === activeIndex ? 1 : 0
+              visibility: idx === activeIndex ? 'visible' : 'hidden',
+              transition: 'opacity 0.8s ease-in-out, visibility 0.8s ease-in-out',
+              zIndex: idx === activeIndex ? 1 : 0,
+              transform: 'translateZ(0)'
             }}
-            priority
+            priority={idx === 0}
           />
         ))}
       </div>

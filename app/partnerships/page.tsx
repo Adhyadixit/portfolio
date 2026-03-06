@@ -81,6 +81,9 @@ export default async function PartnershipsPage() {
                                 We engage selectively with aligned partners where objectives, governance, and structural clarity
                                 converge to support long-term value creation.
                             </p>
+                            <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                                Engagement
+                            </Link>
                         </FadeIn>
                     </div>
                 </div>

@@ -184,6 +184,9 @@ export default async function InvestmentApproachPage() {
                                 A disciplined framework guiding the origination, underwriting, structuring, and deployment of
                                 principal and aligned capital.
                             </p>
+                            <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                                Engagement
+                            </Link>
                         </FadeIn>
                     </div>
                 </div>
@@ -389,6 +392,9 @@ export default async function InvestmentApproachPage() {
                                 Opportunities are considered where underwriting rigor, structural clarity, and
                                 alignment of interests underpin long-term value.
                             </p>
+                            <Link href="/partnerships" className="primary-button" style={{ marginTop: '16px' }}>
+                                Engagement
+                            </Link>
                         </div>
                     </FadeIn>
                 </div>
@@ -400,7 +406,7 @@ export default async function InvestmentApproachPage() {
                         <div className="approach-callout">
                             <div>
                                 <p className="page-hero__overline">Strategic Alignment</p>
-                                <h2 className="deck-title">Partnerships</h2>
+                                <h2 className="deck-title">Selective Partnership</h2>
                                 <p className="deck-text">
                                     We align with institutional partners only where objectives, governance
                                     standards, and structural frameworks converge. Collaboration is considered with
@@ -408,7 +414,7 @@ export default async function InvestmentApproachPage() {
                                 </p>
                             </div>
                             <Link href="/contact" className="primary-button primary-button--outline">
-                                Contact Us
+                                Engagement
                             </Link>
                         </div>
                     </FadeIn>

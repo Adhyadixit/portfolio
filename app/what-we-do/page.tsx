@@ -37,9 +37,8 @@ export default async function WhatWeDoPage() {
     const governancePoints = [
         'Structured protocols and documented agreements',
         'Independent oversight across participating parties',
-        'Alignment preservation throughout capital lifecycle',
-        'Transparent reporting and governance standards',
-        'Regulatory compliance adherence',
+        'Alignment of all participating parties preserved over time',
+        'Integrity of capital maintained through governance',
     ];
 
     const priorities = [
@@ -89,6 +88,9 @@ export default async function WhatWeDoPage() {
                                 Selective deployment of principal capital across direct and structured opportunities, designed
                                 with structural clarity, governance rigor, and alignment with institutional partners.
                             </p>
+                            <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                                Engagement
+                            </Link>
                         </FadeIn>
                     </div>
                 </div>
@@ -104,6 +106,23 @@ export default async function WhatWeDoPage() {
                                     <p>{column.value}</p>
                                 </article>
                             ))}
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            <section className="section section-white">
+                <div className="container">
+                    <FadeIn>
+                        <div className="statement">
+                            <div className="gold-divider"></div>
+                            <p className="statement__text">
+                                We engage in transactions where structural integrity, long-term governance, and
+                                operational resilience underpin durable value creation. Capital solutions are flexible
+                                across equity, hybrid, and bespoke structures, enabling selective collaboration with
+                                aligned institutional partners.
+                            </p>
+                            <div className="gold-divider"></div>
                         </div>
                     </FadeIn>
                 </div>
@@ -200,6 +219,8 @@ export default async function WhatWeDoPage() {
                                 <p className="deck-quote-inline">
                                     Our priorities are selective origination, disciplined underwriting, structured
                                     deployment, and long-term alignment with institutional and aligned partners.
+                                    Engagement is pursued only when strategic clarity and governance standards are
+                                    evident.
                                 </p>
                             </div>
                             <div className="deck-outlook__panel">

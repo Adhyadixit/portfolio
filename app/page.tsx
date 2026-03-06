@@ -19,7 +19,7 @@ export default async function HomePage() {
         'Multigenerational investors seeking disciplined capital structuring and long-term alignment.',
       image: media('home_serve_individuals', '/images/hero-architecture.png'),
       alt: 'Institutional architecture representing private capital',
-      href: '/partnerships',
+      href: '/investment-approach',
     },
     {
       title: 'Institutional Partners',
@@ -27,7 +27,7 @@ export default async function HomePage() {
         'Select institutions participating alongside sponsored transactions under shared governance frameworks.',
       image: media('home_serve_institutions', '/E82424DD-5681-4D3D-9438-A86759CAF66D.png'),
       alt: 'Structured capital representing institutional partnership',
-      href: '/contact',
+      href: '/investment-approach',
     },
     {
       title: 'Operators & Sponsors',
@@ -35,43 +35,7 @@ export default async function HomePage() {
         'Management teams and sponsors seeking structured capital solutions, engaged as aligned counterparts with a long-horizon perspective in transactions.',
       image: media('home_serve_operators', '/images/hero-industrial.png'),
       alt: 'Industrial operations representing aligned counterparts in transactions',
-      href: '/what-we-do',
-    },
-  ];
-
-  const reviews = [
-    {
-      quote:
-        'Nabrel has been a steady partner across multiple infrastructure mandates—able to mobilize capital, operating talent, and structured solutions at a pace that matches real-world demand.',
-      name: 'Elaine Porter',
-      title: 'Chief Investment Officer, Northern Crest Pensions',
-      avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
-      metric: {
-        value: '$3.4B',
-        label: 'Capital deployed together',
-      },
-    },
-    {
-      quote:
-        'Their governance discipline and portfolio support give us confidence to underwrite long-dated strategies while still moving decisively when markets shift.',
-      name: 'Rahul Menon',
-      title: 'Managing Director, Meridian Sovereign Fund',
-      avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=900&q=80',
-      metric: {
-        value: '18yrs',
-        label: 'Average partnership tenure',
-      },
-    },
-    {
-      quote:
-        'Nabrel\'s operating bench and data transparency have transformed how our board evaluates mission-critical assets. They deliver, full stop.',
-      name: 'Claudia Rios',
-      title: 'Chair, Alton Family Office',
-      avatar: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=900&q=80',
-      metric: {
-        value: '96%',
-        label: 'Portfolio satisfaction rating',
-      },
+      href: '/investment-approach',
     },
   ];
 
@@ -168,6 +132,9 @@ export default async function HomePage() {
                       A privately governed investment office focused on originating, underwriting, and
                       structuring long-term investments with institutional rigor.
                     </p>
+                    <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                      Engagement
+                    </Link>
                   </div>
                 </FadeIn>
               </div>
@@ -224,7 +191,7 @@ export default async function HomePage() {
             src={media('home_leveraging_bg', '/Untitled design.png')}
             alt="Architectural form representing institutional governance"
             fill
-            priority
+            priority={false}
             style={{ objectFit: 'cover' }}
           />
         </div>
@@ -305,7 +272,7 @@ export default async function HomePage() {
             <div className="bx-offerings-main__stat">
               <p className="bx-offerings-main__stat-value">$100 M </p>
               <div className="bx-offerings-main__stat-subtext">
-                <p>Assets Cordinated</p>
+                <p>Assets Coordinated</p>
               </div>
               <div className="bx-offerings-main__stat-disclaimer">
                 <p></p>
@@ -325,7 +292,7 @@ export default async function HomePage() {
                         fill
                         style={{ objectFit: 'cover' }}
                         sizes="(min-width: 1024px) 33vw, 100vw"
-                        priority
+                        priority={false}
                       />
                     </div>
                     <div className="bx-offerings-card__media-curtain"></div>
@@ -354,48 +321,7 @@ export default async function HomePage() {
         videoSrc={media('home_video', 'https://video.gumlet.io/694cef8ab122cbf176482b8c/69a1ae6f825d3351d5358089/download.mp4')}
       />
 
-      <section className="reviews" aria-labelledby="reviews-heading">
-        <div className="reviews__bg" aria-hidden="true">
-          <ShaderBackground />
-        </div>
-        <div className="reviews__inner">
-          <FadeIn>
-            <div className="reviews__heading">
-              <p className="reviews__eyebrow">Reviews</p>
-              <h2 id="reviews-heading">Delivering confidence for every stakeholder</h2>
-              <p>
-                Voices from the institutions, sovereign partners, and family offices that work with Nabrel across the globe.
-              </p>
-            </div>
-          </FadeIn>
 
-          <div className="reviews__grid">
-            {reviews.map((review, idx) => (
-              <FadeIn key={review.name} delay={(idx % 3) + 1}>
-                <article className="review-card">
-                  <div className="review-card__quote-icon">
-                    <Quote aria-hidden size={24} />
-                  </div>
-                  <p className="review-card__quote">&ldquo;{review.quote}&rdquo;</p>
-                  <div className="review-card__person">
-                    <div className="review-card__avatar">
-                      <Image src={review.avatar} alt={review.name} fill sizes="72px" priority />
-                    </div>
-                    <div>
-                      <p className="review-card__name">{review.name}</p>
-                      <p className="review-card__title">{review.title}</p>
-                    </div>
-                  </div>
-                  <div className="review-card__metric">
-                    <span className="review-card__metric-value">{review.metric.value}</span>
-                    <span className="review-card__metric-label">{review.metric.label}</span>
-                  </div>
-                </article>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

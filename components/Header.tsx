@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/who-we-are', label: 'Who We Are' },
+    { href: '/who-we-are', label: 'About' },
     { href: '/what-we-do', label: 'Investment Focus' },
     { href: '/investment-approach', label: 'Investment Approach' },
     { href: '/partnerships', label: 'Strategic Alignment' },

@@ -119,7 +119,7 @@ export default function WhoWeServeAccordion({
                         fill
                         style={{ objectFit: 'cover', objectPosition: 'left center' }}
                         sizes="(min-width: 1024px) 680px, 100vw"
-                        priority
+                        priority={false}
                       />
                     </div>
 

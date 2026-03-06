@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
+import Link from 'next/link';
 import NeuralBackground from '@/components/NeuralBackground';
 import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
-    title: 'Who We Are',
+    title: 'About',
     description:
-        'A privately governed principal investment office focused on disciplined capital stewardship, rigorous underwriting, and selective transaction sponsorship.',
+        'A privately governed principal investment office focused on originating, underwriting, and structuring long-term investments with institutional rigor.',
 };
 
 export default async function WhoWeArePage() {
@@ -16,64 +17,58 @@ export default async function WhoWeArePage() {
     const media = (key: string, fallback: string) => mediaMap[key] || fallback;
 
     const operatingHighlights = [
-        'Independent decision-making and rigorous underwriting',
-        'Selective transaction sponsorship across direct and structured investments',
-        'Long-term perspective prioritizing structural integrity over scale-driven expansion',
-    ];
-
-    const philosophyPrinciples = [
-        'Long-term orientation over short-cycle return objectives',
-        'Comprehensive underwriting prior to commitment',
-        'Alignment of interests and durability of partnership',
-        'Structural integrity with risk mitigation at inception',
-        'Independence of judgment and clarity of mandate',
-    ];
-
-    const representativeExperience = [
-        'Structured and coordinated ~$91M in investor commitments during pre-development of a major infrastructure initiative',
-        'Facilitated sovereign and institutional capital relationships across MENA',
-        'Advanced hospitality and urban development initiatives across Europe and MENA',
-        'Structured natural resource development partnerships',
-        'Advised SPV governance and PPP framework execution',
-    ];
-
-    const outlookPriorities = [
-        'Selective origination with governance clarity',
-        'Conservative underwriting and bespoke structuring',
-        'Institutional-grade oversight and reporting',
-        'Long-term alignment with institutional partners',
+        'Principal investment office',
+        'Independent governance',
+        'Long-term capital stewardship',
+        'Bespoke transaction structuring',
     ];
 
     const operatingModel = [
         {
-            title: 'Originate',
-            copy: 'Identifying transactions where fundamentals, structure, and governance support sustainable outcomes and long-term alignment.',
+            title: 'Underwriting Oversight',
+            copy: 'Every transaction undergoes comprehensive underwriting, including financial, operational, and governance assessment.',
         },
         {
-            title: 'Structure',
-            copy: 'Developing bespoke capital solutions using equity, hybrid, or structured instruments. Rigorous underwriting ensures risk-adjusted durability.',
+            title: 'Strategic Alignment',
+            copy: 'Capital is deployed where structural integrity and governance alignment support durable outcomes.',
         },
         {
-            title: 'Steward',
-            copy: 'Active oversight preserves the integrity of each structure, ensures alignment with governance frameworks, and supports long-term capital durability.',
+            title: 'Sponsorship Rigor',
+            copy: 'We originate transactions, underwrite risk, and structure solutions that prioritize stability across cycles.',
+        },
+    ];
+
+    const philosophyCards = [
+        {
+            title: 'Long-Term Orientation',
+            copy: 'Capital is deployed with generational perspective rather than short-cycle return objectives.',
+        },
+        {
+            title: 'Underwriting Discipline',
+            copy: 'Every opportunity undergoes comprehensive financial, operational, and structural review prior to commitment.',
+        },
+        {
+            title: 'Alignment of Interests',
+            copy: 'Transactions are structured to ensure clarity of incentives and durability of partnership over time.',
+        },
+        {
+            title: 'Structural Integrity',
+            copy: 'Capital solutions are designed with risk mitigation, liquidity awareness, and governance embedded at inception.',
         },
     ];
 
     return (
         <>
-            <section
-                className="editorial-hero editorial-hero--center"
-                style={{ backgroundImage: `url(${media('who_we_are_hero', '/images/hero-skyline.png')})` }}
-            >
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('who_we_are_hero_bg', '/images/hero-infrastructure.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
                         <FadeIn>
-                            <span className="page-hero__overline">Who We Are</span>
+                            <span className="page-hero__overline">Our Mandate</span>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Our Mandate</h1>
+                            <h1 className="page-hero__title">About</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
@@ -95,8 +90,13 @@ export default async function WhoWeArePage() {
                                 <h2 className="deck-title">Principal Investment Office</h2>
                                 <p className="deck-text">
                                     We are a privately governed principal investment office focused on the disciplined
-                                    stewardship of capital. Our structure enables independent decision-making, rigorous
-                                    underwriting, and selective transaction sponsorship across direct and structured investments.
+                                    stewardship of capital.
+                                    <br /><br />
+                                    Our structure enables independent decision-making, rigorous underwriting, and
+                                    selective transaction sponsorship across direct and structured investments.
+                                    <br /><br />
+                                    We operate with long-term perspective, prioritizing structural integrity and governance
+                                    over scale-driven expansion.
                                 </p>
                             </div>
                             <div className="deck-card deck-card--navy">
@@ -149,22 +149,22 @@ export default async function WhoWeArePage() {
             <section className="section section-offwhite">
                 <div className="container">
                     <FadeIn>
-                        <div className="deck-two-panel">
-                            <div className="deck-panel">
-                                <h2 className="deck-title">Investment Philosophy</h2>
-                                <p className="deck-subtitle">Core Principles</p>
-                                <p className="deck-text">
-                                    We do not pursue volume-based deployment. Engagement is selective, transactions are
-                                    underwritten conservatively, and capital is structured with long-term accountability in mind.
-                                </p>
-                            </div>
-                            <div className="deck-panel deck-panel--light">
-                                <ul className="deck-list">
-                                    {philosophyPrinciples.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                            <h2 className="deck-title">Investment Philosophy</h2>
+                            <p className="deck-text" style={{ maxWidth: '640px', margin: '0 auto' }}>
+                                Capital is deployed with generational perspective, prioritizing structural
+                                integrity and alignment of interests over short-cycle return objectives.
+                            </p>
+                        </div>
+                    </FadeIn>
+                    <FadeIn>
+                        <div className="deck-grid">
+                            {philosophyCards.map((item) => (
+                                <div key={item.title} className="deck-card">
+                                    <h3 className="deck-subtitle">{item.title}</h3>
+                                    <p className="deck-text">{item.copy}</p>
+                                </div>
+                            ))}
                         </div>
                     </FadeIn>
                 </div>
@@ -175,12 +175,15 @@ export default async function WhoWeArePage() {
                     <FadeIn>
                         <div className="deck-grid deck-grid--experience">
                             <div>
-                                <span className="page-hero__overline">Representative Experience</span>
-                                <ul className="deck-list deck-list--spacious">
-                                    {representativeExperience.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
+                                <h2 className="deck-title">Our Approach</h2>
+                                <p className="deck-text" style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
+                                    We do not pursue volume-based deployment.
+                                    <br /><br />
+                                    Engagement is selective, transactions are underwritten conservatively, and capital is
+                                    structured with long-term accountability in mind.
+                                    <br /><br />
+                                    Growth is pursued where governance and structural clarity support durable outcomes.
+                                </p>
                             </div>
                             <div className="deck-image-stack">
                                 <ParallaxImage
@@ -208,29 +211,11 @@ export default async function WhoWeArePage() {
                 </div>
                 <div className="container">
                     <FadeIn>
-                        <div className="deck-outlook">
-                            <div>
-                                <h2 className="deck-title deck-title--light">Strategic Outlook</h2>
-                                <p className="deck-quote-inline">Disciplined. Independent. Enduring.</p>
-                            </div>
-                            <div className="deck-outlook__panel">
-                                <h3>Engages with</h3>
-                                <ul>
-                                    <li>Sovereign wealth funds</li>
-                                    <li>Institutional investors</li>
-                                    <li>Family offices</li>
-                                    <li>Municipal authorities</li>
-                                    <li>Strategic co-investment partners</li>
-                                </ul>
-                            </div>
-                            <div className="deck-outlook__panel">
-                                <h3>Strategic priorities</h3>
-                                <ul>
-                                    {outlookPriorities.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div style={{ textAlign: 'right', maxWidth: '800px', marginLeft: 'auto', marginRight: '10%' }}>
+                            <p className="deck-quote-inline">
+                                Our mandate remains focused on disciplined capital stewardship and selective
+                                transaction engagement aligned with long-term objectives.
+                            </p>
                         </div>
                     </FadeIn>
                 </div>

@@ -335,7 +335,7 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                       ]
                     },
                     {
-                      page: 'Who We Are',
+                      page: 'About',
                       assets: [
                         { key: 'who_we_are_hero', label: 'Hero Image' },
                         { key: 'who_we_are_hero_1', label: 'Info Image' },

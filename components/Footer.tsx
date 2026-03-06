@@ -29,7 +29,7 @@ export default function Footer() {
                     <div>
                         <div className="footer__col-title">Platform</div>
                         <div className="footer__links">
-                            <Link href="/who-we-are" className="footer__link">Who We Are</Link>
+                            <Link href="/who-we-are" className="footer__link">About</Link>
                             <Link href="/what-we-do" className="footer__link">Investment Focus</Link>
                             <Link href="/investment-approach" className="footer__link">Investment Approach</Link>
                             <Link href="/partnerships" className="footer__link">Strategic Alignment</Link>
