@@ -247,13 +247,13 @@ export default async function WhatWeDoPage() {
             <section className="section section-white">
                 <div className="container">
                     <div className="deck-contact-callout">
-                        <h2 className="deck-title">Underwriting Rigor</h2>
+                        <h2 className="deck-title">Building Resilliance</h2>
                         <p className="deck-text">
                             We consider participation in opportunities where underwriting rigor, structural
                             clarity, and alignment of interests underpin durable outcomes.
                         </p>
                         <Link href="/contact" className="primary-button" style={{ marginTop: '16px' }}>
-                            Engagement
+                            Engage
                         </Link>
                         <div style={{ marginTop: '28px' }}>
                             <div style={{ width: '100%', maxWidth: '1040px', margin: '0 auto' }}>
