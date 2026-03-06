@@ -15,9 +15,9 @@ export default function Footer() {
                             <Image
                                 src="/nabrel_white_on_blue-removebg-preview.png"
                                 alt="Nabrel"
-                                width={100}
-                                height={40}
-                                style={{ objectFit: 'contain', height: '36px', width: 'auto' }}
+                                width={300}
+                                height={110}
+                                className="header__logo-img"
                             />
                         </div>
                         <p className="footer__brand-desc">

@@ -29,6 +29,14 @@ export default async function HomePage() {
       alt: 'Structured capital representing institutional partnership',
       href: '/contact',
     },
+    {
+      title: 'Operators & Sponsors',
+      description:
+        'Management teams and sponsors seeking structured capital solutions, engaged as aligned counterparts with a long-horizon perspective in transactions.',
+      image: media('home_serve_operators', '/images/hero-industrial.png'),
+      alt: 'Industrial operations representing aligned counterparts in transactions',
+      href: '/what-we-do',
+    },
   ];
 
   const reviews = [

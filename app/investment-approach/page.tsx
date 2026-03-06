@@ -400,15 +400,15 @@ export default async function InvestmentApproachPage() {
                         <div className="approach-callout">
                             <div>
                                 <p className="page-hero__overline">Strategic Alignment</p>
-                                <h2 className="deck-title">Engagement</h2>
+                                <h2 className="deck-title">Partnerships</h2>
                                 <p className="deck-text">
-                                    We engage with aligned institutional partners only where objectives, governance
+                                    We align with institutional partners only where objectives, governance
                                     standards, and structural frameworks converge. Collaboration is considered with
                                     discretion, long-term alignment, and durable incentives.
                                 </p>
                             </div>
                             <Link href="/contact" className="primary-button primary-button--outline">
-                                Engagement
+                                Contact Us
                             </Link>
                         </div>
                     </FadeIn>

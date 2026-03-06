@@ -1,8 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type ParallaxImageProps = {
@@ -13,7 +12,7 @@ type ParallaxImageProps = {
   width?: number;
   priority?: boolean;
   sizes?: string;
-  intensity?: number;
+  intensity?: number; // Kept for prop typing, but unused
 };
 
 export default function ParallaxImage({
@@ -26,14 +25,9 @@ export default function ParallaxImage({
   sizes = '100vw',
   intensity = 28,
 }: ParallaxImageProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], [intensity, -intensity]);
-
+  // Parallax tracking removed to fix severe scroll jank
   return (
     <motion.div
-      ref={ref}
-      style={{ y }}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

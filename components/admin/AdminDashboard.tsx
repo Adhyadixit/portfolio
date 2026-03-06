@@ -321,8 +321,9 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                       page: 'Home',
                       assets: [
                         { key: 'home_hero_bg', label: 'Hero Image' },
-                        { key: 'home_serve_institutions', label: 'Institutions Card' },
                         { key: 'home_serve_individuals', label: 'Individuals Card' },
+                        { key: 'home_serve_institutions', label: 'Institutions Card' },
+                        { key: 'home_serve_operators', label: 'Operators & Sponsors Card' },
                         { key: 'home_offerings_1', label: 'Offerings 1' },
                         { key: 'home_offerings_2', label: 'Offerings 2' },
                         { key: 'home_offerings_3', label: 'Offerings 3' },
@@ -346,17 +347,16 @@ export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: A
                       assets: [
                         { key: 'what_we_do_hero', label: 'Hero Image' },
                         { key: 'what_we_do_img_1', label: 'Image 1' },
-                        { key: 'what_we_do_img_2', label: 'Image 2' },
-                        { key: 'what_we_do_parallax_1', label: 'Parallax 1' },
                         { key: 'what_we_do_parallax_2', label: 'Parallax 2' },
+                        { key: 'what_we_do_img_2', label: 'Image 2' },
                       ]
                     },
                     {
                       page: 'Strategic Alignment',
                       assets: [
                         { key: 'partnerships_hero', label: 'Hero Image' },
-                        { key: 'partnerships_img_1', label: 'Image 1' },
                         { key: 'partnerships_parallax', label: 'Parallax' },
+                        { key: 'partnerships_img_1', label: 'Image 1' },
                       ]
                     },
                     {
