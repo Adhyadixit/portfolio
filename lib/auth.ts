@@ -18,10 +18,22 @@ const jwtSecret: string = getJwtSecret();
 const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL;
 const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
 
-export async function ensureDefaultAdmin() {
-  if (!defaultAdminEmail || !defaultAdminPassword) return;
+export async function isAnyAdminCreated() {
+  try {
+    const result = (await db`
+      SELECT COUNT(*) as count FROM admin_users
+    `) as { count: string }[];
+    return parseInt(result[0]?.count || '0', 10) > 0;
+  } catch (err: any) {
+    if (err.message?.includes('does not exist')) {
+      return false;
+    }
+    throw err;
+  }
+}
 
-  // Ensure admin_users table exists before querying
+export async function ensureDefaultAdmin() {
+  // Ensure tables exist
   await db`
     CREATE TABLE IF NOT EXISTS admin_users (
       id SERIAL PRIMARY KEY,
@@ -32,7 +44,6 @@ export async function ensureDefaultAdmin() {
     )
   `;
 
-  // Ensure media_assets table exists
   await db`
     CREATE TABLE IF NOT EXISTS media_assets (
       key TEXT PRIMARY KEY,
@@ -40,6 +51,8 @@ export async function ensureDefaultAdmin() {
       updated_at TIMESTAMPTZ DEFAULT now() NOT NULL
     )
   `;
+
+  if (!defaultAdminEmail || !defaultAdminPassword) return false;
 
   const existsResult = (await db`
     SELECT EXISTS (
@@ -54,7 +67,9 @@ export async function ensureDefaultAdmin() {
       VALUES (${defaultAdminEmail}, ${hash})
       ON CONFLICT (email) DO NOTHING
     `;
+    return true;
   }
+  return false;
 }
 
 export async function verifyAdminCredentials(email: string, password: string) {

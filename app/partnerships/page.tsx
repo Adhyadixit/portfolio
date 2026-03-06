@@ -127,7 +127,7 @@ export default async function PartnershipsPage() {
                             <ParallaxImage
                                 src={media('partnerships_parallax', '/images/hero-architecture.png')}
                                 alt="Partnership governance and structural clarity"
-                                className="editorial-frame editorial-frame--light"
+                                className="editorial-frame editorial-frame--light parallax-short"
                                 intensity={14}
                             />
                         </div>
@@ -159,6 +159,38 @@ export default async function PartnershipsPage() {
                 </div>
             </section>
 
+            <section className="insight-banner insight-banner--clean">
+                <div className="insight-banner__media" aria-hidden="true">
+                    <Image
+                        src={media('partnerships_img_1', '/images/hero-energy.png')}
+                        alt="Strategic alignment and governance"
+                        fill
+                        priority={false}
+                        style={{ objectFit: 'cover' }}
+                    />
+                </div>
+                <div className="insight-banner__content">
+                    <FadeIn>
+                        <div className="insight-banner__card">
+                            <p className="insight-banner__eyebrow">Strategic Engagement</p>
+                            <h2>Principled Alignment</h2>
+                            <div className="insight-banner__description">
+                                <p>
+                                    We consider participation in transactions only where alignment, structural
+                                    integrity, and governance rigor support long-term value creation.
+                                </p>
+                                <p>
+                                    By prioritizing downside vigilance and institutional oversight, we ensure that every deployment of capital reflects our commitment to preserving principal value.
+                                </p>
+                                <p>
+                                    This disciplined approach allows us to align selectively with partners who share our long-horizon perspective and rigorous standards for operational resilience.
+                                </p>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <section className="section section-white">
                 <div className="container">
                     <FadeIn>
@@ -184,29 +216,7 @@ export default async function PartnershipsPage() {
                 </div>
             </section>
 
-            <section className="insight-banner insight-banner--clean">
-                <div className="insight-banner__media" aria-hidden="true">
-                    <Image
-                        src={media('partnerships_img_1', '/images/hero-energy.png')}
-                        alt="Strategic alignment and governance"
-                        fill
-                        priority={false}
-                        style={{ objectFit: 'cover' }}
-                    />
-                </div>
-                <div className="insight-banner__content">
-                    <FadeIn>
-                        <div className="insight-banner__card">
-                            <p className="insight-banner__eyebrow">Strategic Engagement</p>
-                            <h2>Strategic Engagement</h2>
-                            <p>
-                                We consider participation in transactions only where alignment, structural
-                                integrity, and governance rigor support long-term value creation.
-                            </p>
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
+
         </>
     );
 }

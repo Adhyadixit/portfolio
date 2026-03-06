@@ -1095,7 +1095,7 @@ p {
 .bx-offerings {
   background-color: var(--white);
   color: var(--charcoal);
-  padding: 88px 0;
+  padding: 60px 0;
 }
 
 .bx-offerings__inner {
@@ -1144,7 +1144,7 @@ p {
   column-gap: 84px;
   row-gap: 28px;
   align-items: start;
-  margin-bottom: 72px;
+  margin-bottom: 40px;
 }
 
 .bx-offerings-main__title {
@@ -2236,6 +2236,16 @@ p {
   display: block;
 }
 
+.parallax-short {
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.parallax-short .parallax-figure__img {
+  max-height: 240px;
+  object-fit: cover;
+}
+
 .full-bleed-figure {
   width: 100vw;
   margin-left: 50%;
@@ -2254,9 +2264,9 @@ p {
 
 .insight-banner {
   position: relative;
-  min-height: 420px;
   width: 100%;
   overflow: hidden;
+  display: flex;
 }
 
 .insight-banner__media {
@@ -2285,17 +2295,18 @@ p {
 .insight-banner__content {
   position: relative;
   z-index: 3;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
+  padding: 40px 20px;
 }
 
 .insight-banner__card {
   max-width: 620px;
   background: rgba(4, 12, 28, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 48px;
+  padding: 36px 40px;
   text-align: center;
   color: var(--white);
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
@@ -2321,6 +2332,12 @@ p {
   font-size: 1rem;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.85);
+}
+
+.insight-banner__description {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .editorial-hero {

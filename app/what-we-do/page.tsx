@@ -247,7 +247,7 @@ export default async function WhatWeDoPage() {
             <section className="section section-white">
                 <div className="container">
                     <div className="deck-contact-callout">
-                        <h2 className="deck-title">Strategic Engagement</h2>
+                        <h2 className="deck-title">Underwriting Rigor</h2>
                         <p className="deck-text">
                             We consider participation in opportunities where underwriting rigor, structural
                             clarity, and alignment of interests underpin durable outcomes.

@@ -278,12 +278,8 @@ export default async function InvestmentApproachPage() {
                             </details>
                         </div>
                     </FadeIn>
-                </div>
-            </section>
 
-            <section className="section section-offwhite">
-                <div className="container">
-                    <div className="approach-grid">
+                    <div className="approach-grid" style={{ marginTop: '5rem' }}>
                         {underwritingPillars.map((pillar) => (
                             <div key={pillar.title} className="approach-card">
                                 {pillar.icon}
@@ -337,6 +333,37 @@ export default async function InvestmentApproachPage() {
                 </div>
             </section>
 
+            <section className="insight-banner insight-banner--clean">
+                <div className="insight-banner__media" aria-hidden="true">
+                    <Image
+                        src={media('investment_approach_img_2', '/images/hero-architecture.png')}
+                        alt="Institutional architecture"
+                        fill
+                        priority={false}
+                        style={{ objectFit: 'cover' }}
+                    />
+                </div>
+                <div className="insight-banner__content">
+                    <FadeIn>
+                        <div className="insight-banner__card">
+                            <p className="insight-banner__eyebrow">Strategic Engagement</p>
+                            <h2>Principled Alignment</h2>
+                            <div className="insight-banner__description">
+                                <p>
+                                    We consider participation in transactions only where alignment, structural integrity, and governance rigor support long-term value creation.
+                                </p>
+                                <p>
+                                    By prioritizing downside vigilance and institutional oversight, we ensure that every deployment of capital reflects our commitment to preserving principal value.
+                                </p>
+                                <p>
+                                    This disciplined approach allows us to align selectively with partners who share our long-horizon perspective and rigorous standards for operational resilience.
+                                </p>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <section className="section section-navy">
                 <div className="container">
                     <FadeIn>
@@ -373,32 +400,7 @@ export default async function InvestmentApproachPage() {
                 </div>
             </section>
 
-            <section className="insight-banner insight-banner--clean">
-                <div className="insight-banner__media" aria-hidden="true">
-                    <Image
-                        src={media('investment_approach_img_2', '/images/hero-architecture.png')}
-                        alt="Institutional architecture"
-                        fill
-                        priority={false}
-                        style={{ objectFit: 'cover' }}
-                    />
-                </div>
-                <div className="insight-banner__content">
-                    <FadeIn>
-                        <div className="insight-banner__card">
-                            <p className="insight-banner__eyebrow">Engagement</p>
-                            <h2>Engagement</h2>
-                            <p>
-                                Opportunities are considered where underwriting rigor, structural clarity, and
-                                alignment of interests underpin long-term value.
-                            </p>
-                            <Link href="/partnerships" className="primary-button" style={{ marginTop: '16px' }}>
-                                Engagement
-                            </Link>
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
+
 
             <section className="section section-white">
                 <div className="container">

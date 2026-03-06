@@ -39,35 +39,6 @@ export default async function HomePage() {
     },
   ];
 
-  const offeringsHighlights = [
-    {
-      title: 'Build financial security',
-      description:
-        'We deploy principal capital with institutional rigor, seeking durable outcomes for aligned partners across direct and structured opportunities.',
-      image: media('home_offerings_1', '/Untitled design (5).png'),
-      alt: 'City grid representing financial systems',
-      href: '/partnerships',
-      cta: 'Learn More About Our Partners',
-    },
-    {
-      title: 'Build your career',
-      description:
-        'We offer an environment where exceptional talent can contribute to disciplined capital deployment and long-term value creation.',
-      image: media('home_offerings_2', '/3D593A20-063D-46C3-876B-7BC4B1341D66.png'),
-      alt: 'Industrial port infrastructure representing opportunity',
-      href: '/careers',
-      cta: 'Learn More About Careers',
-    },
-    {
-      title: 'Build strong businesses',
-      description:
-        'Operators and sponsors seeking structured capital solutions with governance clarity and long-horizon perspective.',
-      image: media('home_offerings_3', '/Untitled design (3).png'),
-      alt: 'Rail lines at sunset representing operational scale',
-      href: '/what-we-do',
-      cta: 'Learn About Our Approach',
-    },
-  ];
 
   const poweringSlides = [
     {
@@ -216,7 +187,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bx-block-component bx-offerings alignfull bx-component-base-padding-top bx-component-base-padding-bottom wp-block-blackstone-v2-our-offerings">
+      <section className="bx-block-component bx-offerings alignfull wp-block-blackstone-v2-our-offerings">
         <div className="bx-offerings__inner">
           <div className="bx-offerings__heading bx-offerings-heading has-text-align-center">
             <p className="bx-offerings-heading__eyebrow" aria-hidden="true">
@@ -280,44 +251,10 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="bx-offerings__highlights bx-offerings-highlights wp-block-blackstone-v2-our-offerings-highlights">
-            {offeringsHighlights.map((item) => (
-              <div key={item.title} className="bx-offerings-highlights__item wp-block-blackstone-v2-our-offerings-highlights-item">
-                <div className="bx-offerings-card">
-                  <div className="bx-offerings-card__media" style={{ ['--x' as any]: 0.5, ['--y' as any]: 0.5 }}>
-                    <div className="bx-offerings-card__media-img">
-                      <Image
-                        src={item.image}
-                        alt={item.alt}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        sizes="(min-width: 1024px) 33vw, 100vw"
-                        priority={false}
-                      />
-                    </div>
-                    <div className="bx-offerings-card__media-curtain"></div>
-                  </div>
-                  <div className="bx-offerings-card__content">
-                    <h3 className="bx-offerings-card__title">{item.title}</h3>
-                    <div className="bx-offerings-card__description">
-                      <p>{item.description}</p>
-                    </div>
-                    <div className="bx-offerings-card__cta">
-                      <p>
-                        <Link href={item.href}>{item.cta}</Link>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <FullWidthVideoEmbed
-        eyebrow="Watch Now"
-        title="Invested"
         videoSrc={media('home_video', 'https://video.gumlet.io/694cef8ab122cbf176482b8c/69a1ae6f825d3351d5358089/download.mp4')}
       />
 
