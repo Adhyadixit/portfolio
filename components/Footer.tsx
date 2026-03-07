@@ -41,8 +41,14 @@ export default function Footer() {
                         <div className="footer__col-title">Inquiries</div>
                         <div className="footer__links">
                             <Link href="/contact" className="footer__link">Engage With Us</Link>
+                        </div>
+                        <div className="footer__col-title" style={{ marginTop: '2rem' }}>Locations</div>
+                        <div className="footer__links">
                             <span className="footer__link" style={{ cursor: 'default' }}>
-
+                                United Arab Emirates | United Kingdom | Switzerland
+                            </span>
+                            <span className="footer__link" style={{ cursor: 'default', color: 'rgba(255, 255, 255, 0.6)' }}>
+                                Planned expansion in the United States and Hong Kong.
                             </span>
                         </div>
                     </div>
