@@ -4,11 +4,11 @@ import { useState, FormEvent } from 'react';
 import FadeIn from '@/components/FadeIn';
 
 const inquiryTypes = [
-    'Select Inquiry Type',
-    'Investment Partnership',
-    'Co-Investment Opportunity',
-    'Strategic Advisory',
-    'Capital Formation',
+    'Select Nature of Inquiry',
+    'Transaction Participation',
+    'Co-Investment Engagement',
+    'Strategic Alignment',
+    'Capital Structuring',
     'General Inquiry',
 ];
 
@@ -64,15 +64,15 @@ export default function ContactPage() {
             <section className="page-hero page-hero--white">
                 <div className="container">
                     <FadeIn>
-                        <span className="page-hero__overline">Get In Touch</span>
+                        <span className="page-hero__overline">Engagement</span>
                     </FadeIn>
                     <FadeIn delay={1}>
-                        <h1 className="page-hero__title">Contact</h1>
+                        <h1 className="page-hero__title">Engagement</h1>
                     </FadeIn>
                     <FadeIn delay={2}>
                         <p className="page-hero__text">
-                            We welcome inquiries from qualified institutional investors,
-                            family offices, and strategic partners.
+                            We consider inquiries only where structural clarity, governance alignment, and long-term
+                            objectives support a durable collaboration.
                         </p>
                     </FadeIn>
                 </div>
@@ -97,10 +97,19 @@ export default function ContactPage() {
                             </div>
                         ) : (
                             <form className="contact-form" onSubmit={handleSubmit}>
+                                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                                    <h2 style={{ color: 'var(--navy-primary)', fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 500, marginBottom: '8px' }}>
+                                        Submit an Inquiry
+                                    </h2>
+                                    <p style={{ color: 'var(--charcoal)', opacity: 0.65, fontSize: '0.95rem', maxWidth: '560px', margin: '0 auto' }}>
+                                        Please provide context regarding potential collaboration or engagement. All
+                                        submissions are reviewed with discretion.
+                                    </p>
+                                </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                                     <div className="form-group">
                                         <label className="form-group__label" htmlFor="fullName">
-                                            Full Name
+                                            Name
                                         </label>
                                         <input
                                             className="form-group__input"
@@ -121,7 +130,6 @@ export default function ContactPage() {
                                             className="form-group__input"
                                             type="text"
                                             id="organization"
-                                            required
                                             value={formData.organization}
                                             onChange={(e) =>
                                                 setFormData({ ...formData, organization: e.target.value })
@@ -164,7 +172,7 @@ export default function ContactPage() {
 
                                 <div className="form-group">
                                     <label className="form-group__label" htmlFor="inquiryType">
-                                        Type of Inquiry
+                                        Nature of Inquiry
                                     </label>
                                     <select
                                         className="form-group__select"
@@ -176,7 +184,7 @@ export default function ContactPage() {
                                         }
                                     >
                                         {inquiryTypes.map((type) => (
-                                            <option key={type} value={type === 'Select Inquiry Type' ? '' : type}>
+                                            <option key={type} value={type === 'Select Nature of Inquiry' ? '' : type}>
                                                 {type}
                                             </option>
                                         ))}
@@ -200,7 +208,7 @@ export default function ContactPage() {
 
                                 <div style={{ textAlign: 'center', marginTop: '16px' }}>
                                     <button type="submit" className="btn btn--navy">
-                                        {isSubmitting ? 'Submitting…' : 'Submit Inquiry'}
+                                        {isSubmitting ? 'Submitting…' : 'Engagement'}
                                     </button>
                                 </div>
                                 {error ? (
@@ -211,7 +219,8 @@ export default function ContactPage() {
                     </FadeIn>
 
                     <p className="confidentiality-notice">
-                        All communications are treated with strict confidentiality.
+                        All communications are treated with strict confidentiality. For inquiries or correspondence,
+                        please reach out via the form above.
                     </p>
                 </div>
             </section>

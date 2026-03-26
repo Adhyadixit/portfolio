@@ -2,81 +2,80 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
+import Link from 'next/link';
 import NeuralBackground from '@/components/NeuralBackground';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
-    title: 'Who We Are',
+    title: 'About',
     description:
-        'Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and Africa.',
+        'A privately governed principal investment office focused on originating, underwriting, and structuring long-term investments with institutional rigor.',
 };
 
-export default function WhoWeArePage() {
+export default async function WhoWeArePage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const operatingHighlights = [
-        'Operates on a deal-by-deal SPV basis',
-        'Ensures transparent governance and aligned investor interests',
-        'Combines principal investment participation, capital structuring, and cross-border advisory',
-    ];
-
-    const philosophyPrinciples = [
-        'Capital preservation before return optimization',
-        'Structured downside protection',
-        'Selective, high-conviction mandates',
-        'Long-duration asset relevance',
-        'Institutional governance standards',
-    ];
-
-    const representativeExperience = [
-        'Structured and coordinated ~$91M in investor commitments during pre-development of a major infrastructure initiative',
-        'Facilitated sovereign and institutional capital relationships across MENA',
-        'Advanced hospitality and urban development initiatives across Europe and MENA',
-        'Structured natural resource development partnerships',
-        'Advised SPV governance and PPP framework execution',
-    ];
-
-    const outlookPriorities = [
-        'Selectively originated mandates',
-        'Disciplined capital deployment',
-        'Institutional-grade structuring',
-        'Long-term public-private alignment',
+        'Principal investment office',
+        'Independent governance',
+        'Long-term capital stewardship',
+        'Bespoke transaction structuring',
     ];
 
     const operatingModel = [
         {
-            title: 'Originate',
-            copy: 'Sourcing selectively originated mandates in strategically advantaged markets, with a preference for asset-backed value creation.',
+            title: 'Underwriting Oversight',
+            copy: 'Every transaction undergoes comprehensive underwriting, including financial, operational, and governance assessment.',
         },
         {
-            title: 'Structure',
-            copy: 'Institutional-grade SPV structuring, governance terms, and downside protection built into each transaction.',
+            title: 'Strategic Alignment',
+            copy: 'Capital is deployed where structural integrity and governance alignment support durable outcomes.',
         },
         {
-            title: 'Steward',
-            copy: 'Active oversight and reporting discipline designed to align interests and preserve capital across the mandate lifecycle.',
+            title: 'Sponsorship Rigor',
+            copy: 'We originate transactions, underwrite risk, and structure solutions that prioritize stability across cycles.',
+        },
+    ];
+
+    const philosophyCards = [
+        {
+            title: 'Long-Term Orientation',
+            copy: 'Capital is deployed with generational perspective rather than short-cycle return objectives.',
+        },
+        {
+            title: 'Underwriting Discipline',
+            copy: 'Every opportunity undergoes comprehensive financial, operational, and structural review prior to commitment.',
+        },
+        {
+            title: 'Alignment of Interests',
+            copy: 'Transactions are structured to ensure clarity of incentives and durability of partnership over time.',
+        },
+        {
+            title: 'Structural Integrity',
+            copy: 'Capital solutions are designed with risk mitigation, liquidity awareness, and governance embedded at inception.',
         },
     ];
 
     return (
         <>
-            <section
-                className="editorial-hero editorial-hero--center"
-                style={{ backgroundImage: 'url(/images/hero-skyline.png)' }}
-            >
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('who_we_are_hero', '/images/hero-infrastructure.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
                         <FadeIn>
-                            <span className="page-hero__overline">Who We Are</span>
+                            <span className="page-hero__overline">Our Mandate</span>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Independent Private Capital Platform</h1>
+                            <h1 className="page-hero__title">About</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={3}>
                             <p className="editorial-hero__text">
-                                Nabrel is an independent private capital and development platform operating through disciplined, deal-by-deal mandates across Europe, MENA, and select African growth corridors.
+                                Independent. Governance-driven. Long-term in orientation.
                             </p>
                         </FadeIn>
                     </div>
@@ -88,10 +87,16 @@ export default function WhoWeArePage() {
                     <FadeIn>
                         <div className="deck-grid deck-grid--about">
                             <div className="deck-card">
-                                <h2 className="deck-title">About Nabrel</h2>
+                                <h2 className="deck-title">Principal Investment Office</h2>
                                 <p className="deck-text">
-                                    The platform operates on a deal-by-deal SPV basis, aligning sponsor participation with
-                                    institutional governance standards and transparent reporting discipline.
+                                    We are a privately governed principal investment office focused on the disciplined
+                                    stewardship of capital.
+                                    <br /><br />
+                                    Our structure enables independent decision-making, rigorous underwriting, and
+                                    selective transaction sponsorship across direct and structured investments.
+                                    <br /><br />
+                                    We operate with long-term perspective, prioritizing structural integrity and governance
+                                    over scale-driven expansion.
                                 </p>
                             </div>
                             <div className="deck-card deck-card--navy">
@@ -111,12 +116,13 @@ export default function WhoWeArePage() {
                     <FadeIn>
                         <div className="editorial-split">
                             <blockquote className="deck-quote">
-                                To originate and structure high-conviction real asset investments in strategically advantaged markets,
-                                aligning private capital with long-term economic development.
+                                Our investment decisions are governed by formal review processes, capital allocation
+                                discipline, and structured risk assessment frameworks. Independence of judgment and
+                                clarity of mandate are foundational to our operating model.
                             </blockquote>
                             <ParallaxImage
-                                src="/images/hero-infrastructure.png"
-                                alt="Mission and discipline"
+                                src={media('who_we_are_hero_1', '/images/hero-infrastructure.png')}
+                                alt="Governance and independence"
                                 className="editorial-frame editorial-frame--light"
                                 intensity={14}
                             />
@@ -143,19 +149,22 @@ export default function WhoWeArePage() {
             <section className="section section-offwhite">
                 <div className="container">
                     <FadeIn>
-                        <div className="deck-two-panel">
-                            <div className="deck-panel">
-                                <h2 className="deck-title">Investment Philosophy</h2>
-                                <p className="deck-subtitle">Core Principle</p>
-                                <p className="deck-text">Focused on disciplined execution and enduring value creation, not volume.</p>
-                            </div>
-                            <div className="deck-panel deck-panel--light">
-                                <ul className="deck-list">
-                                    {philosophyPrinciples.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                            <h2 className="deck-title">Investment Philosophy</h2>
+                            <p className="deck-text" style={{ maxWidth: '640px', margin: '0 auto' }}>
+                                Capital is deployed with generational perspective, prioritizing structural
+                                integrity and alignment of interests over short-cycle return objectives.
+                            </p>
+                        </div>
+                    </FadeIn>
+                    <FadeIn>
+                        <div className="deck-grid">
+                            {philosophyCards.map((item) => (
+                                <div key={item.title} className="deck-card">
+                                    <h3 className="deck-subtitle">{item.title}</h3>
+                                    <p className="deck-text">{item.copy}</p>
+                                </div>
+                            ))}
                         </div>
                     </FadeIn>
                 </div>
@@ -166,16 +175,19 @@ export default function WhoWeArePage() {
                     <FadeIn>
                         <div className="deck-grid deck-grid--experience">
                             <div>
-                                <span className="page-hero__overline">Representative Experience</span>
-                                <ul className="deck-list deck-list--spacious">
-                                    {representativeExperience.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
+                                <h2 className="deck-title">Our Approach</h2>
+                                <p className="deck-text" style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
+                                    We do not pursue volume-based deployment.
+                                    <br /><br />
+                                    Engagement is selective, transactions are underwritten conservatively, and capital is
+                                    structured with long-term accountability in mind.
+                                    <br /><br />
+                                    Growth is pursued where governance and structural clarity support durable outcomes.
+                                </p>
                             </div>
                             <div className="deck-image-stack">
                                 <ParallaxImage
-                                    src="/images/hero-mining.png"
+                                    src={media('who_we_are_parallax', '/images/hero-mining.png')}
                                     alt="Representative infrastructure and natural resource experience"
                                     className="editorial-frame editorial-frame--light"
                                     intensity={12}
@@ -199,29 +211,11 @@ export default function WhoWeArePage() {
                 </div>
                 <div className="container">
                     <FadeIn>
-                        <div className="deck-outlook">
-                            <div>
-                                <h2 className="deck-title deck-title--light">Strategic Outlook Engagement</h2>
-                                <p className="deck-quote-inline">Private Capital. Structured. Enduring.</p>
-                            </div>
-                            <div className="deck-outlook__panel">
-                                <h3>Engages with</h3>
-                                <ul>
-                                    <li>Sovereign wealth funds</li>
-                                    <li>Institutional investors</li>
-                                    <li>Family offices</li>
-                                    <li>Municipal authorities</li>
-                                    <li>Strategic co-investment partners</li>
-                                </ul>
-                            </div>
-                            <div className="deck-outlook__panel">
-                                <h3>Strategic priorities</h3>
-                                <ul>
-                                    {outlookPriorities.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div style={{ textAlign: 'right', maxWidth: '800px', marginLeft: 'auto', marginRight: '10%' }}>
+                            <p className="deck-quote-inline">
+                                Our mandate remains focused on disciplined capital stewardship and selective
+                                transaction engagement aligned with long-term objectives.
+                            </p>
                         </div>
                     </FadeIn>
                 </div>

@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 
-export default function AdminLoginForm() {
+export default function AdminLoginForm({ showSetupLink }: { showSetupLink?: boolean }) {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,6 +65,16 @@ export default function AdminLoginForm() {
           <button type="submit" className="btn btn--navy" style={{ width: '100%', marginTop: '24px' }}>
             {isSubmitting ? 'Signing in…' : 'Sign In'}
           </button>
+
+          {/* Conditional Setup Link */}
+          {showSetupLink && (
+            <div style={{ marginTop: '24px', textAlign: 'center', borderTop: '1px solid rgba(11, 31, 59, 0.1)', paddingTop: '20px' }}>
+              <p style={{ fontSize: '0.85rem', color: 'rgba(11, 31, 59, 0.6)' }}>No admin account yet?</p>
+              <a href="/admin/setup" style={{ color: 'var(--navy-primary)', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'underline' }}>
+                Run Initial Setup
+              </a>
+            </div>
+          )}
         </form>
       </div>
     </div>

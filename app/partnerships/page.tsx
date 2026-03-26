@@ -2,62 +2,67 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import ParallaxImage from '@/components/ParallaxImage';
+import Link from 'next/link';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
-    title: 'Partnerships',
-    description: 'Strategic partnerships with family offices, sovereign capital, institutional investors, and consumer partners.',
+    title: 'Strategic Alignment',
+    description: 'We engage selectively with aligned partners where objectives, governance, and structural clarity converge to support long-term value creation.',
 };
 
-export default function PartnershipsPage() {
+export default async function PartnershipsPage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const partnerTypes = [
         {
-            title: 'Family Offices',
-            description: 'Multi-generational capital seeking disciplined, long-duration real asset opportunities with institutional governance.',
+            title: 'Families & Private Capital',
+            description: 'Multigenerational investors seeking disciplined capital structuring and long-term alignment.',
+        },
+        {
+            title: 'Institutional Partners',
+            description: 'Select institutions participating alongside sponsored transactions under shared governance frameworks.',
+        },
+        {
+            title: 'Operators & Sponsors',
+            description: 'Management teams and sponsors seeking structured capital solutions with long-horizon perspective.',
         },
         {
             title: 'Sovereign Capital',
-            description: 'Government-aligned investment programs focused on infrastructure, urban regeneration, and strategic resource development.',
-        },
-        {
-            title: 'Institutional Investors',
-            description: 'Pension funds, endowments, and foundations seeking capital preservation with measured risk-adjusted returns.',
-        },
-        {
-            title: 'Consumer Partners',
-            description: 'Strategic operators and brands seeking co-investment opportunities in hospitality, retail, and mixed-use developments.',
+            description: 'Government-aligned entities participating in principal-led transactions where governance standards converge.',
         },
     ];
 
     const partnershipPrinciples = [
-        'Capital alignment through co-investment',
-        'Transparent governance and reporting',
-        'Long-term partnership orientation',
-        'Institutional-grade structuring',
-        'Cross-border execution capability',
+        'Alignment of interests and governance compatibility',
+        'Structural clarity and risk-managed deployment',
+        'Discretion in partner selection',
+        'Long-term objectives and durable incentives',
+        'Defined roles, responsibilities, and decision-making authorities',
     ];
 
-    const originationProcess = [
+    const alignmentCriteria = [
         {
-            title: 'Proprietary Sourcing',
-            detail: 'Direct relationships with sovereign entities, family offices, and institutional capital allocators.',
+            title: 'Alignment Criteria',
+            detail: 'Prospective partners are considered based on strategic fit, governance compatibility, and alignment with structural frameworks.',
         },
         {
-            title: 'Strategic Alignment',
-            detail: 'Thematic screening for sector and geographic fit with partner objectives and risk parameters.',
+            title: 'Collaboration Approach',
+            detail: 'Engagement is structured to preserve principal capital while enabling aligned partners to participate with transparency, clarity, and long-term perspective.',
         },
         {
-            title: 'Joint Structuring',
-            detail: 'Collaborative framework design with aligned economics, governance terms, and exit strategies.',
+            title: 'Co-Investment Standards',
+            detail: 'Co-investment is pursued only when alignment with our structural and governance standards is evident. Discretion guides partner selection.',
         },
         {
-            title: 'Execution Excellence',
-            detail: 'Disciplined deployment with transparent reporting and active stewardship through investment lifecycle.',
+            title: 'Oversight Protocols',
+            detail: 'All partnerships operate under defined governance protocols and oversight frameworks with clearly documented accountability.',
         },
     ];
 
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-skyline.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('partnerships_hero', '/images/hero-skyline.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
@@ -66,16 +71,19 @@ export default function PartnershipsPage() {
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Strategic Capital Partnerships</h1>
+                            <h1 className="page-hero__title">Strategic Alignment</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={3}>
                             <p className="editorial-hero__text">
-                                We align with family offices, sovereign capital, institutional investors, and consumer partners
-                                to structure and execute high-conviction real asset mandates across Europe, MENA, and Africa.
+                                We engage selectively with aligned partners where objectives, governance, and structural clarity
+                                converge to support long-term value creation.
                             </p>
+                            <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                                Engagement
+                            </Link>
                         </FadeIn>
                     </div>
                 </div>
@@ -85,11 +93,12 @@ export default function PartnershipsPage() {
                 <div className="container">
                     <FadeIn>
                         <div className="approach-heading approach-heading--center">
-                            <span className="page-hero__overline">Partner Ecosystem</span>
-                            <h2 className="deck-title">Who We Partner With</h2>
+                            <span className="page-hero__overline">Partner Alignment</span>
+                            <h2 className="deck-title">Who We Engage With</h2>
                             <p className="deck-text">
-                                We selectively partner with capital providers and strategic operators who share our long-term,
-                                capital-preservative approach to real asset investing.
+                                Our partnerships are guided by alignment of interests, governance standards, and
+                                long-term structural integrity. We prioritize collaboration only when strategic
+                                objectives and risk frameworks are clearly aligned and durable.
                             </p>
                         </div>
                     </FadeIn>
@@ -111,13 +120,14 @@ export default function PartnershipsPage() {
                     <FadeIn>
                         <div className="editorial-split">
                             <blockquote className="deck-quote">
-                                Partnership is not transactional—it is the foundation of durable value creation
-                                through aligned interests and shared commitment to capital preservation.
+                                We maintain discretion in partner selection, ensuring transactions reflect long-term
+                                objectives and risk-managed deployment. Engagement is structured to preserve
+                                principal capital while enabling aligned participation.
                             </blockquote>
                             <ParallaxImage
-                                src="/images/hero-architecture.png"
-                                alt="Partnership architecture and governance"
-                                className="editorial-frame editorial-frame--light"
+                                src={media('partnerships_parallax', '/images/hero-architecture.png')}
+                                alt="Partnership governance and structural clarity"
+                                className="editorial-frame editorial-frame--light parallax-short"
                                 intensity={14}
                             />
                         </div>
@@ -130,10 +140,11 @@ export default function PartnershipsPage() {
                     <FadeIn>
                         <div className="deck-two-panel">
                             <div className="deck-panel">
-                                <h2 className="deck-title">Partnership Principles</h2>
-                                <p className="deck-subtitle">Our Foundation</p>
+                                <h2 className="deck-title">Partnership Standards</h2>
+                                <p className="deck-subtitle">Governance-Led</p>
                                 <p className="deck-text">
-                                    Every partnership is built on transparency, alignment, and long-term commitment to capital stewardship.
+                                    Roles, responsibilities, and decision-making authorities are clearly documented to
+                                    ensure alignment, accountability, and durability across all engagements.
                                 </p>
                             </div>
                             <div className="deck-panel deck-panel--light">
@@ -148,36 +159,11 @@ export default function PartnershipsPage() {
                 </div>
             </section>
 
-            <section className="section section-white">
-                <div className="container">
-                    <FadeIn>
-                        <div className="approach-heading">
-                            <span className="page-hero__overline">Execution Process</span>
-                            <h2 className="deck-title">How We Partner</h2>
-                            <p className="deck-text">
-                                A systematic approach to partnership origination, structuring, and execution
-                                that ensures alignment and institutional governance throughout the investment lifecycle.
-                            </p>
-                        </div>
-                    </FadeIn>
-                    <FadeIn>
-                        <div className="deck-grid deck-grid--operating">
-                            {originationProcess.map((step) => (
-                                <div key={step.title} className="deck-card">
-                                    <h2 className="deck-title">{step.title}</h2>
-                                    <p className="deck-text">{step.detail}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
-
             <section className="insight-banner insight-banner--clean">
                 <div className="insight-banner__media" aria-hidden="true">
                     <Image
-                        src="/images/hero-energy.png"
-                        alt="Strategic partnership execution"
+                        src={media('partnerships_img_1', '/images/hero-energy.png')}
+                        alt="Strategic alignment and governance"
                         fill
                         priority={false}
                         style={{ objectFit: 'cover' }}
@@ -186,16 +172,51 @@ export default function PartnershipsPage() {
                 <div className="insight-banner__content">
                     <FadeIn>
                         <div className="insight-banner__card">
-                            <p className="insight-banner__eyebrow">Partnership Opportunity</p>
-                            <h2>Align With Nabrel</h2>
-                            <p>
-                                Explore co-investment opportunities and strategic partnerships across our target sectors
-                                and geographies. We welcome dialogue with aligned capital partners and operators.
-                            </p>
+                            <p className="insight-banner__eyebrow">Strategic Engagement</p>
+                            <h2>Principled Alignment</h2>
+                            <div className="insight-banner__description">
+                                <p>
+                                    We consider participation in transactions only where alignment, structural
+                                    integrity, and governance rigor support long-term value creation.
+                                </p>
+                                <p>
+                                    By prioritizing downside vigilance and institutional oversight, we ensure that every deployment of capital reflects our commitment to preserving principal value.
+                                </p>
+                                <p>
+                                    This disciplined approach allows us to align selectively with partners who share our long-horizon perspective and rigorous standards for operational resilience.
+                                </p>
+                            </div>
                         </div>
                     </FadeIn>
                 </div>
             </section>
+
+            <section className="section section-white">
+                <div className="container">
+                    <FadeIn>
+                        <div className="approach-heading approach-heading--center">
+                            <span className="page-hero__overline">Engagement Model</span>
+                            <h2 className="deck-title">How We Engage</h2>
+                            <p className="deck-text">
+                                Engagement is structured to balance principal capital commitment with aligned
+                                partner participation under shared governance frameworks.
+                            </p>
+                        </div>
+                    </FadeIn>
+                    <FadeIn>
+                        <div className="deck-grid">
+                            {alignmentCriteria.map((item) => (
+                                <div key={item.title} className="deck-card">
+                                    <h3 className="deck-subtitle">{item.title}</h3>
+                                    <p className="deck-text">{item.detail}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+
         </>
     );
 }

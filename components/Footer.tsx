@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -11,22 +12,28 @@ export default function Footer() {
                 <div className="footer__inner">
                     <div>
                         <div className="footer__brand-name">
-                            NABR<span>EL</span>
+                            <Image
+                                src="/nabrel_white_on_blue-removebg-preview.png"
+                                alt="Nabrel"
+                                width={300}
+                                height={110}
+                                className="header__logo-img"
+                            />
                         </div>
                         <p className="footer__brand-desc">
-                            Private capital and finance platform focused on essential real assets,
-                            strategic industries, and structured investment solutions.
+                            A privately governed principal investment office originating, underwriting, and
+                            structuring long-term capital solutions.
                         </p>
                     </div>
 
                     <div>
                         <div className="footer__col-title">Platform</div>
                         <div className="footer__links">
-                            <Link href="/who-we-are" className="footer__link">Who We Are</Link>
-                            <Link href="/what-we-do" className="footer__link">What We Do</Link>
+                            <Link href="/who-we-are" className="footer__link">About</Link>
+                            <Link href="/what-we-do" className="footer__link">Investment Focus</Link>
                             <Link href="/investment-approach" className="footer__link">Investment Approach</Link>
-                            <Link href="/partnerships" className="footer__link">Partnerships</Link>
-                            <Link href="/contact" className="footer__link">Contact</Link>
+                            <Link href="/partnerships" className="footer__link">Strategic Alignment</Link>
+                            <Link href="/contact" className="footer__link">Engagement</Link>
                         </div>
                     </div>
 
@@ -43,6 +50,15 @@ export default function Footer() {
                                 LinkedIn
                             </a>
                         </div>
+                        <div className="footer__col-title" style={{ marginTop: '2rem' }}>Locations</div>
+                        <div className="footer__links">
+                            <span className="footer__link" style={{ cursor: 'default' }}>
+                                United Arab Emirates | United Kingdom | Switzerland
+                            </span>
+                            <span className="footer__link" style={{ cursor: 'default', color: 'rgba(255, 255, 255, 0.6)' }}>
+                                Planned expansion in the United States and Hong Kong.
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -52,6 +68,7 @@ export default function Footer() {
                     </span>
                     <div className="footer__legal">
                         <Link href="/privacy-policy" className="footer__legal-link">Privacy Policy</Link>
+                        <Link href="/cookies-policy" className="footer__legal-link">Cookies Policy</Link>
                         <Link href="/terms-of-use" className="footer__legal-link">Terms of Use</Link>
                         <Link href="/legal-disclaimer" className="footer__legal-link">Legal Disclaimer</Link>
                     </div>

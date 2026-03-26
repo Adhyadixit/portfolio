@@ -161,9 +161,9 @@ export default function ShaderBackground({ className }: ShaderBackgroundProps) {
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     const positions = new Float32Array([
       -1.0, -1.0,
-       1.0, -1.0,
-      -1.0,  1.0,
-       1.0,  1.0,
+      1.0, -1.0,
+      -1.0, 1.0,
+      1.0, 1.0,
     ]);
     gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
 
@@ -185,9 +185,11 @@ export default function ShaderBackground({ className }: ShaderBackgroundProps) {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    let startTime = Date.now();
+    const startTime = Date.now();
+    let isVisible = true;
 
     const render = () => {
+      if (!isVisible) return;
       resizeCanvas();
       const currentTime = (Date.now() - startTime) / 1000;
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -205,11 +207,26 @@ export default function ShaderBackground({ className }: ShaderBackgroundProps) {
       animationRef.current = requestAnimationFrame(render);
     };
 
-    animationRef.current = requestAnimationFrame(render);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animationRef.current) {
+          animationRef.current = requestAnimationFrame(render);
+        } else if (!isVisible && animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+          animationRef.current = 0;
+        }
+      });
+    }, { rootMargin: '800px' });
+
+    observer.observe(canvas);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationRef.current);
+      observer.disconnect();
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
 

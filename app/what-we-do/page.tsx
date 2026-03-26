@@ -3,69 +3,73 @@ import FadeIn from '@/components/FadeIn';
 import Image from 'next/image';
 import Link from 'next/link';
 import ParallaxImage from '@/components/ParallaxImage';
+import NeuralBackground from '@/components/NeuralBackground';
+import { getAllMediaMap } from '@/lib/media';
 
 export const metadata: Metadata = {
-    title: 'What We Do',
-    description: 'Disciplined capital deployment across high-impact mandates, with SPV structuring, governance oversight, and institutional partnerships.',
+    title: 'Investment Focus',
+    description: 'Selective deployment of principal capital across direct and structured opportunities with governance rigor and institutional alignment.',
 };
 
-export default function WhatWeDoPage() {
+export default async function WhatWeDoPage() {
+    const mediaMap = await getAllMediaMap();
+    const media = (key: string, fallback: string) => mediaMap[key] || fallback;
+
     const mandateColumns = [
         {
-            label: 'Target Capitalization',
-            value: '$50–75M+ equity commitments per transaction',
+            label: 'Capital Stewardship',
+            value: 'Long-horizon allocation guided by downside discipline, liquidity awareness, and structural integrity.',
         },
         {
-            label: 'Return Profile',
-            value: '15–19% IRR target (risk-adjusted)',
+            label: 'Transaction Origination',
+            value: 'Direct sourcing and evaluation of opportunities through proprietary networks and institutional diligence standards.',
         },
         {
-            label: 'Strategic Focus',
-            value: 'Flexible capital solutions across equity and structured finance',
+            label: 'Underwriting & Risk',
+            value: 'Comprehensive financial, operational, and structural assessment prior to capital commitment.',
         },
         {
-            label: 'Structure',
-            value: 'Urban regeneration, resource infrastructure, and civic mixed-use platforms',
+            label: 'Capital Structuring',
+            value: 'Design of equity, hybrid, and structured instruments aligned with risk-adjusted return objectives and long-term governance.',
         },
     ];
 
     const governancePoints = [
-        'Dedicated SPV per mandate',
-        'Defined shareholder agreements',
-        'Independent legal oversight (UK, UAE, BVI)',
-        'Transparent reporting standards',
-        'Regulatory compliance adherence',
+        'Structured protocols and documented agreements',
+        'Independent oversight across participating parties',
+        'Alignment of all participating parties preserved over time',
+        'Integrity of capital maintained through governance',
     ];
 
     const priorities = [
-        'Selectively originated mandates',
-        'Disciplined capital deployment',
-        'Institutional-grade structuring',
-        'Long-term public-private alignment',
+        'Selective origination and disciplined underwriting',
+        'Structured deployment with governance clarity',
+        'Institutional-grade oversight and reporting',
+        'Long-term alignment with institutional partners',
     ];
 
     const mandateLifecycle = [
         {
             title: 'Origination',
-            copy: 'Identify opportunities where asset fundamentals, structure, and governance can create durable downside protection.',
+            copy: 'Identify transactions where fundamentals, structure, and governance support sustainable outcomes and long-term alignment.',
         },
         {
-            title: 'SPV Structuring',
-            copy: 'Dedicated SPV per mandate, aligned sponsor participation, and defined shareholder agreements.',
+            title: 'Structuring & Underwriting',
+            copy: 'Develop bespoke capital solutions using equity, hybrid, or structured instruments. Rigorous underwriting ensures risk-adjusted durability.',
         },
         {
-            title: 'Execution',
-            copy: 'Disciplined deployment with institutional reporting and independent legal oversight.',
+            title: 'Deployment',
+            copy: 'Capital is deployed under formal oversight protocols, ensuring clarity, accountability, and alignment with the intended investment structure.',
         },
         {
-            title: 'Stewardship',
-            copy: 'Ongoing oversight designed to preserve capital and compound returns over the hold period.',
+            title: 'Post-Investment Oversight',
+            copy: 'Ongoing monitoring preserves capital, reinforces alignment, and supports long-horizon value creation.',
         },
     ];
 
     return (
         <>
-            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: 'url(/images/hero-industrial.png)' }}>
+            <section className="editorial-hero editorial-hero--center" style={{ backgroundImage: `url(${media('what_we_do_hero', '/images/hero-industrial.png')})` }}>
                 <div className="editorial-hero__overlay" aria-hidden="true" />
                 <div className="container">
                     <div className="editorial-hero__content editorial-hero__content--center">
@@ -74,16 +78,19 @@ export default function WhatWeDoPage() {
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={1}>
-                            <h1 className="page-hero__title">Capital Deployment & Structuring</h1>
+                            <h1 className="page-hero__title">Investment Focus</h1>
                         </FadeIn>
                         <FadeIn delay={2}>
                             <span className="editorial-hero__divider" aria-hidden="true" />
                         </FadeIn>
                         <FadeIn delay={3}>
                             <p className="editorial-hero__text">
-                                Disciplined capital deployment across high-impact real asset opportunities, executed through dedicated
-                                SPVs, transparent governance, and aligned co-investment frameworks.
+                                Selective deployment of principal capital across direct and structured opportunities, designed
+                                with structural clarity, governance rigor, and alignment with institutional partners.
                             </p>
+                            <Link href="/contact" className="primary-button" style={{ marginTop: '20px' }}>
+                                Engagement
+                            </Link>
                         </FadeIn>
                     </div>
                 </div>
@@ -104,10 +111,27 @@ export default function WhatWeDoPage() {
                 </div>
             </section>
 
+            <section className="section section-white">
+                <div className="container">
+                    <FadeIn>
+                        <div className="statement">
+                            <div className="gold-divider"></div>
+                            <p className="statement__text">
+                                We engage in transactions where structural integrity, long-term governance, and
+                                operational resilience underpin durable value creation. Capital solutions are flexible
+                                across equity, hybrid, and bespoke structures, enabling selective collaboration with
+                                aligned institutional partners.
+                            </p>
+                            <div className="gold-divider"></div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <section className="insight-banner">
                 <div className="insight-banner__media" aria-hidden="true">
                     <Image
-                        src="/images/hero-architecture.png"
+                        src={media('what_we_do_img_1', '/images/hero-architecture.png')}
                         alt="Institutional architecture"
                         fill
                         priority={false}
@@ -118,11 +142,12 @@ export default function WhatWeDoPage() {
                 <div className="insight-banner__content">
                     <FadeIn>
                         <div className="insight-banner__card">
-                            <p className="insight-banner__eyebrow">Execution Spotlight</p>
+                            <p className="insight-banner__eyebrow">Execution Framework</p>
                             <h2>Institutional Execution</h2>
                             <p>
-                                Coordinated capital programs anchored by municipal partnerships, strategic investors, and disciplined
-                                governance frameworks designed for enduring impact.
+                                Opportunities are assessed through structured diligence frameworks that integrate
+                                financial, operational, and governance evaluation. Deployment is designed to balance
+                                principal capital commitment with aligned partner participation for long-term sustainability.
                             </p>
                         </div>
                     </FadeIn>
@@ -134,7 +159,7 @@ export default function WhatWeDoPage() {
                     <FadeIn>
                         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                             <span className="page-hero__overline">How We Execute</span>
-                            <h2 className="deck-title" style={{ marginBottom: 0 }}>Mandate lifecycle</h2>
+                            <h2 className="deck-title" style={{ marginBottom: 0 }}>Investment Lifecycle</h2>
                         </div>
                     </FadeIn>
                     <FadeIn>
@@ -145,42 +170,6 @@ export default function WhatWeDoPage() {
                                     <p className="deck-text">{item.copy}</p>
                                 </div>
                             ))}
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
-
-            <section className="section section-white">
-                <div className="container">
-                    <FadeIn>
-                        <div className="deck-two-panel deck-two-panel--case">
-                            <div className="deck-panel deck-panel--navy">
-                                <h2 className="deck-title deck-title--light">Case Example</h2>
-                                <p className="deck-text deck-text--light">
-                                    Hospitality-led urban development (~$50M)
-                                    <br />
-                                    Region: Europe / MENA
-                                    <br />
-                                    Stage: Pre-development
-                                    <br />
-                                    Role: Sponsor &amp; Capital Structuring
-                                </p>
-                                <ul className="deck-list deck-list--light deck-list--compact">
-                                    <li>120–150 key hospitality asset</li>
-                                    <li>Integrated public realm enhancements</li>
-                                    <li>Mixed-use activation</li>
-                                    <li>Dedicated SPV + sponsor equity + institutional co-investment</li>
-                                    <li>PPP framework (where applicable)</li>
-                                </ul>
-                            </div>
-                            <div className="deck-image-stack">
-                                <ParallaxImage
-                                    src="/images/hero-skyline.png"
-                                    alt="Case example for hospitality-led urban development"
-                                    className="editorial-frame editorial-frame--light"
-                                    intensity={16}
-                                />
-                            </div>
                         </div>
                     </FadeIn>
                 </div>
@@ -199,35 +188,40 @@ export default function WhatWeDoPage() {
                                 </ul>
                             </div>
                             <div className="deck-panel deck-panel--navy">
-                                <h3 className="deck-subtitle deck-subtitle--light">Capital Flow</h3>
+                                <h3 className="deck-subtitle deck-subtitle--light">Capital Structuring</h3>
                                 <p className="deck-text deck-text--light" style={{ marginBottom: '18px' }}>
-                                    Municipal / strategic coordination alongside SPV
+                                    Investments are executed using bespoke equity, hybrid, and structured instruments.
+                                    Solutions are tailored to balance risk, align incentives, and support long-term
+                                    value creation for both principal and aligned partners.
                                 </p>
-                                <div className="capital-flow" aria-label="Capital flow diagram">
-                                    <div className="capital-flow__node">Investor Capital</div>
-                                    <div className="capital-flow__arrow" aria-hidden="true" />
-                                    <div className="capital-flow__node">SPV</div>
-                                    <div className="capital-flow__arrow" aria-hidden="true" />
-                                    <div className="capital-flow__node">Project Entity</div>
-                                    <div className="capital-flow__return">
-                                        <div className="capital-flow__return-node">Returns &amp; Reporting</div>
-                                        <span className="capital-flow__return-arrow" aria-hidden="true" />
-                                        <div className="capital-flow__return-node">Investors</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </FadeIn>
                 </div>
             </section>
 
-            <section className="section section-navy">
+            <section className="section section-navy section-navy--neural">
+                <div className="section-navy__neural" aria-hidden="true">
+                    <NeuralBackground
+                        className="section-navy__neural-canvas"
+                        color="#87b5ff"
+                        trailOpacity={0.08}
+                        particleCount={850}
+                        speed={0.9}
+                        trailFill="rgba(11,31,59,0.3)"
+                    />
+                </div>
                 <div className="container">
                     <FadeIn>
                         <div className="deck-outlook">
                             <div>
-                                <h2 className="deck-title deck-title--light">Strategic Outlook Engagement</h2>
-                                <p className="deck-quote-inline">Private Capital. Structured. Enduring.</p>
+                                <h2 className="deck-title deck-title--light">Strategic Outlook</h2>
+                                <p className="deck-quote-inline">
+                                    Our priorities are selective origination, disciplined underwriting, structured
+                                    deployment, and long-term alignment with institutional and aligned partners.
+                                    Engagement is pursued only when strategic clarity and governance standards are
+                                    evident.
+                                </p>
                             </div>
                             <div className="deck-outlook__panel">
                                 <h3>Strategic priorities</h3>
@@ -239,7 +233,7 @@ export default function WhatWeDoPage() {
                             </div>
                             <div>
                                 <ParallaxImage
-                                    src="/images/hero-mining.png"
+                                    src={media('what_we_do_parallax_2', '/images/hero-mining.png')}
                                     alt="Strategic outlook engagement"
                                     className="editorial-frame"
                                     intensity={16}
@@ -253,18 +247,21 @@ export default function WhatWeDoPage() {
             <section className="section section-white">
                 <div className="container">
                     <div className="deck-contact-callout">
-                        <h2 className="deck-title">Invest in Nabrel</h2>
-                        <p className="deck-text">Connect with our investment approach to explore aligned mandates.</p>
-                        <Link href="/investment-approach" className="primary-button" style={{ marginTop: '16px' }}>
-                            Explore Investment Approach
+                        <h2 className="deck-title">Building Resilliance</h2>
+                        <p className="deck-text">
+                            We consider participation in opportunities where underwriting rigor, structural
+                            clarity, and alignment of interests underpin durable outcomes.
+                        </p>
+                        <Link href="/contact" className="primary-button" style={{ marginTop: '16px' }}>
+                            Engage
                         </Link>
                         <div style={{ marginTop: '28px' }}>
                             <div style={{ width: '100%', maxWidth: '1040px', margin: '0 auto' }}>
-                                <Image 
-                                    src="/images/hero-infrastructure.png" 
-                                    alt="Institutional infrastructure" 
-                                    width={1040} 
-                                    height={580} 
+                                <Image
+                                    src={media('what_we_do_img_2', '/images/hero-infrastructure.png')}
+                                    alt="Institutional infrastructure"
+                                    width={1040}
+                                    height={580}
                                     style={{ width: '100%', height: 'auto' }}
                                 />
                             </div>

@@ -63,14 +63,23 @@ export default function FullWidthCarousel({ slides }: FullWidthCarouselProps) {
   return (
     <section className="full-width-carousel">
       <div className="full-width-carousel__image-wrap">
-        <Image
-          key={currentSlide.image}
-          src={currentSlide.image}
-          alt={currentSlide.alt}
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
-        />
+        {safeSlides.map((slide, idx) => (
+          <Image
+            key={slide.image}
+            src={slide.image}
+            alt={slide.alt}
+            fill
+            style={{
+              objectFit: 'cover',
+              opacity: idx === activeIndex ? 1 : 0,
+              visibility: idx === activeIndex ? 'visible' : 'hidden',
+              transition: 'opacity 0.8s ease-in-out, visibility 0.8s ease-in-out',
+              zIndex: idx === activeIndex ? 1 : 0,
+              transform: 'translateZ(0)'
+            }}
+            priority={idx === 0}
+          />
+        ))}
       </div>
       <div className="slide__scrim">
         <div className="fluid-container-narrow">

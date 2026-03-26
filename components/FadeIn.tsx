@@ -14,7 +14,7 @@ export default function FadeIn({ children, delay = 0, className = '' }: FadeInPr
   const classes = ['fade-in', delay ? `fade-in--delay-${delay}` : '', className].filter(Boolean).join(' ');
   const shouldReduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { margin: '-15% 0px -15% 0px', amount: 0.3 });
+  const isInView = useInView(ref, { margin: '0px 0px 800px 0px', once: true });
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {

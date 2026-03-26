@@ -1,19 +1,22 @@
 import { cookies } from 'next/headers';
-import { ensureDefaultAdmin, verifyAdminToken, ADMIN_COOKIE_NAME } from '@/lib/auth';
+import { ensureDefaultAdmin, isAnyAdminCreated, verifyAdminToken, ADMIN_COOKIE_NAME } from '@/lib/auth';
 import db from '@/lib/db';
 import AdminLoginForm from '@/components/admin/AdminLoginForm';
 import AdminDashboard from '@/components/admin/AdminDashboard';
+import { getAllMediaMap } from '@/lib/media';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminPage() {
   await ensureDefaultAdmin();
+  const anyAdmin = await isAnyAdminCreated();
+
   const cookieStore = (await Promise.resolve(cookies())) as Awaited<ReturnType<typeof cookies>>;
   const token = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
   const session = verifyAdminToken(token);
 
   if (!session) {
-    return <AdminLoginForm />;
+    return <AdminLoginForm showSetupLink={!anyAdmin} />;
   }
 
   const leads = (await db`
@@ -46,5 +49,7 @@ export default async function AdminPage() {
     created_at: string;
   }[];
 
-  return <AdminDashboard adminEmail={session.email} leads={leads} posts={posts} />;
+  const mediaMap = await getAllMediaMap();
+
+  return <AdminDashboard adminEmail={session.email} leads={leads} posts={posts} mediaMap={mediaMap} />;
 }

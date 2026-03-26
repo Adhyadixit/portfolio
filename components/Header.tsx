@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/who-we-are', label: 'Who We Are' },
-    { href: '/what-we-do', label: 'What We Do' },
+    { href: '/who-we-are', label: 'About' },
+    { href: '/what-we-do', label: 'Investment Focus' },
     { href: '/investment-approach', label: 'Investment Approach' },
-    { href: '/partnerships', label: 'Partnerships' },
+    { href: '/partnerships', label: 'Strategic Alignment' },
     { href: '/blog', label: 'Insights' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/contact', label: 'Engagement' },
 ];
 
 export default function Header() {
@@ -52,7 +53,14 @@ export default function Header() {
         >
             <div className="header__inner">
                 <Link href="/" className="header__logo" aria-label="Nabrel Home">
-                    NABR<span>EL</span>
+                    <Image
+                        src="/nabrel_white_on_blue-removebg-preview.png"
+                        alt="Nabrel"
+                        width={300}
+                        height={110}
+                        className="header__logo-img"
+                        priority
+                    />
                 </Link>
 
                 <nav className="header__nav" aria-label="Main navigation">

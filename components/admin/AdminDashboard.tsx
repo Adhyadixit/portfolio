@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { FormEvent, useMemo, useState } from 'react';
 
 interface Lead {
@@ -27,6 +28,7 @@ interface AdminDashboardProps {
   adminEmail: string;
   leads: Lead[];
   posts: PostSummary[];
+  mediaMap: Record<string, string>;
 }
 
 const initialForm = {
@@ -36,14 +38,16 @@ const initialForm = {
   publish: false,
 };
 
-export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashboardProps) {
-  const [activeTab, setActiveTab] = useState<'leads' | 'blogs'>('leads');
+export default function AdminDashboard({ adminEmail, leads, posts, mediaMap }: AdminDashboardProps) {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<'leads' | 'blogs' | 'media'>('leads');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState<number | null>(null);
+  const [isDeleting, setIsDeleting] = useState<number | null>(null);
 
   const leadsSorted = useMemo(() => leads, [leads]);
   const postsSorted = useMemo(() => posts, [posts]);
@@ -66,7 +70,7 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
 
       setForm(initialForm);
       setStatus('Post saved');
-      window.location.reload();
+      router.refresh();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : 'Unable to save post');
     } finally {
@@ -88,7 +92,7 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
         throw new Error(data?.error ?? 'Unable to update post');
       }
 
-      window.location.reload();
+      router.refresh();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : 'Unable to update post');
     } finally {
@@ -96,9 +100,71 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
     }
   };
 
+  const handleDeletePost = async (postId: number) => {
+    if (!window.confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
+      return;
+    }
+
+    setIsDeleting(postId);
+    try {
+      const response = await fetch('/api/admin/blog', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: postId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data?.error ?? 'Unable to delete post');
+      }
+
+      router.refresh();
+    } catch (err) {
+      setStatus(err instanceof Error ? err.message : 'Unable to delete post');
+    } finally {
+      setIsDeleting(null);
+    }
+  };
+
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
     window.location.reload();
+  };
+
+  const uploadMedia = async (key: string, file: File) => {
+    setStatus(null);
+    setIsSaving(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('/api/admin/media/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to upload via API');
+      }
+
+      const { url } = await res.json();
+
+      const saveRes = await fetch('/api/admin/media', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key, url }),
+      });
+
+      if (!saveRes.ok) throw new Error('Failed to save media URL in database');
+
+      setStatus(`Successfully updated ${key}!`);
+      router.refresh();
+    } catch (err) {
+      console.error(err);
+      setStatus(`Error updating ${key}.`);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const formatDate = (value: string | null) => {
@@ -148,6 +214,13 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
               >
                 Blogs
               </button>
+              <button
+                type="button"
+                className={`admin-sidebar__button ${activeTab === 'media' ? 'is-active' : ''}`}
+                onClick={() => setActiveTab('media')}
+              >
+                Media
+              </button>
             </nav>
           </aside>
 
@@ -190,7 +263,7 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
                   </table>
                 )}
               </>
-            ) : (
+            ) : activeTab === 'blogs' ? (
               <>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
                   <h3>Blogs</h3>
@@ -209,18 +282,134 @@ export default function AdminDashboard({ adminEmail, leads, posts }: AdminDashbo
                       <span>
                         {post.title} {post.published ? '(Published)' : '(Draft)'}
                       </span>
-                      <button
-                        className="btn btn--outline"
-                        onClick={() => togglePublish(post.id, !post.published)}
-                        disabled={isPublishing === post.id}
-                      >
-                        {isPublishing === post.id ? 'Updating…' : post.published ? 'Unpublish' : 'Publish'}
-                      </button>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          className="btn btn--outline"
+                          onClick={() => togglePublish(post.id, !post.published)}
+                          disabled={isPublishing === post.id || isDeleting === post.id}
+                        >
+                          {isPublishing === post.id ? 'Updating…' : post.published ? 'Unpublish' : 'Publish'}
+                        </button>
+                        <button
+                          className="btn btn--outline"
+                          style={{ borderColor: '#b94a48', color: '#b94a48' }}
+                          onClick={() => handleDeletePost(post.id)}
+                          disabled={isPublishing === post.id || isDeleting === post.id}
+                        >
+                          {isDeleting === post.id ? 'Deleting…' : 'Delete'}
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
               </>
-            )}
+            ) : activeTab === 'media' ? (
+              <>
+                <h3>Media Management</h3>
+                <p style={{ marginBottom: '20px', color: 'rgba(11,31,59,0.7)', fontSize: '0.95rem' }}>
+                  Upload replacement images/videos (Cloudinary). The changes will reflect immediately.
+                </p>
+                {status ? (
+                  <p style={{ marginBottom: '20px', color: status.includes('Error') ? '#b94a48' : 'var(--gold-accent)', fontWeight: 600 }}>
+                    {status}
+                  </p>
+                ) : null}
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                  {[
+                    {
+                      page: 'Home',
+                      assets: [
+                        { key: 'home_hero_bg', label: 'Hero Image' },
+                        { key: 'home_serve_individuals', label: 'Individuals Card' },
+                        { key: 'home_serve_institutions', label: 'Institutions Card' },
+                        { key: 'home_serve_operators', label: 'Operators & Sponsors Card' },
+                        { key: 'home_offerings_1', label: 'Offerings 1' },
+                        { key: 'home_offerings_2', label: 'Offerings 2' },
+                        { key: 'home_offerings_3', label: 'Offerings 3' },
+                        { key: 'home_powering_1', label: 'Powering 1' },
+                        { key: 'home_powering_2', label: 'Powering 2' },
+                        { key: 'home_powering_3', label: 'Powering 3' },
+                        { key: 'home_leveraging_bg', label: 'Leveraging Image' },
+                        { key: 'home_video', label: 'Invested Video' },
+                      ]
+                    },
+                    {
+                      page: 'About',
+                      assets: [
+                        { key: 'who_we_are_hero', label: 'Hero Image' },
+                        { key: 'who_we_are_hero_1', label: 'Info Image' },
+                        { key: 'who_we_are_parallax', label: 'Parallax' },
+                      ]
+                    },
+                    {
+                      page: 'What We Do',
+                      assets: [
+                        { key: 'what_we_do_hero', label: 'Hero Image' },
+                        { key: 'what_we_do_img_1', label: 'Image 1' },
+                        { key: 'what_we_do_parallax_2', label: 'Parallax 2' },
+                        { key: 'what_we_do_img_2', label: 'Image 2' },
+                      ]
+                    },
+                    {
+                      page: 'Strategic Alignment',
+                      assets: [
+                        { key: 'partnerships_hero', label: 'Hero Image' },
+                        { key: 'partnerships_parallax', label: 'Parallax' },
+                        { key: 'partnerships_img_1', label: 'Image 1' },
+                      ]
+                    },
+                    {
+                      page: 'Investment Approach',
+                      assets: [
+                        { key: 'investment_approach_hero', label: 'Hero Image' },
+                        { key: 'investment_approach_img_1', label: 'Image 1' },
+                        { key: 'investment_approach_img_2', label: 'Image 2' },
+                      ]
+                    },
+                    {
+                      page: 'Legal & Policy',
+                      assets: [
+                        { key: 'cookies_policy_hero', label: 'Cookies Policy - Hero Image' },
+                        { key: 'privacy_policy_hero', label: 'Privacy Policy - Hero Image' },
+                        { key: 'terms_of_use_hero', label: 'Terms of Use - Hero Image' },
+                        { key: 'legal_disclaimer_hero', label: 'Legal Disclaimer - Hero Image' },
+                      ]
+                    }
+                  ].map((section) => (
+                    <div key={section.page}>
+                      <h4 style={{ marginBottom: '16px', fontSize: '1.2rem', color: 'rgba(11,31,59,0.9)', borderBottom: '1px solid rgba(11,31,59,0.1)', paddingBottom: '8px' }}>
+                        {section.page}
+                      </h4>
+                      <div className="admin-media-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+                        {section.assets.map((asset) => (
+                          <div key={asset.key} style={{ padding: '16px', background: 'rgba(6,18,38,0.03)', border: '1px solid rgba(11,31,59,0.1)', borderRadius: '6px' }}>
+                            <p style={{ fontWeight: 600, marginBottom: '8px', fontSize: '0.95rem' }}>{asset.label}</p>
+                            {mediaMap[asset.key] && (
+                              <div style={{ marginBottom: '12px', wordBreak: 'break-all', fontSize: '0.8rem', color: 'rgba(11,31,59,0.6)' }}>
+                                <a href={mediaMap[asset.key]} target="_blank" rel="noreferrer">
+                                  Current Asset (Click to view)
+                                </a>
+                              </div>
+                            )}
+                            <input
+                              type="file"
+                              accept=".png,.jpg,.jpeg,.webp,.gif,.mp4,.webm,image/*,video/*"
+                              disabled={isSaving}
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) uploadMedia(asset.key, file);
+                              }}
+                              style={{ fontSize: '0.85rem' }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : null}
           </section>
         </div>
 
