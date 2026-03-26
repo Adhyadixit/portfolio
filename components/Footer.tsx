@@ -34,9 +34,14 @@ export default function Footer() {
                         <div className="footer__col-title">Inquiries</div>
                         <div className="footer__links">
                             <Link href="/contact" className="footer__link">Engage With Us</Link>
-                            <span className="footer__link" style={{ cursor: 'default' }}>
-                                
-                            </span>
+                            <a 
+                                href="https://www.linkedin.com/company/nabrel" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="footer__link"
+                            >
+                                LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>
