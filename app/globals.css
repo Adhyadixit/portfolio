@@ -3446,6 +3446,27 @@ p {
   max-width: 360px;
 }
 
+.footer__social {
+  margin-top: 20px;
+}
+
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition-fast);
+}
+
+.footer__social-link:hover {
+  background-color: var(--gold-accent);
+  color: var(--white);
+}
+
 .footer__col-title {
   font-family: var(--font-body);
   font-size: 0.75rem;
