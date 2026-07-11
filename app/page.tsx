@@ -241,7 +241,7 @@ export default async function HomePage() {
             </div>
 
             <div className="bx-offerings-main__stat">
-              <p className="bx-offerings-main__stat-value">$100 M </p>
+              <p className="bx-offerings-main__stat-value">$1.5B</p>
               <div className="bx-offerings-main__stat-subtext">
                 <p>Assets Coordinated</p>
               </div>
